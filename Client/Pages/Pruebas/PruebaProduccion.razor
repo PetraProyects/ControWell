@@ -1,0 +1,121 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<br />
+<Callout Heading="NUEVA PRUEBA SELECCIONAR POZO Y TANQUE">
+    <div style="display:flex;justify-content:flex-end">
+        <div style="width:50px">
+            <img src="/favicon.png" class="img-fluid" alt="...">
+        </div>
+        <div style="width:200px">
+            <TanGeneral BalanceModal="BalanceModal" />
+        </div>        
+    </div>
+</Callout>
+<Callout Type="CalloutType.Info" Heading="INFORMACION GENERAL PRUEBA">
+    <h5><Badge Color="BadgeColor.Success">NOMBRE DE LA PRUEBA</Badge></h5>
+    <div class="row">        
+        <div class="col-8">
+            <input class="form-control" @bind-value=NuevoRegistro.Nombre type="text" />
+        </div>
+        <div class="col-4">            
+            <input class="form-control" @bind-value=NuevoRegistro.Horas type="number" placeholder="Duracion Horas" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <h5><Badge Color="BadgeColor.Success">POZO:</Badge></h5>
+        </div>
+        <div class="col-8">
+            <select @bind=NuevoRegistro.PozoId class="form-select" aria-label="Default select example">
+                <option selected>Seleccionar Pozo</option>
+                @foreach (var i in Pozos)
+                {
+                    <option value="@i.Id">@i.NombrePozo</option>
+                }
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <h5><Badge Color="BadgeColor.Success">TANQUE:</Badge></h5>
+        </div>
+        <div class="col-8">
+            <select @bind=NuevoRegistro.TanqueId class="form-select" aria-label="Default select example">
+                <option selected>Seleccionar Tanque</option>
+                @foreach (var i in Tanques)
+                {
+                    <option value="@i.Id">@i.NombreTanque</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <h5><Badge Color="BadgeColor.Primary">FECHA INICIO PRUEBA:</Badge></h5>
+    <div class="row">
+        <div class="col-6">
+            <DateInput TValue="DateTime" @bind-Value="@NuevoRegistro.FechaInicio" Placeholder="Enter Date" />
+        </div>
+        <div class="col-6">
+            <input class="form-control" @bind-value=HoraInicio type="time" />
+        </div>
+    </div>
+    <h5><Badge Color="BadgeColor.Primary">FECHA FIN PRUEBA:</Badge></h5>
+    <div class="row">
+        <div class="col-6">
+            <DateInput TValue="DateTime" @bind-Value="@NuevoRegistro.FechaInicio" Placeholder="Enter Date" />
+        </div>
+        <div class="col-6">
+            <input class="form-control" @bind-value=HoraFin type="time" />
+        </div>
+    </div>
+</Callout>
+<br />
+<div style="display:flex;justify-content:center">
+    <button type="button" class="btn btn-success">CREAR PRUEBA POZO</button>
+</div>
+<br />
+@code {
+    PruebasProduccion NuevoRegistro = new PruebasProduccion();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<PruebaPozo> PruebaPozos = new List<PruebaPozo>();
+    
+    DateTime HoraInicio = new DateTime();
+    DateTime HoraFin = new DateTime();
+
+    //
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Tanque> TanquesSinMov = new List<Tanque>();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    bool verSpiner = true;
+    Balance BalanceModal = new Balance();
+    Tanque TanqueModal = new Tanque();
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (resultado != null)
+            Pozos = resultado;
+        var resPrue = await Http.GetFromJsonAsync<List<PruebaPozo>>("api/PruebaPozo");
+        if (resPrue != null)
+            PruebaPozos = resPrue;
+
+        //
+        var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (resultadoTan != null)
+            Tanques = resultadoTan;
+        var resultadoTanSinMov = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque/SinMovimiento");
+        if (resultadoTanSinMov != null)
+            TanquesSinMov = resultadoTanSinMov;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+}

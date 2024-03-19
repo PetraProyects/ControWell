@@ -1,0 +1,192 @@
+﻿@using ControWell.Client
+@using ControWell.Shared
+@inject HttpClient Http
+@*VER PREVIW GUIA*@
+@if (verPrev)
+{
+    <div style="display:flex;justify-content:center;margin-top:-120px;overflow:auto">
+        <div style="width:700px;height:500px;position:fixed" @onmouseleave=CerrarGuia>
+        <PrevGuia Formato="formato" />
+    </div>
+    </div>
+    
+}
+<div style="width:100%;margin:5px;padding:5px;border-radius:10px;border:solid 2px gray;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap ">
+    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Despachar</button>
+    </div>
+    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
+        <h6>Despachos Realizados(Hoy): </h6>
+        <h6 style="color:burlywood">@CantidadDesp </h6>
+    </div>
+    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
+        <h6>Crudo Despachado Hoy(NSV): </h6>
+        <h6 style="color:burlywood">@BlsDesHoy Bls</h6>
+    </div>
+    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
+        <h6>Crudo Despachado Ayer(NSV): </h6>
+        <h6 style="color:burlywood">@BlsDesAyer Bls</h6>
+    </div>
+</div>
+@if (verTabla)
+{
+    <div style="overflow:auto">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ACCION</th>
+                    <th scope="col">No. DOC TR</th>
+                    <th scope="col">ORDEN CARGUE</th>
+                    <th scope="col">ENTURNE</th>
+                    <th scope="col">LLAMADO</th>
+                    <th scope="col">INICIO LLENADO</th>
+                    <th scope="col">FINAL LLENADO</th>
+                    <th scope="col">INICIO TRANSITO</th>
+                    <th scope="col">ORIGEN</th>
+                    <th scope="col">DESTINO</th>
+                    <th scope="col">COD DESTINO</th>
+                    <th scope="col">COD RUTA</th>
+                    <th scope="col">MATERIAL</th>
+                    <th scope="col">COD MATERIAL</th>
+                    <th scope="col">CEDULA</th>
+                    <th scope="col">CONDUCTOR</th>
+                    <th scope="col">PLACA</th>
+                    <th scope="col">TANQUE</th>
+                    <th scope="col">EMPRESA TR</th>
+                    <th scope="col">SELLOS</th>
+                    <th scope="col">GUIA</th>
+                    <th scope="col">GOV</th>
+                    <th scope="col">GSV</th>
+                    <th scope="col">NSV</th>
+                    <th scope="col">B&W</th>
+                    <th scope="col">TEMP F</th>
+                    <th scope="col">API 60 F</th>
+                    <th scope="col">FAC TEMP</th>
+                    <th scope="col">AZUFRE</th>
+                    <th scope="col">SAL PTB</th>
+                    <th scope="col">P VAP REID POR ASTM</th>
+                    <th scope="col">INCERTI EXPAN AU(%)</th>
+                    <th scope="col">INCERTI EXPAND U(Bls)</th>
+                    <th scope="col">OBS</th>
+                    <th scope="col">GUT2</th>
+                    <th scope="col">Prev</th>
+                    <th scope="col">Ed</th>
+                    <th scope="col">Del</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Formatos)
+                {
+                    <tr>
+                        <td scope="col">ACCION</td>
+                        <td scope="col">@i.OfertaDiaria.DocDeTransporte</td>
+                        <td scope="col">@i.NumGuia</td>
+                        <td scope="col">@i.FechaEnturne</td>
+                        <td scope="col">@i.FechaLlamado</td>
+                        <td scope="col">@i.FechaInicioLlenado</td>
+                        <td scope="col">@i.FechaFinLlenado</td>
+                        <td scope="col">@i.FechaInicioTransito</td>
+                        <td scope="col">@i.OfertaDiaria.Ruta.Origen</td>
+                        <td scope="col">@i.OfertaDiaria.Ruta.Destino</td>
+                        <td scope="col">@i.OfertaDiaria.Ruta.CodDestino</td>
+                        <td scope="col">@i.OfertaDiaria.Ruta.CodRuta</td>
+                        <td scope="col">@i.EcopetrolMaterial</td>
+                        <td scope="col">@i.EcopetrolMaterialCod</td>
+                        <td scope="col">@i.OfertaDiaria.Conductor.Cedula</td>
+                        <td scope="col">@i.OfertaDiaria.Conductor.Nombre</td>
+                        <td scope="col">@i.OfertaDiaria.Placa</td>
+                        <td scope="col">@i.OfertaDiaria.PlacaTanque</td>
+                        <td scope="col">@i.OfertaDiaria.Empresa.Descripcion</td>
+                        <td scope="col">@i.Sellos</td>
+                        <td scope="col">@i.NumGuia</td>
+                        <td scope="col">@i.GovCarga</td>
+                        <td scope="col">@i.GsvCarga</td>
+                        <td scope="col">@i.NsvCarga</td>
+                        <td scope="col">@Math.Round(i.BSWCarga,5)</td>
+                        <td scope="col">@Math.Round(i.TempCarga,2)</td>
+                        <td scope="col">@Math.Round(i.APICarga,2)</td>
+                        <td scope="col">@Math.Round(i.FactorTempCarga,5)</td>
+                        <td scope="col">@i.Azufre</td>
+                        <td scope="col">@i.SalPTB</td>
+                        <td scope="col">@i.PresVaporReid</td>
+                        <td scope="col">@i.IncertiExpandidoAUPorcen</td>
+                        <td scope="col">@i.IncertiExpandidoUBls</td>
+                        <td scope="col">@i.Observaciones</td>
+                        <td scope="col">@i.GUT2</td>
+                       
+                        <td>
+                            <button type="button" class="btn btn-primary" @onclick="(()=>asignarFormato(i))"><i class="bi bi-file-earmark-ruled-fill"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Despacho Crudo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <DespachoCargue />
+    </div>
+</div>
+
+
+@code{
+    FormatoCarga formato = new FormatoCarga();
+    public static List<FormatoCarga> Formatos = new List<FormatoCarga>();
+    bool verPrev = false;
+    bool verTabla = true;
+    int CantidadDesp = 0;
+    double BlsDesHoy = 0;
+    double BlsDesAyer = 0;
+    protected override async Task OnInitializedAsync(){
+        await Actualizar();
+    }
+
+    async Task Actualizar(){
+        var resFor = await Http.GetFromJsonAsync<List<FormatoCarga>>("api/FormatoCarga");
+        if (resFor != null)
+            Formatos = resFor;
+
+        var despHoy = Formatos.Where(x => x.FechaFinLlenado >= DateTime.Today).ToList();
+        var despAyer = Formatos.Where(x => x.FechaFinLlenado >= DateTime.Today.AddDays(-1) && x.FechaFinLlenado <= DateTime.Today).ToList();
+        CantidadDesp = despHoy.Count();
+        foreach (var i in despHoy)
+        {
+            BlsDesHoy += i.NsvCarga;            
+        }
+        foreach (var j in despAyer)
+        {
+            BlsDesAyer += j.NsvCarga;
+        }
+        BlsDesHoy = Math.Round(BlsDesHoy, 2);
+        BlsDesAyer = Math.Round(BlsDesAyer, 2);
+    }
+
+    void asignarFormato(FormatoCarga forma)
+    {
+        
+        formato = forma;
+        verPrev = true;
+        verTabla = false;
+    }
+
+    void CerrarGuia(){
+        verPrev = false;
+        verTabla = true;
+    }
+
+  
+}

@@ -1,0 +1,335 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = ControWell.Client
+build_property.RootNamespace = ControWell.Client
+build_property.ProjectDir = C:\ControWell\Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\ControWell\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/ControWell/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/DatosCampo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcRGF0b3NDYW1wby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/Graficas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcR3JhZmljYXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/LinealGeneralNSV.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsR2VuZXJhbE5TVi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/LinealGeneralTOV.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsR2VuZXJhbFRPVi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/LinealProduccion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsUHJvZHVjY2lvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/ProduccionCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcUHJvZHVjY2lvbkNydWRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/TortasVolumenes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFzVm9sdW1lbmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/TortaVolsCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFWb2xzQ3J1ZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/TortaVolsNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFWb2xzTmFmdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/VerticalVolCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVmVydGljYWxWb2xDcnVkby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/CargueCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyZ3VlQ3J1ZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/ConfigGeneral.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXENvbmZpZ0dlbmVyYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/ConfigTanques.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXENvbmZpZ1RhbnF1ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/ConfigVariables.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXENvbmZpZ1ZhcmlhYmxlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/EditaCinta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEVkaXRhQ2ludGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/EditaPozo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEVkaXRhUG96by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/EditarTanque.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEVkaXRhclRhbnF1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/EditaTermometro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEVkaXRhVGVybW9tZXRyby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/EditaVariable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEVkaXRhVmFyaWFibGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioAlarma.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9BbGFybWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioCalibracionTermometro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9DYWxpYnJhY2lvblRlcm1vbWV0cm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioCinta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9DaW50YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioNivelesCinta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9OaXZlbGVzQ2ludGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioPozo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9Qb3pvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioTanque.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9UYW5xdWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioTermometro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9UZXJtb21ldHJvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/FormularioVariable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXEZvcm11bGFyaW9WYXJpYWJsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaAlarmas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhQWxhcm1hcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaCintas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhQ2ludGFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaPozos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhUG96b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaTanques.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhVGFucXVlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaTermometro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhVGVybW9tZXRyby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigContro/TablaVariableProcesos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udHJvXFRhYmxhVmFyaWFibGVQcm9jZXNvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/Conductoreslist.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcQ29uZHVjdG9yZXNsaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/ConfigGeneralEst.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcQ29uZmlnR2VuZXJhbEVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/DetalleTanque.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcRGV0YWxsZVRhbnF1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/Empresalist.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcRW1wcmVzYWxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/GuiaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcR3VpYUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/MaterialesEcopetrolList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcTWF0ZXJpYWxlc0Vjb3BldHJvbExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/OfertaDiariaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcT2ZlcnRhRGlhcmlhTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/OperariosList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcT3BlcmFyaW9zTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/RutaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcUnV0YUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/SelloList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcU2VsbG9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/ConfigMedEstatica/VehiculoList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcVmVoaWN1bG9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/DescargueForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzY2FyZ3VlRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/DescargueNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzY2FyZ3VlTmFmdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Despacho.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzcGFjaG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/DespachoCargue.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzcGFjaG9DYXJndWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Espiner.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXNwaW5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/FormatosCruNaf.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybWF0b3NDcnVOYWYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/FormularioMovimiento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb01vdmltaWVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Formularios/DespachoFormulario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcRGVzcGFjaG9Gb3JtdWxhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Formularios/MainFormularios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcTWFpbkZvcm11bGFyaW9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Formularios/MovimientoFormulario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcTW92aW1pZW50b0Zvcm11bGFyaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Formularios/ReciboFormulario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcUmVjaWJvRm9ybXVsYXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Formularios/TransferenciaFormulario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcVHJhbnNmZXJlbmNpYUZvcm11bGFyaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/GeneralMovimientos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VuZXJhbE1vdmltaWVudG9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/GraficasIniciales.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZmljYXNJbmljaWFsZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Indicadores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kaWNhZG9yZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/MisInformes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWlzSW5mb3JtZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/PrevGuia.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJldkd1aWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Pruebas/InicialPruebas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJ1ZWJhc1xJbmljaWFsUHJ1ZWJhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Pruebas/PruebaProduccion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJ1ZWJhc1xQcnVlYmFQcm9kdWNjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Pruebas/RegistroDtos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJ1ZWJhc1xSZWdpc3Ryb0R0b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Pruebas/ResultadosPruebasProduccion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJ1ZWJhc1xSZXN1bHRhZG9zUHJ1ZWJhc1Byb2R1Y2Npb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Pruebas/ResumenTabla.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJ1ZWJhc1xSZXN1bWVuVGFibGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/TanGeneral.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFuR2VuZXJhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/TanquesCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlc0NydWRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/TanquesNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlc05hZnRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/TodosLosTanques.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9kb3NMb3NUYW5xdWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Transferencia.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNmZXJlbmNpYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Shared/MenuLateral.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1lbnVMYXRlcmFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fx0juhdfvs
+
+[C:/ControWell/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xjecy8nknt

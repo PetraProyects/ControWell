@@ -1,0 +1,21 @@
+﻿@page "/configuracion"
+<h1>Configuración general PeMMaS</h1>
+<br />
+<Tabs EnableFadeEffect="true">
+    <Tab IsActive="true">
+        <TitleTemplate>
+            <Icon Name="IconName.PciCard" /> Tanques
+        </TitleTemplate>
+        <Content>           
+            <ConfigTanques />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.Tools" /> Variables
+        </TitleTemplate>
+        <Content>
+            <ConfigVariables />
+        </Content>
+    </Tab>    
+</Tabs>

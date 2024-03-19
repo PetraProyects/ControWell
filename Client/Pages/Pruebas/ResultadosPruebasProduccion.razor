@@ -1,0 +1,63 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<br />
+<Callout Heading="NUEVA PRUEBA SELECCIONAR POZO Y TANQUE">
+    <div style="display:flex;justify-content:flex-end">
+        <div style="width:50px">
+            <img src="/favicon.png" class="img-fluid" alt="...">
+        </div>
+        <div style="width:200px">
+            <TanGeneral BalanceModal="BalanceModal" />
+        </div>
+    </div>
+</Callout>
+
+<br />
+<div style="display:flex;justify-content:center">
+    <button type="button" class="btn btn-success">CREAR PRUEBA POZO</button>
+</div>
+<br />
+@code {
+    PruebasProduccion NuevoRegistro = new PruebasProduccion();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<PruebaPozo> PruebaPozos = new List<PruebaPozo>();
+
+    DateTime HoraInicio = new DateTime();
+    DateTime HoraFin = new DateTime();
+
+    //
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Tanque> TanquesSinMov = new List<Tanque>();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    bool verSpiner = true;
+    Balance BalanceModal = new Balance();
+    Tanque TanqueModal = new Tanque();
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (resultado != null)
+            Pozos = resultado;
+        var resPrue = await Http.GetFromJsonAsync<List<PruebaPozo>>("api/PruebaPozo");
+        if (resPrue != null)
+            PruebaPozos = resPrue;
+
+        //
+        var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (resultadoTan != null)
+            Tanques = resultadoTan;
+        var resultadoTanSinMov = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque/SinMovimiento");
+        if (resultadoTanSinMov != null)
+            TanquesSinMov = resultadoTanSinMov;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+}
+

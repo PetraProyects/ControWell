@@ -1,0 +1,101 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<!-- ======= Contact Section ======= -->
+<section @onmousemove=Actualizar id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                <div class="form-group mt-3">
+                    <h3 style="color:beige">@termo.Nombre</h3>
+                </div>
+                @foreach (var i in NivelesTermo)
+                {
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <b style="color:beige">@i.Nominal</b>
+                        </div>
+                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <p style="color:beige">@i.Correccion</p>
+                        </div>
+                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <button class="btn btn-warning" @onclick="(()=>Eliminar(i))"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
+                }
+                <EditForm Model="calibracion">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="number" @bind-value=calibracion.Nominal placeholder="Nominal" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="number" @bind-value=calibracion.Correccion placeholder="Correccion" class="form-control" />
+                        </div>
+                        <br />
+                        <br />
+                        <div class="text-center"><button class="btn btn-primary" @onclick=GuardaCalibracion data-bs-dismiss="modal" aria-label="Close">Guardar</button></div>
+                        <br />
+                        <br />
+                    </div>
+                </EditForm>                
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+@code{
+    [Parameter]
+    public Termometro? termo {get;set;}
+    CalibracionTermometro calibracion=new CalibracionTermometro();
+    public static List<CalibracionTermometro> NivelesTermo = new List<CalibracionTermometro>();
+    protected override async Task OnInitializedAsync()
+    {
+
+        await Actualizar();
+    }
+    async Task Actualizar()
+    {
+        var niveles = await Http.GetFromJsonAsync<List<CalibracionTermometro>>("api/CalibracionTermometro");
+        NivelesTermo = niveles.Where(x => x.TermometroId == termo.Id).ToList();
+    }
+    async Task GuardaCalibracion(){
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            
+            calibracion.TermometroId = termo.Id;
+            var respuesta = await Http.PostAsJsonAsync("api/CalibracionTermometro", calibracion);
+
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+            await Actualizar();
+            
+        }
+    }
+    async Task Eliminar(CalibracionTermometro niv)
+    {
+        await Http.DeleteAsync($"api/CalibracionTermometro/{niv.Id}");
+        await Actualizar();
+    }
+}

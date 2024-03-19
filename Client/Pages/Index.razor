@@ -1,0 +1,50 @@
+﻿@page "/"
+<br />
+<br />
+<br />
+
+<Tabs EnableFadeEffect="true">
+    <Tab IsActive="true">
+        <TitleTemplate>
+            <Icon Name="IconName.HouseFill" /> Tanques
+        </TitleTemplate>
+        <Content>
+            <br />
+            <TodosLosTanques />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.Calendar2CheckFill" /> Historial
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <GeneralMovimientos />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.ArrowLeftRight" /> Movimientos
+        </TitleTemplate>
+        <Content>
+            <FormatosCruNaf />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.FileEarmarkArrowDown" /> Informes
+        </TitleTemplate>
+        <Content>
+            <MisInformes />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.BarChartFill" /> Grafica
+        </TitleTemplate>
+        <Content>
+            <GraficasIniciales />
+        </Content>
+    </Tab>
+</Tabs>

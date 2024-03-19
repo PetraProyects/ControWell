@@ -1,0 +1,368 @@
+﻿@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@inject HttpClient Http
+@inject IJSRuntime JS
+<div>
+	<div class="app-content pt-3 p-md-3 p-lg-4">
+		<div class="container-xl">
+			<div class="row g-4">
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo,1))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-pdf pdf-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">Informe de producción</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span> PDF</li>
+									<li><span class="text-muted">Size:</span> 3MB</li>
+									<li><span class="text-muted">Opened:</span> 3 days ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+						</div><!--//app-card-body-->
+					</div><!--//app-card-->
+				</div><!--//col-->
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo2,2))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-excel excel-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">SLO-F-029</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span>Carrotanques descargados</li>
+									<li><span class="text-muted">Size:</span> 64KB</li>
+									<li><span class="text-muted">Edited:</span> 1 week ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+
+						</div><!--//app-card-body-->
+
+					</div><!--//app-card-->
+				</div><!--//col-->
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo3,3))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-excel excel-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions" style="cursor:pointer" @onclick="(()=>exportFormato028())">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">SLO-F-028</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span>Carrotanques Cargados</li>
+									<li><span class="text-muted">Size:</span> 64KB</li>
+									<li><span class="text-muted">Edited:</span> 1 week ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+
+						</div><!--//app-card-body-->
+
+					</div><!--//app-card-->
+
+				</div><!--//col-->
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo4,4))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-excel excel-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">GENERAL</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span>Todos los Movimientos</li>
+									<li><span class="text-muted">Size:</span> 64KB</li>
+									<li><span class="text-muted">Edited:</span> 1 week ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+
+						</div><!--//app-card-body-->
+
+					</div><!--//app-card-->
+				</div><!--//col-->
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo5,5))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-excel excel-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">Innergy Report</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span>Balance y analisis</li>
+									<li><span class="text-muted">Size:</span> 64KB</li>
+									<li><span class="text-muted">Edited:</span> 1 week ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+
+						</div><!--//app-card-body-->
+
+					</div><!--//app-card-->
+				</div><!--//col-->				
+				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo,1))">
+						<div class="app-card-thumb-holder p-3">
+							<span class="icon-holder">
+								<i class="fas fa-file-pdf pdf-file"></i>
+							</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						<div class="app-card-body p-3 has-card-actions">
+
+							<h4 class="app-doc-title truncate mb-0"><a href="#file-link">Manual PeMMaS</a></h4>
+							<div class="app-doc-meta">
+								<ul class="list-unstyled mb-0">
+									<li><span class="text-muted">Type:</span> PDF</li>
+									<li><span class="text-muted">Size:</span> 3MB</li>
+									<li><span class="text-muted">Opened:</span> 3 days ago</li>
+								</ul>
+							</div><!--//app-doc-meta-->
+						</div><!--//app-card-body-->
+					</div><!--//app-card-->
+				</div><!--//col-->
+			</div><!--//row-->
+		</div><!--//container-fluid-->
+	</div><!--//app-content-->
+</div><!--//app-wrapper-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalInformesRangoFecha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+							<EditForm Model="consulta">
+								<div class="php-email-form mt-4">
+									<div class="form-group mt-3">
+										<h3 style="color:beige;text-align:center">@Titulo</h3>
+									</div>
+									<div class="form-group mt-3">
+										<b style="color:beige">Inicial</b>
+										<input type="datetime" class="form-control" @bind-value=consulta.FechaInicial placeholder="Nombre" required>
+									</div>
+									<div class="form-group mt-3">
+										<b style="color:beige">Final</b>
+										<input type="datetime" class="form-control" @bind-value=consulta.FechaFinal placeholder="Descripción" required>
+									</div>
+								</div>
+								<br />
+								<div class="text-center"><button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" @onclick="(()=>Exportar())">Exportar</button></div>
+								<br />
+							</EditForm>
+						</div>
+					</div>
+				</div>
+			</section><!-- End Contact Section -->
+		</div>
+	</div>
+</div>
+
+
+
+@code {
+	Consulta consulta = new Consulta();
+	private DateTime date3 = new DateTime();
+	string Titulo = "Informe PDF";
+	string Titulo2 = "SLO-F-029";
+	string Titulo3 = "SLO-F-028";
+	string Titulo4 = "Info General";
+	string Titulo5 = "Balances";
+	string Titulo6 = "Pruebas Pozo";
+	int NumeroFun = 0;
+	public static List<Balance> UltimosMovimientos = new List<Balance>();
+	public static List<Balance> Listado = new List<Balance>();
+	double Tov = 0;
+	double Gsv = 0;
+	double Nsv = 0;
+	double AguaNeta = 0;
+
+	double TovNaf = 0;
+	double GsvNaf = 0;
+	double NsvNaf = 0;
+	double AguaNetaNaf = 0;
+
+	string NombreFechaInicio = "Date";
+	string NombreFechaFinal = "Date";
+	//Produccion
+	double TovProd = 0;
+	double GsvProd = 0;
+	double NsvProd = 0;
+	double AguaNetaProd = 0;
+	//Despacho
+	int CantidadVehiculos = 0;
+	double GsvDesp = 0;
+	double NsvDesp = 0;
+	double AguaDesp = 0;
+	double ApiDesp = 0;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+		UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+		var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
+		if (resultado != null)
+			Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+		var TovDesp = Listado.Where(x => x.Tanque.TipoFluido == "Crudo" && x.TipoMovimiento == "Despacho").Sum(x => x.DeltaTov);
+
+
+	}
+	private async Task exportFormato028()
+	{		
+		string filtro = JsonSerializer.Serialize(consulta);
+		var response = await Http.GetAsync($"api/FormatoCarga/formatoslo028/{filtro}");
+		var fileStream = response.Content.ReadAsStream();
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+		await JS.InvokeVoidAsync("downloadFileFromStream","Formato-SL0-028.xlsx", streamRef);
+	}
+	private async Task exportFormato029()
+	{
+		string filtro = JsonSerializer.Serialize(consulta);
+		var response = await Http.GetAsync($"api/FormatoDescargueNaf/formatoslo029/{filtro}");
+		var fileStream = response.Content.ReadAsStream();
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+		await JS.InvokeVoidAsync("downloadFileFromStream", "Formato-SL0-029.xlsx", streamRef);
+	}
+
+	private async Task InnergyReport()
+	{
+		string filtro = JsonSerializer.Serialize(consulta);
+		var response = await Http.GetAsync($"api/PruebaPozo/innergy/{filtro}");
+		var fileStream = response.Content.ReadAsStream();
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+		await JS.InvokeVoidAsync("downloadFileFromStream", "REPORTE_NE_INNERGY.xlsx", streamRef);
+	}
+
+
+	private async Task Exportar3()
+	{
+		var response = await Http.GetAsync("api/Informes/Template");
+		var fileStream = response.Content.ReadAsStream();
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+		await JS.InvokeVoidAsync("downloadFileFromStream", "Template.xlsx", streamRef);
+	}
+
+
+	private async Task exportGeneral()
+	{
+		var response = await Http.GetAsync("api/FormatoCarga/ExportExcel");
+		var fileStream = response.Content.ReadAsStream();
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+		await JS.InvokeVoidAsync("downloadFileFromStream", "ReporteGeneral.xlsx", streamRef);
+		await JS.InvokeVoidAsync("alert", "Template.xlsx");	
+	}
+	private async Task InformePDF()
+	{
+		var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+		UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+		var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
+		if (resultado != null)
+			Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+		var TovDesp = Listado.Where(x => x.Tanque.TipoFluido == "Crudo" && x.TipoMovimiento == "Despacho").Sum(x => x.DeltaTov);
+		foreach (var i in UltimosMovimientos)
+		{
+			if (i.Tanque.TipoFluido == "Crudo")
+			{
+				Tov += i.Tov;
+				Gsv += i.GSV();
+				Nsv += i.NSV();
+				AguaNeta += i.AGUANETA();
+			}			
+
+			if (i.Tanque.TipoFluido == "Refinado")
+			{
+				TovNaf += i.Tov;
+				GsvNaf += i.GSV();
+				NsvNaf += i.NSV();
+				AguaNetaNaf += i.AGUANETA();
+			}
+		}
+
+		foreach (var i in Listado)
+		{
+			if (i.Tanque.TipoFluido == "Crudo" && i.TipoMovimiento == "Produccion")
+			{
+				TovProd += (double)i.DeltaTov;
+				GsvProd += (double)i.DeltaGsv;
+				NsvProd += (double)i.DeltaNsv;
+				AguaNetaProd += (double)i.DeltaAguaNeta;
+			}
+			if (i.Tanque.TipoFluido == "Crudo" && i.TipoMovimiento == "Despacho")
+			{
+				CantidadVehiculos += 1;
+				GsvDesp += (-1) * (double)i.DeltaGsv;
+				NsvDesp += (-1) * (double)i.DeltaNsv;
+				AguaDesp += (-1) * (double)i.DeltaAguaNeta;
+				ApiDesp += ((double)i.DeltaTov / (double)TovDesp)*i.Api60F();
+			}
+		}
+		NombreFechaInicio = consulta.FechaInicial.ToString("dd/MM/yyyy HH:mm:ss");
+		NombreFechaFinal = consulta.FechaFinal.ToString("dd/MM/yyyy HH:mm:ss");
+		await JS.InvokeVoidAsync("GenerarPDF", "PeMMaS", NombreFechaInicio, NombreFechaFinal,
+		Math.Round(Tov, 2), Math.Round(Gsv, 2), Math.Round(Nsv, 2), Math.Round(AguaNeta,2),
+		Math.Round(TovProd, 2), Math.Round(GsvProd, 2), Math.Round(NsvProd, 2), Math.Round(AguaNetaProd,2),
+		Math.Round(GsvDesp, 2), Math.Round(NsvDesp, 2), Math.Round(AguaDesp, 2), Math.Round(ApiDesp,2),
+		CantidadVehiculos, Math.Round(TovNaf, 2), Math.Round(GsvNaf, 2), Math.Round(NsvNaf, 2), Math.Round(AguaNetaNaf,1),
+
+		"Informe.pdf");
+
+	}
+
+	void Asignar(string titulo,int num)
+	{
+		Titulo = titulo;
+		NumeroFun = num;
+	}
+
+	async Task Exportar()
+	{
+		if (NumeroFun == 1)
+		{
+			await InformePDF();
+		}
+		if (NumeroFun == 2)
+		{
+			await exportFormato029();
+		}
+		if (NumeroFun == 3)
+		{
+			await exportFormato028();
+		}
+		if (NumeroFun == 4)
+		{
+			await exportGeneral();
+		}
+		if (NumeroFun == 5)
+		{
+			await InnergyReport();
+		}
+		if (NumeroFun == 6)
+		{
+			await InformePDF();
+		}
+	}
+}

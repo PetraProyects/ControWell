@@ -1,0 +1,54 @@
+﻿@page "/formularios"
+<br />
+<br />
+<br />
+<Callout Heading="FORMULARIOS PEMMAS">
+    <div style="display:flex;justify-content:flex-end">
+        <div style="width:50px">
+            <img src="/favicon.png" class="img-fluid" alt="...">
+        </div>
+        <div style="width:200px">
+            <TanGeneral BalanceModal="BalanceModal" />
+        </div>
+    </div>
+</Callout>
+<br />
+<Tabs EnableFadeEffect="true">
+    <Tab IsActive="true">
+        <TitleTemplate>
+            <Icon Name="IconName.HouseFill" /> Movimientos
+        </TitleTemplate>
+        <Content>
+            <MovimientoFormulario />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.PersonFill" /> Despacho
+        </TitleTemplate>
+        <Content>
+            <DespachoFormulario />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.PhoneFill" /> Transferencia
+        </TitleTemplate>
+        <Content>
+            <TransferenciaFormulario />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.PhoneFill" /> Recibo Nafta
+        </TitleTemplate>
+        <Content>
+            <ReciboFormulario />
+        </Content>
+    </Tab>
+</Tabs>
+
+
+@code {
+    Balance BalanceModal = new Balance();
+}

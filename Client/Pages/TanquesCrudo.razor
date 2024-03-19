@@ -1,0 +1,185 @@
+﻿@inject HttpClient Http
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@if (verSpiner)
+{
+    <Espiner />
+}
+
+@*ESTOS SON LOS TANQUES QUE NO TIENEN MOVIMIENTOS*@
+<div class="container-fluid" style="display:flex;flex-wrap:wrap;justify-content:space-around" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+    @foreach (var i in TanquesSinMov)
+    {
+        if (i.TipoFluido == "Crudo")
+        {
+            <div style="cursor:pointer;width:210px;height:100px;margin:5px" @onclick="(()=>  VerSinMovimientos(i))">
+                <h6>@i.NombreTanque</h6>
+                <img style="width:80%" src='/TanquesCrudo/tank01.png' />
+            </div>
+        }
+    }
+</div>
+<br />
+
+@*ESTOS SON LOS TANQUES QUE SII TIENEN MOVIMIENTOS*@
+<div class="container-fluid" style="display:flex;flex-wrap:wrap;justify-content:space-around">
+    @foreach (var balance in UltimosMovimientos)
+    {
+        if (balance.Tanque.TipoFluido == "Crudo")
+        {
+            <div style="width:210px;height:100px;margin:5px;cursor:pointer" @onclick="(()=>InfoTanque(balance))" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div>
+                    <TanGeneral BalanceModal="balance" />
+                </div>
+            </div>
+        }
+    }
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">@TanqueModal.NombreTanque</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick=Actualizar></button>
+            </div>
+            <div class="modal-body">                
+                @if (vertanque)
+                {
+                    <TanGeneral BalanceModal="BalanceModal" />
+                }
+                @if (vernuevomov)
+                {
+                    <FormularioMovimiento tanque="TanqueModal" Refrescar="vermitanque" />
+                }
+                @if (verdespacho)
+                {
+                    <Despacho balance="BalanceModal" />
+                }
+                @if (vertransferir)
+                {
+                    <Transferencia balance="BalanceModal" />
+                }
+                @if (verdetalleTanq)
+                {
+                    <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
+                <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>
+                <button type="button" class="btn btn-success" @onclick=verTransferencia>Transferencia</button>
+                <button type="button" class="btn btn-success" @onclick=verDespachar>Despacho</button>
+                <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Tanque> TanquesSinMov = new List<Tanque>();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    bool verSpiner = true;
+    Balance BalanceModal = new Balance();
+    Tanque TanqueModal = new Tanque();
+    //INICIO DATOS BOOLEAN PARA VER COMPONENTES
+    bool vernuevomov = false;
+    bool vertanque = true;
+    bool verdespacho = false;
+    bool vertransferir = false;
+    bool verdetalleTanq = false;
+    //FINAL DATOS BOOLEAN PARA VER COMPONENTES
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Actualizar();
+    }
+
+    async Task Actualizar()
+    {
+        verSpiner = true;        
+        UltimosMovimientos.Clear();        
+        var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (resultadoTan != null)
+            Tanques = resultadoTan;
+        var resultadoTanSinMov = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque/SinMovimiento");
+        if (resultadoTanSinMov != null)
+            TanquesSinMov = resultadoTanSinMov;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+         UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();       
+        
+        verSpiner = false;
+        
+    }
+
+    
+
+    async Task InfoTanque(Balance bal)
+    {
+        vertanque = true;
+        BalanceModal = bal;
+        TanqueModal = Tanques.Where(x => x.Id == bal.TanqueId).FirstOrDefault();
+    }
+    void VerSinMovimientos(Tanque tan)
+    {
+        TanqueModal = tan;
+    }
+    //INICIO BLOQUE DE FUNCIONES PARA ADMINISTRAR VISTA MODAL
+    void vernuevoMov()
+    {
+        vertanque = true;
+        vernuevomov = true;
+        vertransferir = false;
+        verdetalleTanq = false;
+    }
+    void vermitanque(Balance bal)
+    {
+        BalanceModal = bal;
+        vertanque = true;
+        vernuevomov = false; 
+        vertransferir = false;
+        verdetalleTanq = false;
+    }
+    void CerrarTodo()
+    {             
+        vertanque = false;
+        vernuevomov = false;
+        vertransferir = false;
+        verdetalleTanq = false;
+    }
+    void verDespachar(){
+        vertanque = false;
+        vernuevomov = false;
+        verdespacho = true;
+        vertransferir = false;
+        verdetalleTanq = false;
+    }
+    void verTransferencia()
+    {
+        vertanque = false;
+        vernuevomov = false;
+        verdespacho = false;
+        vertransferir = true;
+        verdetalleTanq = false;
+    }
+
+    void verDetalle()
+    {
+        vertanque = false;
+        vernuevomov = false;
+        verdespacho = false;
+        vertransferir = false;
+        verdetalleTanq = true;
+    }
+    //FINAL BLOQUE DE FUNCIONES PARA ADMINISTRAR VISTA MODAL
+    async Task ForzarActualizado()
+    {
+        CerrarTodo();
+        Navigation.NavigateTo("/fetchdata");
+        Navigation.NavigateTo("/");
+    }
+}

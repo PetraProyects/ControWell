@@ -1,0 +1,187 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<br />
+<div style="display:flex;justify-content:center">
+    <h3>Transferencias</h3>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-around;overflow:auto">
+    <div style="width:500px">
+        <br />
+        <label>Tanque transfiere</label>
+        <br />
+        <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>Trasnsferir(balance))">
+            <TanGeneral BalanceModal="balance" />
+        </div>
+        <div style="display:flex;justify-content:center;">
+            <EditForm Model="balance">
+                <label>Nivel</label>
+                <InputNumber @bind-Value=balance.Nivel class="form-control"></InputNumber>
+                <label>Interfase</label>
+                <InputNumber @bind-Value=balance.Interfase class="form-control"></InputNumber>
+            </EditForm>
+            <EditForm Model="balance">
+                <label>API</label>
+                <InputNumber @bind-Value=balance.Api class="form-control"></InputNumber>
+                <label>TEMP API</label>
+                <InputNumber @bind-Value=balance.TemFluidoApi class="form-control"></InputNumber>
+            </EditForm>
+            <EditForm Model="balance">
+                <label>TEMP AMBIENTE</label>
+                <InputNumber @bind-Value=balance.TemAmbiente class="form-control"></InputNumber>
+                <label>TEMP TANQUE</label>
+                <InputNumber @bind-Value=balance.TemTanque class="form-control"></InputNumber>
+            </EditForm>
+            <EditForm Model="balance">
+                <label>S&W</label>
+                <InputNumber @bind-Value=balance.Syw class="form-control"></InputNumber>
+                <label>KARL FISHER</label>
+                <InputNumber @bind-Value=balance.KarlFisher class="form-control"></InputNumber>
+            </EditForm>
+        </div>
+    </div>
+    <div style="width:500px">
+        <div>
+            <EditForm Model="tanque2">
+                <label>Tanque recibe</label>
+                <InputSelect @bind-Value="tanque2.Id" class="form-control" placeholder="Capacidad">
+                    <option value="-1">Elegir Tanque</option>
+                    @foreach (var i in UltimosMovimientos)
+                    {
+                        <option value="@i.Tanque.Id.">@i.Tanque.NombreTanque</option>
+                    }
+                </InputSelect>
+            </EditForm>
+            @foreach (var b in UltimosMovimientos)
+            {
+                if (b.Tanque.Id == tanque2.Id)
+                {
+                    balance2 = b;
+                    <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>Recibir(balance2))">
+                        <TanGeneral BalanceModal="b" />
+                    </div>
+                    
+                }
+
+            }
+            <div style="display:flex;justify-content:center">
+                <EditForm Model="balance2">
+                    <label>Nivel</label>
+                    <InputNumber @bind-Value=balance2.Nivel class="form-control"></InputNumber>
+                    <label>Interfase</label>
+                    <InputNumber @bind-Value=balance2.Interfase class="form-control"></InputNumber>
+                </EditForm>
+                <EditForm Model="balance2">
+                    <label>API</label>
+                    <InputNumber @bind-Value=balance2.Api class="form-control"></InputNumber>
+                    <label>TEMP API</label>
+                    <InputNumber @bind-Value=balance2.TemFluidoApi class="form-control"></InputNumber>
+                </EditForm>
+                <EditForm Model="balance2">
+                    <label>TEMP AMBIENTE</label>
+                    <InputNumber @bind-Value=balance2.TemAmbiente class="form-control"></InputNumber>
+                    <label>TEMP TANQUE</label>
+                    <InputNumber @bind-Value=balance2.TemTanque class="form-control"></InputNumber>
+                </EditForm>
+                <EditForm Model="balance2">
+                    <label>S&W</label>
+                    <InputNumber @bind-Value=balance2.Syw class="form-control"></InputNumber>
+                    <label>KARL FISHER</label>
+                    <InputNumber @bind-Value=balance2.KarlFisher class="form-control"></InputNumber>
+                </EditForm>
+            </div>
+        </div>
+    </div>    
+</div>
+<br />
+<div style="display:flex;justify-content:center">
+    <Button Color="ButtonColor.Success" @onclick="(()=>Trasnsferir(balance))"> Confirmar </Button>
+</div>
+@code {
+    [Parameter]
+    public Balance? balance { get; set; }
+    Balance balance2 = new Balance();
+    Tanque tanque2 = new Tanque();
+    Tanque tanqueinit = new Tanque();
+    Consulta consulta = new Consulta();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    protected override async Task OnInitializedAsync()
+    {
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        tanqueinit = balance.Tanque;
+    }
+
+
+    async Task Trasnsferir(Balance balEntrega)
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Transferir",
+                Text = $"Transferir ajustando al tanque {balEntrega.Tanque.NombreTanque}",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Confirmar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            balance.TipoMovimiento = "Transferencia";
+            var RespuestaBalance = await Http.PostAsJsonAsync($"api/Balance", balance);
+
+            if (RespuestaBalance != null)
+            {
+                balance = await RespuestaBalance.Content.ReadFromJsonAsync<Balance>();
+                balance2.TipoMovimiento = "Recibo";
+                balance2.DeltaAguaNeta = -balance.DeltaAguaNeta;
+                balance2.DeltaNsv = -balance.DeltaNsv;
+                
+                
+            }
+            else
+            {
+                var mal = await Swal.FireAsync(new SweetAlertOptions
+                    {
+                        Position = "center",
+                        Title = "Error ocurrido durante el proceso",
+                        Icon = SweetAlertIcon.Error,
+                        ShowCancelButton = false,
+                        Timer = 1500
+                    });
+            }            
+        }
+    }
+
+    async Task Recibir(Balance balRecibe)
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Transferir",
+                Text = $"Transferir ajustando al tanque {balRecibe.Tanque.NombreTanque}",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Confirmar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Transferido Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+    }
+}

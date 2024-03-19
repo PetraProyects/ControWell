@@ -1,0 +1,502 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<div style="display:flex;justify-content:flex-end">
+    <img src="/innergy.png" class="img-fluid" alt="...">
+</div>
+<br />
+<div style="width:100%;padding:3px;background-color:blue">
+    <h6 style="color:aliceblue;text-align:center">RESUMEN PRUEBAS</h6>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color:blue">
+                <th scope="col" style="color:aliceblue">Parametros</th>
+                @foreach (var p in PruebaPozos)
+                {
+                    <th scope="col" style="color:aliceblue">@p.Pozo.NombrePozo</th>
+                }
+            </tr>
+        </thead>
+        <tbody>           
+            <tr>
+                <td>HORAS DE PRUEBA</td>
+                @foreach(var i in PruebaPozos)
+                {
+                    <td>@(i.FechaFin.Hour-i.FechaFin.Hour)</td>
+                }
+            </tr>
+            <tr>
+                <td style="background-color:greenyellow" colspan="@(1+PruebaPozos.Count())">DATOS DE CABEZA DE POZO</td>
+            </tr>
+            <tr>
+                <td>WHP (psig)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.WhpPsig</td>
+                }
+            </tr>
+            <tr>
+                <td>WHT (ºF)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.WhtF</td>
+                }
+            </tr>
+            <tr>
+                <td style="background-color:greenyellow" colspan="@(1+PruebaPozos.Count())">DATOS VARIADOR</td>
+            </tr>
+            <tr>
+                <td>FRECUENCIA (Hz) / PUMP SPEED (RPM)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.FrecuenciaHzPumpSpeedRpm</td>
+                }
+            </tr>
+            <tr>
+                <td>PIP (psig) / PUMP TORQUE (lb-ft)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.PipPsigPumpTorqueLbFt</td>
+                }
+            </tr>
+            <tr>
+                <td>PDP (psig) / TORQUE (%)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.PdpPsigTorquePorcent</td>
+                }
+            </tr>
+            <tr>
+                <td>TEMPERATURA MOTOR (ºF)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.TempMotorF</td>
+                }
+            </tr>
+            <tr>
+                <td>TEMPERATURA INTAKE (ºF)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.TempInTakeF</td>
+                }
+            </tr>
+            <tr>
+                <td>AMP</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.Amp</td>
+                }
+            </tr>
+            <tr>
+                <td>VOLT</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.Volt</td>
+                }
+            </tr>
+            <tr>
+                <td style="background-color:greenyellow" colspan="@(1+PruebaPozos.Count())">DATOS DE LABORATORIO</td>
+            </tr>
+            <tr>
+                <td>API CABEZA 60ºF</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.ApiCabeza60F</td>
+                }
+            </tr>
+            <tr>
+                <td>API MEZCLA 60ºF</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.ApiMezcla60F</td>
+                }
+            </tr>
+            <tr>
+                <td>S&W CABEZA (%)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.SywCabezaPorcent</td>
+                }
+            </tr>
+            <tr>
+                <td>S&W MEZCLA (%)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.SywMezclaPorcent</td>
+                }
+            </tr>
+            <tr>
+                <td>CLORUROS (ppm)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.ClorurosPpm</td>
+                }
+            </tr>
+            <tr>
+                <td>pH</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.Ph</td>
+                }
+            </tr>
+            <tr>
+                <td style="background-color:greenyellow" colspan="@(1+PruebaPozos.Count())">TASA INYECCION NAFTA</td>
+            </tr>
+            <tr>
+                <td>Tasa de Iny. Nafta en Superficie (BPD)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.TasaInyNafSuperficieBpd</td>
+                }
+            </tr>
+            <tr>
+                <td>Tasa de Iny.Nafta por capilar (BPD)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.TasaInyPorCapilarBpd</td>
+                }
+            </tr>
+            <tr>
+                <td>Presión de Iny.Nafta por capilar (PSI)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.PresInyNafPorCapilarPsi</td>
+                }
+            </tr>
+            <tr>
+                <td style="background-color:greenyellow" colspan="@(1+PruebaPozos.Count())">INYECCION QUIMICA</td>
+            </tr>
+            <tr>
+                <td>INHIBIDOR (Cm)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.InhibidorCm</td>
+                }
+            </tr>
+            <tr>
+                <td>ROMPEDOR (Cm)</td>
+                @foreach (var i in PruebaPozos)
+                {
+                    <td>@i.RompedorCm</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="width:100%;padding:3px;background-color:blue">
+    <h6 style="color:aliceblue;text-align:center">RESUMEN PRODUCCION NUEVA ESPERANZA</h6>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>TOV(bbl)</td>
+                <td>6148,86</td>
+                <td>NSV CON FACTOR DE ENCOGIMIENTO</td>
+                <td>4683,18</td>
+            </tr>
+            <tr>
+                <td>GSV (bbl)</td>
+                <td>4806,33</td>
+                <td>NSV FACTOR DE CONTRACCIÓN</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>S&W %</td>
+                <td>3,371%</td>
+                <td>INY, NAFTA CON FACTOR PERDIDA</td>
+                <td>1303,64</td>
+            </tr>
+            <tr>
+                <td>ACEITE NETO (bbl)</td>
+                <td>4644,29</td>
+                <td>CONSUMOS DE NAFTA ESTABILIZACIÓN</td>
+                <td>35</td>
+            </tr>
+            <tr>
+                <td>AGUA DE PRODUCCIÓN (bbl)</td>
+                <td>162,04</td>
+                <td>INY, NAFTA CON OPERACIÓN INNERGY</td>
+                <td>1307,53</td>
+            </tr>
+            <tr>
+                <td>GAS (MSCF)</td>
+                <td>0</td>
+                <td>FACTOR DE ENCOGIMIENTO</td>
+                <td>38,89</td>
+            </tr>
+            <tr>
+                <td>NAFTA INYECTADA NETA (bbl)</td>
+                <td>1342,53</td>
+                <td>FACTOR DE VOLATILIZACIÓN</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>PORCENTAJE DE DILUCION</td>
+                <td>28,2%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color:blue">
+                <th style="color:aliceblue" colspan="2">STOCK EN TANQUES DE CRUDO</th>
+                <th style="color:aliceblue" colspan="2">STOCK EN TANQUES DE NAFTA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>STOCK GSV (Bls)</td>
+                <td>3281,83</td>
+                <td>STOCK TOV NAFTA (Bls)</td>
+                <td>1815,36</td>
+            </tr>
+            <tr>
+                <td>STOCK NSV (Bls)</td>
+                <td>2726,64</td>
+                <td>STOCK NSV NAFTA (Bls)</td>
+                <td>1815,36</td>
+            </tr>
+            <tr>
+                <td>STOCK AGUA (Bls)</td>
+                <td>555,19</td>
+                <td>°API 60 °F - PONDERADO INYECTADO</td>
+                <td>64</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="width:100%;padding:3px;background-color:blue">
+    <h6 style="color:aliceblue;text-align:center">REPORTE DE RECIBO DE NAFTA</h6>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="background-color:greenyellow">TIQUETES</th>
+                <th style="background-color:greenyellow">TOV Bls</th>
+                <th style="background-color:greenyellow">NSV Bls</th>
+                <th></th>
+                <th style="background-color:greenyellow">UNIDADES</th>
+                <th style="background-color:greenyellow">PROCEDENCIA</th>
+                <th style="background-color:greenyellow">NSV (Bls)</th>
+                <th style="background-color:greenyellow">API 60°</th>
+            </tr>            
+        </thead>
+        <tbody>
+            <tr>
+                <td>TIQUETE 1</td>
+                <td>261,37</td>
+                <td>258,15</td>
+                <td></td>
+                <td>2</td>
+                <td>APIAY</td>
+                <td>486,51</td>
+                <td>63,7</td>
+            </tr>
+            <tr>
+                
+                <td>TOTAL</td>
+                <td>1230,35</td>
+                <td>1208,16</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>                
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>TOTAL</td>
+                <td>1208,16</td>
+                <td>64</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color:blue">
+                <th style="color:aliceblue">RESUMEN DESPACHOS</th>
+                <th style="color:aliceblue">PLANTA APIAY</th>
+                <th style="color:aliceblue">PLANTA ARAGUANEY</th>
+                <th style="color:aliceblue">PLANTA VASCONIA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>VEHICULOS</td>
+                <td>19</td>
+                <td>6</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>GSV</td>
+                <td>3725,37</td>
+                <td>1148,85</td>
+                <td>1229,17</td>
+            </tr>
+            <tr>
+                <td>NSV (Bls)</td>
+                <td>3707,51</td>
+                <td>1143,26</td>
+                <td>1223,38</td>
+            </tr>
+            <tr>
+                <td>AGUA (Bls)</td>
+                <td>17,86</td>
+                <td>5,59</td>
+                <td>5,79</td>
+            </tr>
+            <tr>
+                <td>°API 60 °F</td>
+                <td>16,48</td>
+                <td>16,57</td>
+                <td>16,47</td>
+            </tr>
+            <tr>
+                <td>SALINIDAD (PTB)</td>
+                <td>14,3</td>
+                <td>14,3</td>
+                <td>14,3</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="overflow:auto">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="background-color:greenyellow">PRODUCTO NO CONFORME PNC</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>        
+        </thead>
+        <tbody>
+            <tr>
+                <td>VEHICULOS</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>GOV (Bls)</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>SW - PROMEDIO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>°API 60 °F - PROMEDIO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="width:100%;padding:3px;background-color:blue">
+    <h6 style="color:aliceblue;text-align:center">STOCK GUN BARREL</h6>
+</div>
+<div style="overflow:auto">
+    <table>
+        <thead>
+            <tr style="background-color:greenyellow">
+                <th>TANQUE DE PROCESO</th>
+                <th colspan="2">FLUIDO MUERTO REPORTADO CIERRE MES ANTERIOR (Bls)</th>
+                <th colspan="2">FLUIDO MUERTO A CIERRE DEL DIA (Bls)</th>
+                <th colspan="2">DIFERENCIA</th>
+            </tr>
+            <tr style="background-color:greenyellow">
+                <th></th>
+                <th>CRUDO</th>
+                <th>AGUA</th>
+                <th>CRUDO</th>
+                <th>AGUA</th>
+                <th>CRUDO</th>
+                <th>AGUA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GB-01</td>
+                <td>22,38</td>
+                <td>0</td>
+                <td>9,75</td>
+                <td>0</td>
+                <td>-12,6</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>GB-02</td>
+                <td>22,38</td>
+                <td>0</td>
+                <td>9,75</td>
+                <td>0</td>
+                <td>-12,6</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div style="display:flex;justify-content:center">
+    <button type="button" class="btn btn-success">EXPORTAR EXCEL</button>
+</div>
+<br />
+
+@code {
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<PruebaPozo> PruebaPozos = new List<PruebaPozo>();
+    public static List<PruebaPozo> PruebaPozosGeneral = new List<PruebaPozo>();
+    Pozo asigPozo = new Pozo();
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (resultado != null)
+            Pozos = resultado;
+        var resPrue = await Http.GetFromJsonAsync<List<PruebaPozo>>("api/PruebaPozo");
+        if (resPrue != null)
+            PruebaPozosGeneral = resPrue;
+        foreach(var i in Pozos)
+        {
+            PruebaPozosGeneral = PruebaPozosGeneral.OrderByDescending(x => x.FechaInicio).ToList();
+            var p = PruebaPozosGeneral.Where(x => x.PozoId == i.Id).FirstOrDefault();
+            if (p != null)
+            {
+                PruebaPozos.Add(p);
+            }
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+}

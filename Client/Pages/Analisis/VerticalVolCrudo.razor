@@ -1,0 +1,72 @@
+﻿@using Plotly.Blazor
+@using Plotly.Blazor.Traces
+ @inject HttpClient Http
+<PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+@code {
+    PlotlyChart chart;
+    Config config = new Config();
+    Layout layout = new Layout();
+
+    // Datos para el gráfico de barras
+
+
+
+    IList<ITrace> data = new List<ITrace>
+    {
+        new Bar
+        {
+            X = new List<object> { "TOV", "NSV","AGUA" }, // Etiquetas en el eje X
+            Y = VolNSV, // Valores en el eje Y
+            Name = "Consumo de Frutas" // Nombre de la serie de datos
+        }
+    };
+
+
+    //pido datos
+    Consulta consulta = new Consulta();
+    public static List<Balance> Listado = new List<Balance>();
+    public static List<object> Fechas = new List<object>();
+    public static List<object> VolNSV = new List<object>();
+    double ProducidoTOV = 0;
+    double ProducidoNSV = 0;
+    double ProducidoAgua = 0;
+    double DespachadoNSV = 0;
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
+        if (resultado != null)
+            Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+
+
+        foreach (var i in Listado)
+        {
+            if (i.TipoMovimiento == "Produccion")
+            {
+                ProducidoNSV = ProducidoNSV + Convert.ToDouble(i.DeltaNsv);                
+                ProducidoTOV = ProducidoTOV + Convert.ToDouble(i.DeltaTov);
+                ProducidoAgua = ProducidoAgua + Convert.ToDouble(i.DeltaAguaNeta);
+            }
+            if (i.TipoMovimiento == "Despacho")
+            {
+                DespachadoNSV = DespachadoNSV + Convert.ToDouble((-1)*i.DeltaNsv);
+            }
+        }
+        
+        VolNSV.Add(ProducidoTOV);
+        VolNSV.Add(ProducidoNSV);
+        VolNSV.Add(ProducidoAgua);
+        
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ActualizarDatos();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error dutante la actualizacion de datos");
+        }
+
+    }
+}

@@ -1,0 +1,57 @@
+﻿@page "/pruebas"
+<br />
+<br />
+<br />
+
+<div style="display:flex;justify-content:flex-start">
+    <h1><Badge Color="BadgeColor.Success">PRUEBAS DE POZO</Badge></h1>
+    <img src="/well.jpg" class="img-fluid" style="height:50px" alt="...">
+</div>
+<br />
+<Tabs EnableFadeEffect="true">
+    <Tab IsActive="true">
+        <TitleTemplate>
+            <Icon Name="IconName.HouseFill" /> innergy Resumen
+        </TitleTemplate>
+        <Content>
+            <ResumenTabla />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.CardChecklist" /> Registro Datos
+        </TitleTemplate>
+        <Content>
+            <RegistroDtos />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.FileEarmarkPptFill" /> Pruebas Producción
+        </TitleTemplate>
+        <Content>
+            <br />
+            <Tabs EnableFadeEffect="true">
+                <Tab Title="Resultados" IsActive="true">
+                    <Content>
+                        <ResultadosPruebasProduccion />
+                    </Content>
+                </Tab>
+                <Tab Title="Nuevo Registro">
+                    <Content>
+                        <p class="mt-3">This is the placeholder content for the <b>Profile</b> tab.</p>
+                    </Content>
+                </Tab>
+                <Tab Title="Nueva Prueba">
+                    <Content>
+                        <PruebaProduccion />
+                    </Content>
+                </Tab>
+            </Tabs>
+        </Content>
+    </Tab>    
+</Tabs>
+
+@code {
+
+}

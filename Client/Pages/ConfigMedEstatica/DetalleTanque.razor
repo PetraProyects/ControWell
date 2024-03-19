@@ -1,0 +1,24 @@
+﻿<div style="background-color:rgba(aqua,0.2);">
+    <div class="row">
+        <div class="col-4">
+            <TanGeneral BalanceModal="balance" />
+            <label>Capacidad @balance.Tanque.Capacidad Bls</label>
+            <h6>Lleno @Math.Round(((double)balance.Tov / (double)balance.Tanque.Capacidad)*100, 2) %</h6>
+            <label>Libre @Math.Round(((double)balance.Tanque.Capacidad - balance.Tov), 2) Bls</label>
+        </div>
+        <div class="col-8" style="background-color:aquamarine;">
+            <label>Nivel: @balance.Nivel cm</label>
+            <label>Interfase: @balance.Interfase cm</label>
+            <label>Tov: @balance.Tov Bls</label>
+            <label>Agua: @balance.Fw Bls</label>
+            <label>NSV: @balance.NSV() Bls</label>
+            <label>Agua Neta: @balance.AGUANETA() Bls</label>
+        </div>
+    </div>
+    
+</div>
+
+@code {
+    [Parameter]
+    public Balance balance { get; set; }
+}

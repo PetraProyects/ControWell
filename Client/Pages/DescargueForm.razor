@@ -1,0 +1,508 @@
+﻿@inject HttpClient Http
+@inject SweetAlertService Swal
+@inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<br />
+@if (ConteoTanques >= 2)
+{
+    <br />
+    <div>
+        <EditForm Model="tanque2">
+            <label>Tanque</label>
+            <InputSelect @bind-Value="tanque2.Id" class="form-control" placeholder="Capacidad">
+                <option value="-1">Elegir Tanque</option>
+                @foreach (var i in UltimosMovimientos)
+                {
+                    <option value="@i.Tanque.Id.">@i.Tanque.NombreTanque</option>
+                }
+            </InputSelect>
+        </EditForm>
+        <br />
+        @foreach (var b in UltimosMovimientos)
+        {
+            if (b.Tanque.Id == tanque2.Id)
+            {
+                balance2 = b;
+                <TanGeneral BalanceModal="b" />
+            }
+
+        }
+        <br />
+        <div style="display:flex;justify-content:center;">
+            <section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="php-email-form mt-4">
+                                <div class="modal-body">
+                                    <EditForm Model="balance2" class="auth-form login-form">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Nivel</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Nivel" required="required" @bind=balance2.Nivel />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Interfase</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="Interfase" required="required" @bind=balance2.Interfase />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>API</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Api" required="required" @bind=balance2.Api />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>TEMP API</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T API" required="required" @bind=balance2.TemFluidoApi />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP AMBIENTE</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="T amb" required="required" @bind=balance2.TemAmbiente />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP TANQUE</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T Tanq" required="required" @bind=balance2.TemTanque />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label>S&W</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="S&W" required="required" @bind=balance2.Syw />
+                                            </div>
+                                            <div class="col-6">
+                                                <label>KARL FISHER</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="K F" required="required" @bind=balance2.KarlFisher />
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </EditForm>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Contact Section -->
+        </div>
+    </div>
+}
+else
+{
+    balance2.Id = -1;
+}
+
+@if (ConteoTanques >= 3)
+{
+    <br />
+    <div>
+        <EditForm Model="tanque3">
+            <label>Tanque</label>
+            <InputSelect @bind-Value="tanque3.Id" class="form-control" placeholder="Capacidad">
+                <option value="-1">Elegir Tanque</option>
+                @foreach (var i in UltimosMovimientos)
+                {
+                    <option value="@i.Tanque.Id.">@i.Tanque.NombreTanque</option>
+                }
+            </InputSelect>
+        </EditForm>
+        <br />
+        @foreach (var b in UltimosMovimientos)
+        {
+            if (b.Tanque.Id == tanque3.Id)
+            {
+                balance3 = b;
+                <TanGeneral BalanceModal="b" />
+            }
+
+        }
+        <br />
+        <div style="display:flex;justify-content:center;">
+            <section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="php-email-form mt-4">
+                                <div class="modal-body">
+                                    <EditForm Model="balance3" class="auth-form login-form">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Nivel</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Nivel" required="required" @bind=balance3.Nivel />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Interfase</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="Interfase" required="required" @bind=balance3.Interfase />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>API</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Api" required="required" @bind=balance3.Api />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>TEMP API</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T API" required="required" @bind=balance3.TemFluidoApi />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP AMBIENTE</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="T amb" required="required" @bind=balance3.TemAmbiente />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP TANQUE</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T Tanq" required="required" @bind=balance3.TemTanque />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label>S&W</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="S&W" required="required" @bind=balance3.Syw />
+                                            </div>
+                                            <div class="col-6">
+                                                <label>KARL FISHER</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="K F" required="required" @bind=balance3.KarlFisher />
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </EditForm>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Contact Section -->
+        </div>
+    </div>
+}
+else
+{
+    balance3.Id = -1;
+}
+
+@if (ConteoTanques >= 4)
+{
+    <br />
+    <div>
+        <EditForm Model="tanque4">
+            <label>Fluido Almacenado</label>
+            <InputSelect @bind-Value="tanque4.Id" class="form-control" placeholder="Capacidad">
+                <option value="-1">Elegir Tanque</option>
+                @foreach (var i in UltimosMovimientos)
+                {
+                    <option value="@i.Tanque.Id.">@i.Tanque.NombreTanque</option>
+                }
+            </InputSelect>
+        </EditForm>
+        <br />
+        @foreach (var b in UltimosMovimientos)
+        {
+            if (b.Tanque.Id == tanque4.Id)
+            {
+                balance4 = b;
+                <TanGeneral BalanceModal="b" />
+            }
+
+        }
+        <br />
+        <div style="display:flex;justify-content:center;">
+            <section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="php-email-form mt-4">
+                                <div class="modal-body">
+                                    <EditForm Model="balance4" class="auth-form login-form">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Nivel</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Nivel" required="required" @bind=balance4.Nivel />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Interfase</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="Interfase" required="required" @bind=balance4.Interfase />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>API</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="Api" required="required" @bind=balance4.Api />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>TEMP API</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T API" required="required" @bind=balance4.TemFluidoApi />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP AMBIENTE</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="T amb" required="required" @bind=balance4.TemAmbiente />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>TEMP TANQUE</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="T Tanq" required="required" @bind=balance4.TemTanque />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label>S&W</label>
+                                                <input name="signin-email" type="number" class="form-control signin-email" placeholder="S&W" required="required" @bind=balance4.Syw />
+                                            </div>
+                                            <div class="col-6">
+                                                <label>KARL FISHER</label>
+                                                <input id="signin-password" name="signin-password" type="number" class="form-control signin-password" placeholder="K F" required="required" @bind=balance4.KarlFisher />
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </EditForm>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Contact Section -->
+        </div>
+    </div>
+
+}
+else
+{
+    balance4.Id = -1;
+}
+<br />
+<div style="display:flex;justify-content:center">
+    <button class="btn btn-primary" @onclick=VerMas><i class="bi bi-plus-square-fill"></i></button>
+    <button class="btn btn-warning" @onclick=VerMenos><i class="bi bi-dash-square-fill"></i></button>
+</div>
+<div style="display:flex;justify-content:center">
+    <img src="/CarroTanque.png" class="img-fluid" alt="...">
+</div>
+<div style="display:flex;justify-content:center;">
+    <section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="php-email-form mt-4">
+                        <div class="modal-body">
+                            <EditForm Model="NuevoDescargue" class="auth-form login-form">
+                                <div class="php-email-form mt-4">
+
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Doc Transporte</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.DocTr placeholder="Doc Transporte" required>
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Fecha hora fin transito</label>
+                                        <input type="datetime" class="form-control" @bind-value=NuevoDescargue.FinTransito placeholder="Fin transito" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Fecha hora llamado a descargar</label>
+                                        <input type="datetime" class="form-control" @bind-value=NuevoDescargue.LlamadoDescargue placeholder="Llamado descargue" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Fecha hora inicio entrega</label>
+                                        <input type="datetime" class="form-control" @bind-value=NuevoDescargue.InicioEntrega placeholder="Inicio Entrega" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Fecha hora fin entrega</label>
+                                        <input type="datetime" class="form-control" @bind-value=NuevoDescargue.FinEntrega placeholder="Fin Entrega" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Ruta</label>
+                                        <InputSelect @bind-Value="NuevoDescargue.RutaId" class="form-control" placeholder="Ruta">
+                                            <option value="-1">Elegir Ruta</option>
+                                            @foreach (var i in Rutas)
+                                            {
+                                                <option value="@i.Id">@i.Nombre</option>
+                                            }
+                                        </InputSelect>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Material</label>
+                                        <InputSelect @bind-Value="asigMaterial.Id" class="form-control" placeholder="Material">
+                                            <option value="-1">Elegir Material</option>
+                                            @foreach (var i in EcopetrolMateriales)
+                                            {
+                                                <option value="@i.Id">@i.Descripcion</option>
+                                            }
+                                        </InputSelect>
+                                    </div>                                   
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Conductor</label>
+                                        <InputSelect @bind-Value="asigConductor.Id" class="form-control" placeholder="Conductor">
+                                            <option value="-1">Conductor</option>
+                                            @foreach (var i in Conductores)
+                                            {
+                                                <option value="@i.Id">@i.Nombre @i.Cedula</option>
+                                            }
+                                        </InputSelect>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Placa</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.Placa placeholder="Placa" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Tanque</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.Tanque placeholder="Tanque" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Empresa</label>
+                                        <InputSelect @bind-Value="asigEmpresa.Id" class="form-control" placeholder="Empresa">
+                                            <option value="-1">Elegir Empresa</option>
+                                            @foreach (var i in Empresas)
+                                            {
+                                                <option value="@i.Id">@i.Nombre</option>
+                                            }
+                                        </InputSelect>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Sellos</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.Sellos placeholder="Sellos" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Guia</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.Guia placeholder="Guia" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label style="color:burlywood">Observaciones</label>
+                                        <input type="text" class="form-control" @bind-value=NuevoDescargue.Observaciones placeholder="Observaciones" required>
+                                    </div>
+                                </div>
+                               <br />
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
+</div>
+<br />
+<div style="display:flex;justify-content:center">
+    <button class="btn btn-primary" @onclick=Descargar>Confirmar</button>
+</div>
+<!-- Button trigger modal -->
+@code {
+    Balance balance2 = new Balance();
+    Balance balance3 = new Balance();
+    Balance balance4 = new Balance();
+    Tanque tanque2 = new Tanque();
+    Tanque tanque3 = new Tanque();
+    Tanque tanque4 = new Tanque();
+    Consulta consulta = new Consulta();
+    FormatoDescargueNaf NuevoDescargue = new FormatoDescargueNaf();
+    int ConteoTanques = 1;
+    double SumaTov = 0;
+    double SumaGsv = 0;
+    double SumaNsv = 0;
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    public static List<Balance> BalancesDespachar = new List<Balance>();
+    public static List<Balance> BalancesConfirmar = new List<Balance>();
+    public static List<Ruta> Rutas = new List<Ruta>();
+    public static List<EcopetrolMaterial> EcopetrolMateriales = new List<EcopetrolMaterial>();
+    public static List<Conductor> Conductores = new List<Conductor>();
+    public static List<Empresa> Empresas = new List<Empresa>();    
+    EcopetrolMaterial asigMaterial = new EcopetrolMaterial();
+    Conductor asigConductor = new Conductor();
+    Empresa asigEmpresa = new Empresa();
+    protected override async Task OnInitializedAsync()
+    {
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        var ruta = await Http.GetFromJsonAsync<List<Ruta>>("api/Ruta");
+        if (ruta != null)
+            Rutas = ruta;
+
+        var EcMaterial = await Http.GetFromJsonAsync<List<EcopetrolMaterial>>("api/EcopetrolMaterial");
+        if (EcMaterial != null)
+            EcopetrolMateriales = EcMaterial;
+
+        var Cond = await Http.GetFromJsonAsync<List<Conductor>>("api/Conductor");
+        if (Cond != null)
+            Conductores = Cond;
+
+        var Empre = await Http.GetFromJsonAsync<List<Empresa>>("api/Empresa");
+        if (Empre != null)
+            Empresas = Empre;
+    }
+    void VerMas()
+    {
+        ConteoTanques += 1;
+    }
+    void VerMenos()
+    {
+        if (ConteoTanques > 1)
+        {
+            ConteoTanques -= 1;
+        }
+
+    }
+    async Task Descargar()
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro que deseas realizar despacho ?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {          
+
+            BalancesDespachar.Add(balance2);
+            BalancesDespachar.Add(balance3);
+            BalancesDespachar.Add(balance4);
+            foreach (var i in BalancesDespachar)
+            {
+                if (i.Id > 0)
+                {
+                    i.Id = 0;
+                    i.Fecha = DateTime.Now;
+                    i.TipoMovimiento = "Recibo";
+                    var respue = await Http.PostAsJsonAsync("api/Balance/Validar", i);
+                    var balres = await respue.Content.ReadFromJsonAsync<Balance>();
+                    BalancesConfirmar.Add(balres);
+                }
+            }
+            SumaTov = (double)BalancesConfirmar.Sum(t => t.DeltaTov);
+            SumaGsv = (double)BalancesConfirmar.Sum(t => t.DeltaGsv);
+            SumaNsv = (double)BalancesConfirmar.Sum(t => t.DeltaNsv);
+            NuevoDescargue.FactorTempDescarga = Math.Round(SumaGsv / SumaTov, 5);
+            foreach (var t in BalancesConfirmar)
+            {                           
+                NuevoDescargue.GovDescarga += (double)t.DeltaGov;
+                NuevoDescargue.GsvDescarga += (double)t.DeltaGsv;
+                NuevoDescargue.NsvDescarga += (double)t.DeltaNsv;
+                NuevoDescargue.BswDescarga += (double)t.CSW() * ((double)t.DeltaTov / SumaTov);
+                NuevoDescargue.TempDescarga += (double)t.TemTanque * ((double)t.DeltaTov / SumaTov);
+                NuevoDescargue.Api60Descarga += (double)t.Api60F() * ((double)t.DeltaTov / SumaTov);
+                NuevoDescargue.BswDescarga += (double)t.Syw * ((double)t.DeltaTov / SumaTov);
+                var respue = await Http.PostAsJsonAsync("api/Balance", t);
+            }
+            asigMaterial = EcopetrolMateriales.Where(x => x.Id == asigMaterial.Id).FirstOrDefault();
+            NuevoDescargue.MaterialDesc = asigMaterial.Descripcion;
+            NuevoDescargue.CodMaterial = asigMaterial.Codigo;
+            asigConductor = Conductores.Where(x => x.Id == asigConductor.Id).FirstOrDefault();
+            NuevoDescargue.Cedula = asigConductor.Cedula;
+            NuevoDescargue.NombreConductor = asigConductor.Nombre;
+            asigEmpresa = Empresas.Where(x => x.Id == asigEmpresa.Id).FirstOrDefault();
+            NuevoDescargue.EmpresaTr = asigEmpresa.Codigo;
+            var respueFor = await Http.PostAsJsonAsync("api/FormatoDescargueNaf", NuevoDescargue);
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+    }
+}
+

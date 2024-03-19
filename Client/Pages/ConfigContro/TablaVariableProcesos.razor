@@ -1,0 +1,103 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<div style="overflow:auto">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Unidad</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in VariableProcesos)
+            {
+                <tr>
+                    <td>@i.Nombre</td>
+                    <td>@i.Unidad</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" @onclick="(()=>AsignarVariable(i))" data-bs-toggle="modal" data-bs-target="#EditarVariable">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning" @onclick="(()=>Eliminar(i))">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div style="display:flex;justify-content:center">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevaVariable">
+        Nueva Variable
+    </button>
+</div>
+<div class="modal fade" id="NuevaVariable" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <FormularioVariable />
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="EditarVariable" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <EditaVariable NuevaVariable="variable" />
+        </div>
+    </div>
+</div>
+@code {
+    public static List<VariableProceso> VariableProcesos = new List<VariableProceso>();
+    VariableProceso variable = new VariableProceso();
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<VariableProceso>>("api/VariableProceso");
+        if (resultado != null)
+            VariableProcesos = resultado;
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+
+    void AsignarVariable(VariableProceso Asigvariable)
+    {
+        variable = Asigvariable;
+    }
+
+    async Task Eliminar(VariableProceso variable)
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Eliminar",
+                Text = "¿ Estas seguro que deseas eliminar ?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Eliminar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            await Http.DeleteAsync($"api/VariableProceso/{variable.Id}");
+            await ActualizarDatos();
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Eliminado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+    }
+}

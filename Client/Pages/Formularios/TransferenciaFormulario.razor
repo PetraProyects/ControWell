@@ -1,0 +1,541 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+
+<Callout Type="CalloutType.Info" Heading="ELEGIR TANQUES PARA TRANSFERENCIA Y RECIBO">
+    <div class="row">
+        <div class="col-6">
+            <select @bind=FormularioBalanceTransfiere.TanqueId class="form-select" aria-label="Default select example">
+                <option selected>Seleccionar Tanque de Transferencia</option>
+                @foreach (var i in Tanques)
+                {
+                    <option value="@i.Id">@i.NombreTanque</option>
+                }
+            </select>
+            <br />
+            @foreach (var b in UltimosMovimientos)
+            {
+                if (b.Tanque.Id == FormularioBalanceTransfiere.TanqueId)
+                {
+                    buscarTanCin(b.Tanque);                    
+                    @if (ElegidoTan)
+                    {                        
+                        <div style="cursor:pointer;display:flex;justify-content:center;">
+                            <div class="row">
+                                <div class="spinner-grow text-success" style="position:relative" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="spinner-grow text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="spinner-grow text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <TanGeneral BalanceModal="b" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="cursor:pointer;display:flex;justify-content:center;" @onclick="(()=>asignarDatosTanqueTransfer(ElegidoTan,b))">
+                            <TanGeneral BalanceModal="b" />
+                        </div>
+                    }
+
+            }
+            }
+        </div>
+        <div class="col-6">
+            <select @bind=FormularioBalanceRecibe.TanqueId class="form-select" aria-label="Default select example">
+                <option selected>Seleccionar Tanque de Recibo</option>
+                @foreach (var j in Tanques)
+                {
+                    <option value="@j.Id">@j.NombreTanque</option>
+                }
+            </select>
+            <br />
+            @foreach (var c in UltimosMovimientos)
+            {
+                if (c.Tanque.Id == FormularioBalanceRecibe.TanqueId)
+                {
+                    if (!ElegidoTan)
+                    {
+                        <div style="cursor:pointer;display:flex;justify-content:center;">
+                            <div class="row">
+                                <div class="spinner-grow text-success" style="position:relative" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="spinner-grow text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="spinner-grow text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <TanGeneral BalanceModal="c" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>asignarDatosTanqueRecibo(ElegidoTan,c))">
+                            <TanGeneral BalanceModal="c" />
+                        </div>
+                    }
+                   
+                }
+            }
+        </div>
+    </div>
+</Callout>
+<Callout Type="CalloutType.Warning" Heading="VALORES ASIGNADOS">
+    <div class="row">
+        <div class="col-6">
+            <b style="color:bisque">CINTA</b>
+            <b class="form-control">@NombreCinta</b>
+        </div>
+        <div class="col-6">
+            <b style="color:bisque">TERMOMETRO</b>
+            <b class="form-control">@NombreTermo</b>
+        </div>
+    </div>
+    <br />
+</Callout>
+@if (ElegidoTan)
+{
+    <Callout Type="CalloutType.Tip" Heading="INGRESAR CONDICIONES TANQUE TRANSFERENCIA">
+        <div class="row">
+            <div class="col-6">
+                <h6>TANQUE: </h6>
+            </div>
+            <div class="col-6">
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.Fecha type="datetime" placeholder="Fecha" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Nivel</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.Nivel type="number" placeholder="Nivel(cm)" />
+            </div>
+            <div class="col-6">
+                <label>Interfase</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.Interfase type="number" placeholder="Interfase(cm)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>API</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.Api type="number" placeholder="API" />
+            </div>
+            <div class="col-6">
+                <label>Temperatura API</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.TemFluidoApi type="number" placeholder="°F" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Temperatura ambiente</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.TemAmbiente type="number" placeholder="°F" />
+            </div>
+            <div class="col-6">
+                <label>Temperatura tanque</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.TemTanque type="number" placeholder="°F" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Karl Fisher</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.KarlFisher type="number" placeholder="Karl Fisher" />
+            </div>
+            <div class="col-6">
+                <label>Agua y sedimentos S&w %</label>
+                <input class="form-control" @bind-value=FormularioBalanceTransfiere.Syw type="number" placeholder="%" />
+            </div>
+        </div>
+    </Callout>
+}
+@if (!ElegidoTan)
+{
+    <Callout Type="CalloutType.Tip" Heading="INGRESAR CONDICIONES TANQUE RECIBO">
+        <div class="row">
+            <div class="col-6">
+                <h6>TANQUE: </h6>
+            </div>
+            <div class="col-6">
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.Fecha type="datetime" placeholder="Fecha" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Nivel</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.Nivel type="number" placeholder="Nivel(cm)" />
+            </div>
+            <div class="col-6">
+                <label>Interfase</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.Interfase type="number" placeholder="Interfase(cm)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>API</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.Api type="number" placeholder="API" />
+            </div>
+            <div class="col-6">
+                <label>Temperatura API</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.TemFluidoApi type="number" placeholder="°F" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Temperatura ambiente</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.TemAmbiente type="number" placeholder="°F" />
+            </div>
+            <div class="col-6">
+                <label>Temperatura tanque</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.TemTanque type="number" placeholder="°F" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Karl Fisher</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.KarlFisher type="number" placeholder="Karl Fisher" />
+            </div>
+            <div class="col-6">
+                <label>Agua y sedimentos S&w %</label>
+                <input class="form-control" @bind-value=FormularioBalanceRecibe.Syw type="number" placeholder="%" />
+            </div>
+        </div>
+    </Callout>
+}
+<br />
+<div class="text-center">
+    <button class="btn btn-primary" type="submit" @onclick=ValidarBalance data-bs-toggle="offcanvas" data-bs-target="#PrevisualCruFrom">Tranferir</button>
+    <button class="btn btn-primary" type="submit" @onclick=ValidarBalanceRecibo data-bs-toggle="offcanvas" data-bs-target="#PrevisualCruFrom">Recibir</button>
+</div>
+<br />
+<br />
+@try
+{
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="PrevisualCruFrom" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">@FormularioBalanceTransfiere.TipoMovimiento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            @if (previsual)
+            {
+
+                <b>Tanque @FormularioBalanceTransfiere.Tanque.NombreTanque</b>
+                <br />
+                <br />
+                <p>Fecha @FormularioBalanceTransfiere.Fecha</p>
+                <p>Nivel: @FormularioBalanceTransfiere.NivelCorregido()</p>
+                <p>Interfase: @FormularioBalanceTransfiere.InterfaseCorregida()</p>
+                <p>API 6°F @FormularioBalanceTransfiere.Api60F()</p>
+                <p>NSV @FormularioBalanceTransfiere.NSV()</p>
+                <p>TOV @FormularioBalanceTransfiere.Tov</p>
+                <p>GOV @FormularioBalanceTransfiere.GOV()</p>
+                <p>NSV @FormularioBalanceTransfiere.NSV()</p>
+                <p>AGUA NETA @FormularioBalanceTransfiere.AGUANETA()</p>
+                <p>NSV @FormularioBalanceTransfiere.TipoMovimiento @Math.Round((decimal)FormularioBalanceTransfiere.DeltaNsv, 2)</p>
+                <p>Tem Corregida @FormularioBalanceTransfiere.TemTanqueCorregido()</p>
+                <p>CTL @FormularioBalanceTransfiere.CTL()</p>
+                <p>CTSH @FormularioBalanceTransfiere.Ctsh()</p>
+                <p>Factor correccion por cinta nivel: @FormularioBalanceTransfiere.FactorCinta </p>
+                <p>Factor correccion por cinta Interfase: @FormularioBalanceTransfiere.FactorInterface</p>
+                <p>Factor correccion por termometro: @FormularioBalanceTransfiere.FactorTemTanque</p>
+                <p>Nombre Operario: @NombreUsuario</p>
+
+
+            }
+            <br />
+            <button class="btn btn-success" @onclick=Confirmar data-bs-dismiss="offcanvas" aria-label="Close">Confirmar</button>
+            <button class="btn btn-success" @onclick=ConfirmarRecibo data-bs-dismiss="offcanvas" aria-label="Close">Confirmar Recibo</button>
+        </div>
+
+    </div>
+}
+catch (Exception e)
+{
+    Console.WriteLine("Error en formulario de movimientos");
+}
+@code {
+    double nivel = 0;
+    bool previsual = false;
+    bool ElegidoTan = true;
+    Balance FormularioBalanceTransfiere = new Balance();
+    Balance FormularioBalanceRecibe = new Balance();
+    Balance ViasualBalance = new Balance();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<TipoMovimiento> Movimientos = new List<TipoMovimiento>
+    {
+        new TipoMovimiento
+        {
+            NombreMovimiento="Produccion"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Recibo"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Despacho"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Transferencia"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Consumo"
+        }
+    };
+    string NombreTanque = "Ingresar Tanque";
+    string NombreCinta = "Ingresar Cinta";
+    string NombreTermo = "Ingresar Termometro";
+    string TipoDeMovimiento = "Empty";
+    string BarrilesMensaje = "Empty";
+    public static List<Cinta> Cintas = new List<Cinta>();
+    public static List<Termometro> Termometros = new List<Termometro>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var mitanque = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (mitanque != null)
+            Tanques = mitanque;
+        var mipozo = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (mipozo != null)
+            Pozos = mipozo;
+
+        var cin = await Http.GetFromJsonAsync<List<Cinta>>("api/Cinta");
+        if (cin != null)
+            Cintas = cin;
+        var Termo = await Http.GetFromJsonAsync<List<Termometro>>("api/Termometro");
+        if (Termo != null)
+            Termometros = Termo;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+    }
+
+    async Task ValidarBalance()
+    {
+
+        var RespuestaBalance = await Http.PostAsJsonAsync($"api/Balance/Validar", FormularioBalanceTransfiere);
+        FormularioBalanceTransfiere = await RespuestaBalance.Content.ReadFromJsonAsync<Balance>();
+        await ObtenerUser();
+        FormularioBalanceTransfiere.NombreUsuario = NombreUsuario;
+        FormularioBalanceTransfiere.TipoMovimiento = "Transferencia";
+        TipoDeMovimiento = FormularioBalanceTransfiere.TipoMovimiento;
+        BarrilesMensaje = Convert.ToString(FormularioBalanceTransfiere.DeltaNsv);        
+        if ((FormularioBalanceTransfiere.TipoMovimiento == "Transferencia") && (FormularioBalanceTransfiere.DeltaNsv > 0 || FormularioBalanceTransfiere.DeltaAguaNeta > 0))
+        {
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Incongruencia de Datos",
+                    Text = "El tipo de movimiento no coincide con los volumenes, por favor verifíque",
+                    Icon = SweetAlertIcon.Error,
+                    ShowCancelButton = false,
+                    Timer = 15000
+                });
+        }
+        previsual = true;
+    }
+    async Task Confirmar()
+    {
+
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar cambios ?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance", FormularioBalanceTransfiere);
+            FormularioBalanceTransfiere = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+
+        await Send();
+
+    }
+    async Task ValidarBalanceRecibo()
+    {
+
+        var RespuestaBalance = await Http.PostAsJsonAsync($"api/Balance/Validar", FormularioBalanceTransfiere);
+        FormularioBalanceRecibe = await RespuestaBalance.Content.ReadFromJsonAsync<Balance>();
+        await ObtenerUser();
+        FormularioBalanceRecibe.NombreUsuario = NombreUsuario;
+        FormularioBalanceRecibe.TipoMovimiento = "Recibo";
+        TipoDeMovimiento = FormularioBalanceRecibe.TipoMovimiento;
+        BarrilesMensaje = Convert.ToString(FormularioBalanceRecibe.DeltaNsv);
+        if ((FormularioBalanceRecibe.TipoMovimiento == "Recibo") && (FormularioBalanceRecibe.DeltaNsv < 0))
+        {
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Incongruencia de Datos",
+                    Text = "El tipo de movimiento no coincide con los volumenes, por favor verifíque",
+                    Icon = SweetAlertIcon.Error,
+                    ShowCancelButton = false,
+                    Timer = 15000
+                });
+        }
+        previsual = true;
+    }
+    async Task ConfirmarRecibo()
+    {
+
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar cambios ?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance", FormularioBalanceRecibe);
+            FormularioBalanceRecibe = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+
+        await Send();
+
+    }
+
+    void buscarTanCin(Tanque tan)
+    {
+
+        if (tan.TipoFluido == "Crudo")
+        {
+            FormularioBalanceTransfiere.Tanque = tan;
+            FormularioBalanceTransfiere.TanqueId = tan.Id;
+            FormularioBalanceTransfiere.Cinta = Cintas.Where(c => c.Descripcion == "Crudo").FirstOrDefault();
+            FormularioBalanceTransfiere.CintaId = Cintas.Where(c => c.Descripcion == "Crudo").FirstOrDefault().Id;
+            FormularioBalanceTransfiere.Termometro = Termometros.Where(t => t.Id > 0).FirstOrDefault();
+            FormularioBalanceTransfiere.TermometroId = Termometros.Where(t => t.Id > 0).FirstOrDefault().Id;
+            NombreTanque = FormularioBalanceTransfiere.Tanque.NombreTanque;
+            NombreCinta = FormularioBalanceTransfiere.Cinta.Nombre;
+            NombreTermo = FormularioBalanceTransfiere.Termometro.Nombre;
+        }
+        if (tan.TipoFluido == "Refinado")
+        {
+            FormularioBalanceTransfiere.Tanque = tan;
+            FormularioBalanceTransfiere.TanqueId = tan.Id;
+            FormularioBalanceTransfiere.Cinta = Cintas.Where(c => c.Descripcion == "Refinado").FirstOrDefault();
+            FormularioBalanceTransfiere.CintaId = Cintas.Where(c => c.Descripcion == "Refinado").FirstOrDefault().Id;
+            FormularioBalanceTransfiere.Termometro = Termometros.Where(t => t.Id > 0).FirstOrDefault();
+            FormularioBalanceTransfiere.TermometroId = Termometros.Where(t => t.Id > 0).FirstOrDefault().Id;
+            NombreTanque = FormularioBalanceTransfiere.Tanque.NombreTanque;
+            NombreCinta = FormularioBalanceTransfiere.Cinta.Nombre;
+            NombreTermo = FormularioBalanceTransfiere.Termometro.Nombre;
+
+        }
+    }
+    string? NombreUsuario = null;
+    private async Task ObtenerUser()
+    {
+        var localStorag = await JS.InvokeAsync<string>("localStorage.getItem", "Usuario");
+        NombreUsuario = localStorag;
+    }
+
+
+    private List<string> messages = new List<string>();
+    private List<Balance> BalancesEviarChat = new List<Balance>();
+    private List<Balance> BalancesRecibirChat = new List<Balance>();
+    private string? userInput;
+    private string? messageInput;
+
+
+    private async Task Send()
+    {
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        userInput = NombreUsuario;
+        messageInput = "Movimiento " + TipoDeMovimiento + " en " + NombreTanque + " " + BarrilesMensaje + " BBLS";
+
+    }
+
+
+    List<ToastMessage> messagesAlr = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messagesAlr.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+    => new ToastMessage
+        {
+            Type = toastType,
+            Title = "Blazor Bootstrap",
+            HelpText = $"{DateTime.Now}",
+            Message = $"Hello, world! This is a toast message. DateTime: {DateTime.Now}",
+        };
+
+    void asignarDatosTanqueTransfer(bool b,Balance bal)
+    {
+        if (b)
+        {
+            ElegidoTan = false;
+        }
+        if (!b)
+        {
+            ElegidoTan = true;
+        }
+        FormularioBalanceTransfiere = bal;
+        FormularioBalanceTransfiere.Fecha = DateTime.Now;
+    }
+    void asignarDatosTanqueRecibo(bool b, Balance bal)
+    {
+        if (b)
+        {
+            ElegidoTan = false;
+        }
+        if (!b)
+        {
+            ElegidoTan = true;
+        }
+        FormularioBalanceRecibe = bal;
+        FormularioBalanceRecibe.Fecha = DateTime.Now;
+    }
+}

@@ -1,0 +1,155 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                <EditForm Model="NuevoTanque">
+                    <div class="php-email-form mt-4">
+                        
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Nombre del Tanque</label>
+                            <input type="text" class="form-control" @bind-value=NuevoTanque.NombreTanque placeholder="Nombre" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Capacidad en Bls</label>
+                            <input type="number" class="form-control" @bind-value=NuevoTanque.Capacidad  placeholder="Capacidad" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Fluido Almacenado</label>
+                            <InputSelect @bind-Value="NuevoTanque.TipoFluido" class="form-control" placeholder="Capacidad">
+                                <option value="-1">Elegir Tipo Fluido</option>
+                                @foreach (var i in Fluidos)
+                                {
+                                    <option value="@i.Name">@i.Name</option>
+                                }
+                            </InputSelect>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Material</label>
+                            <InputSelect @bind-Value="NuevoTanque.Material" class="form-control">
+                                <option value="-1">Elegir Material</option>
+                                @foreach (var i in Materiales)
+                                {
+                                    <option value="@i.TipoMaterial">@i.TipoMaterial</option>
+                                }
+                            </InputSelect>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Temperatura Base</label>
+                            <input type="number" class="form-control" @bind-value=NuevoTanque.TBase placeholder="Temp Base" required>
+                        </div>
+                        <div class="my-3">
+
+                            <div class="error-message"></div>
+                            <div class="sent-message" style="color:burlywood">Una vez creado el tanque debe configurar los aforos</div>
+                        </div>
+                        <div class="text-center"><button class="btn btn-primary" @onclick=GuardarTanque data-bs-dismiss="modal" aria-label="Close">Guardar Tanque</button></div>
+                        <br />
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+
+@code {
+    [Parameter]
+    public EventCallback RefrescarAhora {get;set;}
+    Tanque NuevoTanque = new Tanque();
+    //Lita de Tipo de fluido
+    public static List<Fluido> Fluidos = new List<Fluido>
+    {
+        new Fluido
+        {
+            Id=1,
+            Name="Crudo"
+        },
+        new Fluido
+        {
+            Id=2,
+            Name="Refinado"
+        },
+        new Fluido
+        {
+            Id=3,
+            Name="Lbricante"
+        },
+        new Fluido
+        {
+           Id=4,
+           Name="Agua"
+        }
+
+    };
+    public static List<Material> Materiales = new List<Material>
+    {
+        new Material
+        {
+            Id=1,
+            TipoMaterial="Mild Carbon",
+            CoefLineal=0.125
+        },
+        new Material
+        {
+            Id=2,
+            TipoMaterial="304 Stainless",
+            CoefLineal=0.55
+        },
+        new Material
+        {
+            Id=3,
+            TipoMaterial="316 Stainless",
+            CoefLineal=0.124
+        },
+        new Material
+        {
+            Id=4,
+            TipoMaterial="17-4PH Stainless",
+            CoefLineal=0.124
+        }
+
+    };
+
+    async Task GuardarTanque()
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar cambios ?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            var respuesta = await Http.PostAsJsonAsync("api/Tanque", NuevoTanque);            
+
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+            
+        }
+        RefrescarAhora.InvokeAsync();
+    }
+}

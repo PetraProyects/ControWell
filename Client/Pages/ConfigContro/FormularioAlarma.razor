@@ -1,0 +1,107 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                <EditForm Model="NuevaAlarma">                    
+                    <div class="php-email-form mt-4">
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Pozo</label>
+                            <InputSelect @bind-Value="NuevaAlarma.PozoId" class="form-control" placeholder="Capacidad">
+                                <option selected>Elegir Pozo</option>
+                                @foreach (var i in Pozos)
+                                {
+                                    <option value="@i.Id">@i.NombrePozo</option>
+                                }
+                            </InputSelect>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label style="color:burlywood">Variable</label>
+                            <InputSelect @bind-Value="NuevaAlarma.VariableProcesoId" class="form-control" placeholder="Capacidad">
+                                <option selected>Elegir Variable</option>
+                                @foreach (var i in VariableProcesos)
+                                {
+                                    <option value="@i.Id">@i.Nombre</option>
+                                }
+                            </InputSelect>
+                        </div>
+                        <div class="form-group mt-3">
+                            <b style="color:beige">HHigth</b>
+                            <input type="number" class="form-control" @bind-value=NuevaAlarma.HH placeholder="HH" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <b style="color:beige">Higth</b>
+                            <input type="number" class="form-control" @bind-value=NuevaAlarma.H placeholder="H" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <b style="color:beige">Low</b>
+                            <input type="number" class="form-control" @bind-value=NuevaAlarma.L placeholder="L" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <b style="color:beige">LLow</b>
+                            <input type="number" class="form-control" @bind-value=NuevaAlarma.LL placeholder="LL" required>
+                        </div>
+                    </div>
+                    <div class="text-center"><button class="btn btn-primary" @onclick=GuardaAlarma data-bs-dismiss="modal" aria-label="Close">Guardar</button></div>
+                    <br />
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</section><!-- End Contact Section -->
+@code {
+    Alarma NuevaAlarma = new Alarma();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<VariableProceso> VariableProcesos = new List<VariableProceso>();    
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<VariableProceso>>("api/VariableProceso");
+        if (resultado != null)
+            VariableProcesos = resultado;
+        var resu = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (resu != null)
+            Pozos = resu;
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+    async Task GuardaAlarma()
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            NuevaAlarma.PozoId = Pozos.Where(p => p.Id == NuevaAlarma.PozoId).FirstOrDefault().Id;
+            NuevaAlarma.VariableProcesoId = VariableProcesos.Where(v => v.Id == NuevaAlarma.VariableProcesoId).FirstOrDefault().Id;
+            var respuesta = await Http.PostAsJsonAsync("api/Alarma", NuevaAlarma);
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+            Navigation.NavigateTo("/");
+            Navigation.NavigateTo("/configuracion");
+        }
+    }
+}
+

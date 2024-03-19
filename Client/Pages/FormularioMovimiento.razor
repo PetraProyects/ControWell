@@ -1,0 +1,373 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+
+@try
+{
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact" style="background: rgb(34,195,158);
+background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 100%);border-radius:5px">
+        <div class="container" @onmousemove="(()=>buscarTanCin(tanque))">
+            <div class="row">
+
+                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+
+                    <EditForm Model="FormularioBalance">
+                        <div>                            
+                            <div class="form-group mt-3">
+                                <b style="color:bisque">Tipo de movimiento</b>
+                                <InputSelect @bind-Value="FormularioBalance.TipoMovimiento" class="form-select">
+                                    <option>Ingresar Tipo Movimiento</option>
+                                    @foreach (var Tm in Movimientos)
+                                    {
+                                        <option value="@Tm.NombreMovimiento">@Tm.NombreMovimiento</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <b style="color:bisque">Nivel</b>
+                                    <InputNumber @bind-Value="FormularioBalance.Nivel" placeholder="Nivel" class="form-control"></InputNumber>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <b style="color:bisque">Interfase</b>
+                                    <InputNumber @bind-Value="FormularioBalance.Interfase" placeholder="Interfase" class="form-control"></InputNumber>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <b style="color:bisque">API</b>
+                                    <InputNumber @bind-Value="FormularioBalance.Api" placeholder="API Observado" class="form-control"></InputNumber>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <b style="color:bisque">Temperatura API</b>
+                                    <InputNumber @bind-Value="FormularioBalance.TemFluidoApi" placeholder="temp api" class="form-control"></InputNumber>
+
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <b style="color:bisque">Temperatura ambiente</b>
+                                    <InputNumber @bind-Value="FormularioBalance.TemAmbiente" placeholder="T ambiente" class="form-control"></InputNumber>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <b style="color:bisque">Temperatura tanque</b>
+                                    <InputNumber @bind-Value="FormularioBalance.TemTanque" placeholder="T Tanque" class="form-control"></InputNumber>
+
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <b style="color:bisque">Karl Fisher</b>
+                                    <InputNumber @bind-Value="FormularioBalance.KarlFisher" placeholder="Karl Fisher" class="form-control"></InputNumber>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <b style="color:bisque">S&W</b>
+                                    <InputNumber @bind-Value="FormularioBalance.Syw" placeholder="SW" class="form-control"></InputNumber>
+
+                                </div>
+                            </div>
+
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <b style="color:bisque">Fecha</b>
+                                    <input @bind-value=FormularioBalance.Fecha type="datetime" class="form-control" />
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <b style="color:bisque">Tanque</b>
+                                    <b class="form-control">@NombreTanque</b>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 form-group" style="overflow:auto">
+                                    <b style="color:bisque">Cinta</b>
+                                    <b class="form-control" style="height:90px">@NombreCinta</b>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0" style="overflow:auto">
+                                    <b style="color:bisque">Termometro</b>
+                                    <b class="form-control" style="height:90px">@NombreTermo</b>
+                                </div>
+                            </div>
+                            <div class="my-3">
+
+                                <div class="sent-message"><b style="color:bisque">Ingresar todos los datos</b></div>
+                            </div>
+                            <div class="text-center"><button class="btn btn-primary" type="submit" @onclick=ValidarBalance data-bs-toggle="offcanvas" data-bs-target="#PrevisualNaf">Previsualizar</button></div>
+                            <br />
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Contact Section -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="PrevisualNaf" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">@FormularioBalance.TipoMovimiento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            @if (previsual)
+            {
+
+                <b>Tanque @BalanceFacePlate.Tanque.NombreTanque</b>
+                <br />
+                <br />
+                <p>Fecha @BalanceFacePlate.Fecha</p>
+                <p>Nivel: @BalanceFacePlate.NivelCorregido()</p>
+                <p>Interfase: @BalanceFacePlate.InterfaseCorregida()</p>
+                <p>API 6°F @BalanceFacePlate.Api60F()</p>
+                <p>NSV @BalanceFacePlate.NSV()</p>
+                <p>TOV @BalanceFacePlate.Tov</p>
+                <p>GOV @BalanceFacePlate.GOV()</p>
+                <p>NSV @BalanceFacePlate.NSV()</p>
+                <p>AGUA NETA @BalanceFacePlate.AGUANETA()</p>
+                <p>NSV @BalanceFacePlate.TipoMovimiento @Math.Round((decimal)BalanceFacePlate.DeltaNsv, 2)</p>
+                <p>Tem Corregida @BalanceFacePlate.TemTanqueCorregido()</p>
+                <p>CTL @BalanceFacePlate.CTL()</p>
+                <p>CTSH @BalanceFacePlate.Ctsh()</p>
+                <p>Factor correccion por cinta nivel: @BalanceFacePlate.FactorCinta </p>
+                <p>Factor correccion por cinta Interfase: @BalanceFacePlate.FactorInterface</p>
+                <p>Factor correccion por termometro: @BalanceFacePlate.FactorTemTanque</p>
+                <p>Nombre Operario: @NombreUsuario</p>
+
+
+            }
+            <br />
+            <button class="btn btn-success" @onclick=Confirmar data-bs-dismiss="offcanvas" aria-label="Close">Confirmar</button>
+        </div>
+
+    </div>
+}
+catch (Exception e)
+{
+    Console.WriteLine("Error en formulario de movimientos");
+}
+@code {
+    [Parameter]
+    public Tanque? tanque { get; set; }
+    [Parameter]
+    public EventCallback<Balance> Refrescar { get; set; }
+
+    bool previsual = false;
+    Balance FormularioBalance = new Balance();
+    Balance BalanceFacePlate = new Balance();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<TipoMovimiento> Movimientos = new List<TipoMovimiento>
+    {
+        new TipoMovimiento
+        {
+            NombreMovimiento="Produccion"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Recibo"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Despacho"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Transferencia"
+        },
+        new TipoMovimiento
+        {
+            NombreMovimiento="Consumo"
+        }
+    };
+    string NombreTanque = "Ingresar Tanque";
+    string NombreCinta = "Ingresar Cinta";
+    string NombreTermo = "Ingresar Termometro";
+    string TipoDeMovimiento = "Empty";
+    string BarrilesMensaje = "Empty";
+    public static List<Cinta> Cintas = new List<Cinta>();
+    public static List<Termometro> Termometros = new List<Termometro>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var mitanque = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (mitanque != null)
+            Tanques = mitanque;
+        var mipozo = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (mipozo != null)
+            Pozos = mipozo;
+
+        var cin = await Http.GetFromJsonAsync<List<Cinta>>("api/Cinta");
+        if (cin != null)
+            Cintas = cin;
+        var Termo = await Http.GetFromJsonAsync<List<Termometro>>("api/Termometro");
+        if (Termo != null)
+            Termometros = Termo;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+
+    }
+
+    async Task ValidarBalance()
+    {
+        FormularioBalance.Id = 0;
+        var RespuestaBalance = await Http.PostAsJsonAsync($"api/Balance/Validar", FormularioBalance);
+        BalanceFacePlate = await RespuestaBalance.Content.ReadFromJsonAsync<Balance>();
+        await ObtenerUser();
+        BalanceFacePlate.NombreUsuario = NombreUsuario;
+        TipoDeMovimiento = BalanceFacePlate.TipoMovimiento;
+        BarrilesMensaje = Convert.ToString(BalanceFacePlate.DeltaNsv);
+        if ((BalanceFacePlate.TipoMovimiento == "Produccion" || BalanceFacePlate.TipoMovimiento == "Recibo") && (BalanceFacePlate.DeltaNsv < 0 || BalanceFacePlate.DeltaAguaNeta < 0))
+        {
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Incongruencia de Datos",
+                    Text = "El tipo de movimiento no coincide con los volumenes, por favor verifíque",
+                    Icon = SweetAlertIcon.Error,
+                    ShowCancelButton = false,
+                    Timer = 15000
+                });
+        }
+        if ((BalanceFacePlate.TipoMovimiento == "Despacho" || BalanceFacePlate.TipoMovimiento == "Transferencia") && (BalanceFacePlate.DeltaNsv > 0 || BalanceFacePlate.DeltaAguaNeta > 0))
+        {
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Incongruencia de Datos",
+                    Text = "El tipo de movimiento no coincide con los volumenes, por favor verifíque",
+                    Icon = SweetAlertIcon.Error,
+                    ShowCancelButton = false,
+                    Timer = 15000
+                });
+        }
+        previsual = true;
+    }
+    async Task Confirmar()
+    {
+        
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar cambios ?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            FormularioBalance.Id = 0;
+            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance/Confirmar", FormularioBalance);
+            FormularioBalance = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });
+        }
+
+        await Send();
+        await Refrescar.InvokeAsync(FormularioBalance);
+    }
+
+    void buscarTanCin(Tanque tan)
+    {
+
+        if (tan.TipoFluido == "Crudo")
+        {
+            try
+            {
+                FormularioBalance.Tanque = tan;
+                FormularioBalance.TanqueId = tan.Id;
+                FormularioBalance.Cinta = Cintas.Where(c => c.Descripcion == "Crudo").FirstOrDefault();
+                FormularioBalance.CintaId = Cintas.Where(c => c.Descripcion == "Crudo").FirstOrDefault().Id;
+                FormularioBalance.Termometro = Termometros.Where(t => t.Id > 0).FirstOrDefault();
+                FormularioBalance.TermometroId = Termometros.Where(t => t.Id > 0).FirstOrDefault().Id;
+                NombreTanque = FormularioBalance.Tanque.NombreTanque;
+                NombreCinta = FormularioBalance.Cinta.Nombre;
+                NombreTermo = FormularioBalance.Termometro.Nombre;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al tratar de buscar la cinta y termometro para tanque de crudo");
+                Console.WriteLine(e.Message);
+            }
+
+        }
+        if (tan.TipoFluido == "Refinado")
+        {
+            try
+            {
+                FormularioBalance.Tanque = tan;
+                FormularioBalance.TanqueId = tan.Id;
+                FormularioBalance.Cinta = Cintas.Where(c => c.Descripcion == "Refinado").FirstOrDefault();
+                FormularioBalance.CintaId = Cintas.Where(c => c.Descripcion == "Refinado").FirstOrDefault().Id;
+                FormularioBalance.Termometro = Termometros.Where(t => t.Id > 0).FirstOrDefault();
+                FormularioBalance.TermometroId = Termometros.Where(t => t.Id > 0).FirstOrDefault().Id;
+                NombreTanque = FormularioBalance.Tanque.NombreTanque;
+                NombreCinta = FormularioBalance.Cinta.Nombre;
+                NombreTermo = FormularioBalance.Termometro.Nombre;
+            }catch(Exception e)
+            {
+                Console.WriteLine("Error al tratar de buscar la cinta y termometro para tanque de Nafta");
+                Console.WriteLine(e.Message);
+            }           
+
+        }
+    }
+    string? NombreUsuario = null;
+    private async Task ObtenerUser()
+    {
+        var localStorag = await JS.InvokeAsync<string>("localStorage.getItem", "Usuario");
+        NombreUsuario = localStorag;
+    }
+
+
+    private List<string> messages = new List<string>();
+    private List<Balance> BalancesEviarChat = new List<Balance>();
+    private List<Balance> BalancesRecibirChat = new List<Balance>();
+    private string? userInput;
+    private string? messageInput;
+
+
+    private async Task Send()
+    {
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        userInput = NombreUsuario;
+        messageInput = "Movimiento " + TipoDeMovimiento + " en " + NombreTanque + " " + BarrilesMensaje + " BBLS";
+
+    }
+
+
+    List<ToastMessage> messagesAlr = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messagesAlr.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+    => new ToastMessage
+        {
+            Type = toastType,
+            Title = "Blazor Bootstrap",
+            HelpText = $"{DateTime.Now}",
+            Message = $"Hello, world! This is a toast message. DateTime: {DateTime.Now}",
+        };
+}

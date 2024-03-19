@@ -1,0 +1,224 @@
+﻿ @inject HttpClient Http
+ @inject SweetAlertService Swal
+ @inject IJSRuntime JS
+@using CurrieTechnologies.Razor.SweetAlert2
+@inject NavigationManager Navigation
+<br />
+
+<Callout Type="CalloutType.Info" Heading="INFORMACION GENERAL PRUEBA">
+    <div class="row">
+        <div class="col-4">
+            <h5><Badge Color="BadgeColor.Success">POZO:</Badge></h5>
+        </div>
+        <div class="col-8">
+            <select @bind=NuevoRegistro.PozoId class="form-select" aria-label="Default select example">
+                <option selected>Seleccionar Pozo</option>
+                @foreach (var i in Pozos)
+                {
+                    <option value="@i.Id">@i.NombrePozo</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <h5><Badge Color="BadgeColor.Primary">FECHA INICIO PRUEBA:</Badge></h5>
+    <div class="row">
+        <div class="col-6">
+            <DateInput TValue="DateTime" @bind-Value="@NuevoRegistro.FechaInicio" Placeholder="Enter Date" />
+        </div>
+        <div class="col-6">
+            <input class="form-control" @bind-value=HoraInicio type="time" />
+        </div>
+    </div>
+    <h5><Badge Color="BadgeColor.Primary">FECHA FIN PRUEBA:</Badge></h5>
+    <div class="row">
+        <div class="col-6">
+            <DateInput TValue="DateTime" @bind-Value="@NuevoRegistro.FechaInicio" Placeholder="Enter Date" />
+        </div>
+        <div class="col-6">
+            <input class="form-control" @bind-value=HoraFin type="time" />
+        </div>
+    </div>
+</Callout>
+
+<Callout Type="CalloutType.Tip" Heading="DATOS DE CABEZA DE POZO">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>WHP (psig)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.WhpPsig placeholder="WHP (psig)"/>
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>WHT (°F)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.WhtF placeholder="WHT (°F)" />
+        </div>
+    </div>
+</Callout>
+<Callout Type="CalloutType.Tip" Heading="DATOS VARIADOR">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>FRECUENCIA (Hz) / PUMP SPEED (RPM)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.FrecuenciaHzPumpSpeedRpm placeholder="FRECUENCIA (Hz) / PUMP SPEED (RPM)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>PIP (psig) / PUMP TORQUE (lb-ft)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.PipPsigPumpTorqueLbFt placeholder="PIP (psig) / PUMP TORQUE (lb-ft)" />
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>PDP (psig) / TORQUE (%)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.PdpPsigTorquePorcent placeholder="PDP (psig) / TORQUE (%)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>TEMPERATURA MOTOR (ºF)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.TempMotorF placeholder="TEMPERATURA MOTOR (ºF)" />
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>TEMPERATURA INTAKE (ºF)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.TempInTakeF placeholder="TEMPERATURA INTAKE (ºF)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>AMP</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.Amp placeholder="AMP" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>VOLT</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.Volt placeholder="VOLT" />
+        </div>
+    </div>
+</Callout>
+<Callout Type="CalloutType.Tip" Heading="DATOS DE LABORATORIO">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>API CABEZA 60ºF</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.ApiCabeza60F placeholder="API CABEZA 60ºF" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>API MEZCLA 60ºF</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.ApiMezcla60F placeholder="API MEZCLA 60ºF" />
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>S&W CABEZA (%)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.SywCabezaPorcent placeholder="S&W CABEZA (%)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>S&W MEZCLA (%)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.SywMezclaPorcent placeholder="S&W MEZCLA (%)" />
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>CLORUROS (ppm)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.ClorurosPpm placeholder="CLORUROS (ppm)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>pH</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.Ph placeholder="pH" />
+        </div>
+    </div>
+</Callout>
+<Callout Type="CalloutType.Tip" Heading="TASA DE INYECCION">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>Tasa de Iny. Nafta en Superficie (BPD)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.TasaInyNafSuperficieBpd placeholder="Tasa de Iny. Nafta en Superficie (BPD)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>Tasa de Iny.Nafta por capilar (BPD)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.TasaInyPorCapilarBpd placeholder="Tasa de Iny.Nafta por capilar (BPD)" />
+        </div>
+    </div>
+    <br />
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>Presión de Iny.Nafta por capilar (PSI)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.PresInyNafPorCapilarPsi placeholder="Presión de Iny.Nafta por capilar (PSI)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+
+        </div>
+    </div>
+</Callout>
+<Callout Type="CalloutType.Tip" Heading="INYECCION QUIMICA">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap">
+        <div class="col-5" style="min-width:350px">
+            <label>INHIBIDOR (Cm)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.InhibidorCm placeholder="INHIBIDOR (Cm)" />
+        </div>
+        <div class="col-5" style="min-width:350px">
+            <label>ROMPEDOR (Cm)</label>
+            <input class="form-control" type="number" @bind-value=NuevoRegistro.RompedorCm placeholder="ROMPEDOR (Cm)" />
+        </div>
+    </div>  
+</Callout>
+<br />
+<div style="display:flex;justify-content:center">
+    <button type="button" class="btn btn-primary" @onclick=Guardar>Guardar Datos</button>   
+</div>
+<br />
+@code {
+    PruebaPozo NuevoRegistro = new PruebaPozo();
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<PruebaPozo> PruebaPozos = new List<PruebaPozo>();   
+    DateTime HoraInicio = new DateTime();
+    DateTime HoraFin = new DateTime();
+    async Task ActualizarDatos()
+    {
+        var resultado = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (resultado != null)
+            Pozos = resultado;
+        var resPrue = await Http.GetFromJsonAsync<List<PruebaPozo>>("api/PruebaPozo");
+        if (resPrue != null)
+            PruebaPozos = resPrue;
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ActualizarDatos();
+    }
+
+    async Task Guardar()
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Guardar",
+                Text = "¿ Estas seguro de guardar?",
+                Icon = SweetAlertIcon.Info,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Guardar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            NuevoRegistro.FechaInicio.AddHours(HoraInicio.Hour);
+            NuevoRegistro.FechaInicio.AddMinutes(HoraInicio.Minute);
+            NuevoRegistro.FechaFin.AddHours(HoraFin.Hour);
+            NuevoRegistro.FechaFin.AddMinutes(HoraFin.Minute);
+            var respuesta = await Http.PostAsJsonAsync("api/PruebaPozo", NuevoRegistro);
+
+            var exito = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Position = "center",
+                    Title = "Guardado Correctamente",
+                    Icon = SweetAlertIcon.Success,
+                    ShowCancelButton = false,
+                    Timer = 1500
+                });      
+        }
+    }
+}

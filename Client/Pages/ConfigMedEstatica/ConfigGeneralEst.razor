@@ -1,0 +1,93 @@
+﻿@page "/medestatica"
+<br />
+<br />
+<br />
+
+<Tabs EnableFadeEffect="true">
+    <Tab IsActive="true">
+        <TitleTemplate>
+            <Icon Name="IconName.HouseFill" /> Oferta
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <OfertaDiariaList />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.Memory" /> Guias
+        </TitleTemplate>
+        <Content>
+            <GuiaList />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.BookmarkCheckFill" /> Sellos
+        </TitleTemplate>
+        <Content>
+            <SelloList />
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.Truck" /> Vehiculos
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <VehiculoList />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.PersonBadgeFill" /> Operarios
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <OperariosList />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.PersonFillCheck" /> Conductores
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <Conductoreslist />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.Signpost2" /> Rutas
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <RutaList />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.BuildingsFill" /> Empresas
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <Empresalist />
+            </div>
+        </Content>
+    </Tab>
+    <Tab>
+        <TitleTemplate>
+            <Icon Name="IconName.DropletHalf" /> Materiales
+        </TitleTemplate>
+        <Content>
+            <div style="overflow:auto">
+                <MaterialesEcopetrolList />
+            </div>
+        </Content>
+    </Tab>
+</Tabs>

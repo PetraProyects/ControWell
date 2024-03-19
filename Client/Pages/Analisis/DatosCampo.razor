@@ -1,0 +1,184 @@
+﻿@inject HttpClient Http
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+<div style="display:flex;justify-content:center;flex-wrap:wrap">
+    <div style="margin:5px;border-radius:5px;width:350px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">  
+        <h6>Crudo TOV :</h6>
+        <h3 style="color:blue">@CrudoTov</h3><label>Bls</label>
+    </div> 
+    <div style="margin:5px;border-radius:5px;width:350px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Nafta TOV:</h6>
+        <h3 style="color:coral">@NaftaTov</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:350px;height:100px;background-color:aliceblue">
+        <h6>Capacidad almacenamiento tanques crudo:</h6>
+        <h6 style="color:blue;text-align:center">@VolumenTotTanCrudo Bls</h6>
+        <h6>Capacidad almacenamiento tanques nafta:</h6>
+        <h6 style="color:coral;text-align:center">@VolumenTotTanNafta Bls</h6>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:200px;height:100px;background-color:aliceblue">
+        <h6 style="text-align:center">Facilidad</h6>
+        <h3 style="text-align:center">@pocentajeFacilidad %</h3>
+    </div>
+</div>
+<div style="display:flex;justify-content:center;flex-wrap:wrap">
+    <div style="margin:5px;border-radius:5px;width:350px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Crudo Producido Hoy(NSV) :</h6>
+        <h3 style="color:blue">@Math.Round(CruProducidoHoy,2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Nafta Consumo Hoy(NSV)</h6>
+        <h3 style="color:coral">@Math.Round((-1)*NafConsumoHoy,2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Crudo Despachado Hoy(NSV)</h6>
+        <h3 style="color:blue">@Math.Round((-1)*DespHoy, 2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Nafta Recibida Hoy(NSV)</h6>
+        <h3 style="color:coral">@Math.Round(NafRecHoy, 2)</h3><label>Bls</label>
+    </div>
+</div>
+<div style="display:flex;justify-content:center;flex-wrap:wrap">
+    <div style="margin:5px;border-radius:5px;width:350px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Crudo Producido Ayer(NSV) :</h6>
+        <h3 style="color:blue">@Math.Round(CrudProdAyer, 2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Nafta Consumo Ayer(NSV)</h6>
+        <h3 style="color:coral">@Math.Round((-1)*NafConsuAyer, 2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Crudo Despachado Ayer(NSV)</h6>
+        <h3 style="color:blue">@Math.Round((-1) * CruDespAyer, 2)</h3><label>Bls</label>
+    </div>
+    <div style="margin:5px;border-radius:5px;width:300px;height:100px;display:flex;justify-content:center;align-items:center;background-color:aliceblue">
+        <h6>Nafta Recibida Ayer(NSV)</h6>
+        <h3 style="color:coral">@Math.Round(NafRecAyer, 2)</h3><label>Bls</label>
+    </div>
+</div>
+@code{
+    //Datos de la cosulta
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Tanque> TanquesSinMov = new List<Tanque>();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    Consulta consulta = new Consulta();
+    Consulta consultaBal = new Consulta();
+    double CrudoTov = 0;
+    double NaftaTov = 0;
+    decimal VolumenTotTanCrudo = 0;
+    decimal VolumenTotTanNafta = 0;
+    double pocentajeFacilidad = 0;
+    double CruProducidoHoy = 0;
+    double NafConsumoHoy = 0;
+    double CapUsadaCrudo = 0;
+    double CapUsadaNafta = 0;
+    double LibreFaci = 0;
+    double DespHoy = 0;
+    double NafRecHoy = 0;
+    double CrudProdAyer = 0;
+    double NafConsuAyer = 0;
+    double CruDespAyer = 0;
+    double NafRecAyer = 0;
+    protected override async Task OnInitializedAsync()
+    {
+        await Actualizar();
+        await ActualizarDatos();
+    }
+
+    async Task Actualizar()
+    {
+        
+        var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (resultadoTan != null)
+            Tanques = resultadoTan;
+        var resultadoTanSinMov = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque/SinMovimiento");
+        if (resultadoTanSinMov != null)
+            TanquesSinMov = resultadoTanSinMov;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        foreach (var i in UltimosMovimientos)
+        {
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                CrudoTov += i.Tov;
+            }
+            if (i.Tanque.TipoFluido == "Refinado")
+            {
+                NaftaTov += i.Tov;
+            }
+
+        }
+        foreach(var j in Tanques)
+        {
+            if (j.TipoFluido == "Crudo")
+            {
+                VolumenTotTanCrudo += (decimal)j.Capacidad;
+            }
+            if (j.TipoFluido == "Refinado")
+            {
+                VolumenTotTanNafta += (decimal)j.Capacidad;
+            }
+        }
+
+        CrudoTov=Math.Round(CrudoTov, 2);
+        NaftaTov=Math.Round(NaftaTov, 2);
+        VolumenTotTanCrudo = Math.Round(VolumenTotTanCrudo, 2);
+        VolumenTotTanNafta = Math.Round(VolumenTotTanNafta, 2);
+        pocentajeFacilidad = (CrudoTov + NaftaTov) / ((double)VolumenTotTanCrudo + (double)VolumenTotTanNafta) * 100;
+        pocentajeFacilidad = Math.Round(pocentajeFacilidad, 2);
+    }
+
+    public static List<Balance> Listado = new List<Balance>();
+
+
+    async Task ActualizarDatos()
+    {
+        consultaBal.FechaInicial = DateTime.Today.AddDays(-1);
+        var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consultaBal);
+        if (resultado != null)
+            Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+
+        var Losdehoy = Listado.Where(x => x.Fecha >= DateTime.Today).ToList();
+        var LosdeAyer = Listado.Where(x => x.Fecha <= DateTime.Now).ToList();
+        foreach(var i in Losdehoy)
+        {
+            if (i.TipoMovimiento == "Produccion")
+            {
+                CruProducidoHoy += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Consumo")
+            {
+                NafConsumoHoy += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Despacho")
+            {
+                DespHoy += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Recibo"&&i.Tanque.TipoFluido=="Refinado")
+            {
+                NafRecHoy += (double)i.DeltaNsv;
+            }
+        }
+        foreach (var i in LosdeAyer)
+        {
+            if (i.TipoMovimiento == "Produccion")
+            {
+                CrudProdAyer += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Consumo")
+            {
+                NafConsuAyer += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Despacho")
+            {
+                CruDespAyer += (double)i.DeltaNsv;
+            }
+            if (i.TipoMovimiento == "Recibo" && i.Tanque.TipoFluido == "Refinado")
+            {
+                NafRecAyer += (double)i.DeltaNsv;
+            }
+        }
+    }
+   
+}
