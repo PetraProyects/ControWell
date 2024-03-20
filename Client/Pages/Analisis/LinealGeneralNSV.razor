@@ -41,7 +41,10 @@
         UltimosMovimientosAyer = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
         foreach (var i in UltimosMovimientosAyer)
         {
-            NSV += i.Nsv;
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                NSV += i.Nsv;
+            }            
         }
 
         var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
@@ -51,7 +54,10 @@
         Fechas.Add(DateTime.Today);
         foreach (var i in Listado)
         {
-            Fechas.Add(i.Fecha);
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                Fechas.Add(i.Fecha);
+            }           
 
         }
         VolNSV.Add(NSV);
