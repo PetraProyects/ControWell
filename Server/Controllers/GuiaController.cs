@@ -24,18 +24,18 @@ namespace ControWell.Server.Controllers
             return Ok(lista);
         }
         [HttpGet]
-        [Route("guasanuladas")]
+        [Route("guiasanuladas")]
         public async Task<ActionResult<List<Guia>>> GetGuiaAnulada()
         {
-            var lista = await _context.Guias.Where(g => g.Estado == -1&&g.Fecha>=DateTime.Today.Date).ToListAsync();
+            var lista = await _context.Guias.Where(g => g.Estado == -1&&g.Fecha>=DateTime.Today).ToListAsync();
             return Ok(lista);
         }
 
         [HttpGet]
-        [Route("guasusadas")]
+        [Route("guiasusadas")]
         public async Task<ActionResult<List<Guia>>> GetGuiaUsada()
         {
-            var lista = await _context.Guias.Where(g => g.Estado == 0 && g.Fecha >= DateTime.Today.Date).ToListAsync();
+            var lista = await _context.Guias.Where(g => g.Estado == 0 && g.Fecha >= DateTime.Today).ToListAsync();
             return Ok(lista);
         }
 
@@ -85,6 +85,7 @@ namespace ControWell.Server.Controllers
                 return BadRequest("no se encuentra");
             DbObjeto.NumeroGuia = objeto.NumeroGuia;
             DbObjeto.Estado = objeto.Estado;
+            DbObjeto.Fecha = objeto.Fecha;
 
 
             await _context.SaveChangesAsync();

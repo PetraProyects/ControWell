@@ -173,7 +173,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         }
         else
         {
-            var respuesta = await Http.DeleteAsync($"api/EcopetrolMaterial{_id}");
+            var respuesta = await Http.DeleteAsync($"api/EcopetrolMaterial/{_id}");
             await Actualizar();
         }
 
@@ -181,7 +181,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
     async Task UpdateEcopetrolMaterial(EcopetrolMaterial EcopetrolMaterial)
     {
-        var respuesta = await Http.PutAsJsonAsync($"api/EcopetrolMaterial{EcopetrolMaterial.Id}", EcopetrolMaterial);
+        var respuesta = await Http.PutAsJsonAsync($"api/EcopetrolMaterial/{EcopetrolMaterial.Id}", EcopetrolMaterial);
         var resultado = await Swal.FireAsync(new SweetAlertOptions
             {
                 Title = "Success",
@@ -189,6 +189,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 Icon = SweetAlertIcon.Success,
             });
         await Actualizar();
+        update = false;
     }
 
     void updatedatarow(int _id)

@@ -68,6 +68,7 @@ C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\NSwag.Core.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\NSwag.Core.Yaml.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\NSwag.Generation.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\NSwag.Generation.AspNetCore.dll
+C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\Plotly.Blazor.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\ICSharpCode.SharpZipLib.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\SixLabors.Fonts.dll
 C:\ControWell\Server\obj\Release\net7.0\PubTmp\Out\SixLabors.ImageSharp.dll

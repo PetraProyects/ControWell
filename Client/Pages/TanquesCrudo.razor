@@ -5,6 +5,13 @@
 {
     <Espiner />
 }
+<Alert Color="AlertColor.Success">
+    <div style="display:flex;justify-content:center">
+        <h4 class="alert-heading">NUEVA ESPERANZA</h4>
+    </div>    
+    <hr>
+    <p class="mb-0">@DateTime.Now <b>CRUDO TOV: @CrudoTov BLS NSV: @CrudoNsv BLS</b></p>
+</Alert>
 
 @*ESTOS SON LOS TANQUES QUE NO TIENEN MOVIMIENTOS*@
 <div class="container-fluid" style="display:flex;flex-wrap:wrap;justify-content:space-around" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -40,39 +47,38 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">@TanqueModal.NombreTanque</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick=Actualizar></button>
-            </div>
-            <div class="modal-body">                
-                @if (vertanque)
-                {
-                    <TanGeneral BalanceModal="BalanceModal" />
-                }
-                @if (vernuevomov)
-                {
-                    <FormularioMovimiento tanque="TanqueModal" Refrescar="vermitanque" />
-                }
-                @if (verdespacho)
-                {
-                    <Despacho balance="BalanceModal" />
-                }
-                @if (vertransferir)
-                {
-                    <Transferencia balance="BalanceModal" />
-                }
-                @if (verdetalleTanq)
-                {
-                    <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
-                <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>
-                <button type="button" class="btn btn-success" @onclick=verTransferencia>Transferencia</button>
-                <button type="button" class="btn btn-success" @onclick=verDespachar>Despacho</button>
-                <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
-            </div>
+            <Alert Color="AlertColor.Success">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick=ForzarActualizado></button>
+                <div class="modal-body">
+                    @if (vertanque)
+                    {
+                        <TanGeneral BalanceModal="BalanceModal" />
+                    }
+                    @if (vernuevomov)
+                    {
+                        <FormularioMovimiento tanque="TanqueModal" Refrescar="vermitanque" />
+                    }
+                    @if (verdespacho)
+                    {
+                        <Despacho balance="BalanceModal" />
+                    }
+                    @if (vertransferir)
+                    {
+                        <Transferencia balance="BalanceModal" />
+                    }
+                    @if (verdetalleTanq)
+                    {
+                        <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
+                    }
+                </div>
+                <div class="modal-footer">                    
+                    <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
+                    <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>                   
+                    <button type="button" class="btn btn-success" @onclick=verDespachar>Despacho</button>
+                    <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </Alert>
+           
         </div>
     </div>
 </div>
@@ -93,7 +99,8 @@
     bool vertransferir = false;
     bool verdetalleTanq = false;
     //FINAL DATOS BOOLEAN PARA VER COMPONENTES
-
+    double CrudoTov = 0;
+    double CrudoNsv = 0;
     protected override async Task OnInitializedAsync()
     {
         await Actualizar();
@@ -111,7 +118,16 @@
             TanquesSinMov = resultadoTanSinMov;
         var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
          UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();       
-        
+        foreach (var i in UltimosMovimientos)
+        {
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                CrudoTov += i.Tov;
+                CrudoNsv += i.NSV();
+            } 
+        }
+        CrudoTov = Math.Round(CrudoTov, 2);
+        CrudoNsv = Math.Round(CrudoNsv, 2);
         verSpiner = false;
         
     }

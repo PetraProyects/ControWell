@@ -1,6 +1,8 @@
 ﻿@using ControWell.Client
 @using ControWell.Shared
 @inject HttpClient Http
+@inject SweetAlertService Swal
+@using CurrieTechnologies.Razor.SweetAlert2
 @*VER PREVIW GUIA*@
 @if (verPrev)
 {
@@ -11,23 +13,21 @@
     </div>
     
 }
-<div style="width:100%;margin:5px;padding:5px;border-radius:10px;border:solid 2px gray;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap ">
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Despachar</button>
+<Alert Color="AlertColor.Success">
+    <h4 class="alert-heading">DESPACHOS CRUDO</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <div style="display:flex">
+        <div>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Despachar</button>
+        </div>
+        <div>
+            <h3>Despachos Realizados(Hoy):  <Badge Color="BadgeColor.Primary">@CantidadDesp</Badge> Crudo Despachado Hoy(NSV): <Badge Color="BadgeColor.Primary">@BlsDesHoy Bls</Badge> Crudo Despachado Ayer(NSV): <Badge Color="BadgeColor.Primary">@BlsDesAyer Bls</Badge></h3>
+        </div>       
+               
     </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Despachos Realizados(Hoy): </h6>
-        <h6 style="color:burlywood">@CantidadDesp </h6>
-    </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Crudo Despachado Hoy(NSV): </h6>
-        <h6 style="color:burlywood">@BlsDesHoy Bls</h6>
-    </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Crudo Despachado Ayer(NSV): </h6>
-        <h6 style="color:burlywood">@BlsDesAyer Bls</h6>
-    </div>
-</div>
+</Alert>
+
 @if (verTabla)
 {
     <div style="overflow:auto">
@@ -121,7 +121,7 @@
                             <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-warning" @onclick="(()=>Eliminar(i))"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
@@ -177,7 +177,7 @@
 
     void asignarFormato(FormatoCarga forma)
     {
-        
+
         formato = forma;
         verPrev = true;
         verTabla = false;
@@ -188,5 +188,25 @@
         verTabla = true;
     }
 
-  
+    async Task Eliminar(FormatoCarga formato)
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Eliminar",
+                Text = $"¿ Estas seguro que deseas eliminar ? {formato.NumGuia}",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Eliminar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (confirmado)
+        {
+            await Http.DeleteAsync($"api/FormatoCarga/{formato.Id}");
+            await Actualizar();
+        }
+    }
+
 }

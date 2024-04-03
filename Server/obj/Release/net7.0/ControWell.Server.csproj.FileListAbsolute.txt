@@ -372,3 +372,4 @@ C:\ControWell\Server\obj\Release\net7.0\ref\ControWell.Server.dll
 C:\ControWell\Server\bin\Release\net7.0\ChartJs.Blazor.dll
 C:\ControWell\Server\obj\Release\net7.0\ControWe.DECD96AD.Up2Date
 C:\ControWell\Server\bin\Release\net7.0\Plotly.Blazor.dll
+C:\ControWell\Server\obj\Release\net7.0\ControWell.Server.sourcelink.json

@@ -4,55 +4,47 @@
 @using CurrieTechnologies.Razor.SweetAlert2
 @inject NavigationManager Navigation
 <br />
-<div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert" style="background: rgb(180,219,182);
-background: radial-gradient(circle, rgba(180,219,182,1) 27%, rgba(112,134,94,1) 100%);">
-    <div class="inner">
-        <div class="app-card-body p-3 p-lg-4">
-            <h3 class="mb-3">GUIAS</h3>
-            <div class="row gx-5 gy-3">
-                <div class="col-12 col-lg-6">
 
-                    
-            </div><!--//col-->
-                <div class="col-12 col-lg-6">
-                    <button class="btn app-btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCrear">
-                       CREAR GUIAS
-                    </button>
-                    <button class="btn app-btn-primary"data-bs-toggle="offcanvas" data-bs-target="#guiasusadas" aria-controls="offcanvasRight">
-                        GUIAS USADAS
-                    </button>
-                    <button class="btn app-btn-primary" data-bs-toggle="offcanvas" data-bs-target="#guiasanuladas" aria-controls="offcanvasRight">
-                        GUIAS ANULADAS
-                    </button>
-                </div>
-                <!--//col--
-                </div><!--//col-->
-            </div><!--//row-->
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div><!--//app-card-body-->
+<Alert Color="AlertColor.Success">
+    <h4 class="alert-heading">GUIAS</h4>
+    <p> Administración de números de guía para la gestión de despachos de crudo. Crear, eliminar o anular las guías en caso de ser necesario.</p>
+    <hr>
+    <div class="col-12 col-lg-6">
+        <button class="btn app-btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCrear">
+            CREAR GUIAS
+        </button>
+        <button class="btn app-btn-primary" data-bs-toggle="offcanvas" data-bs-target="#guiasusadas" aria-controls="offcanvasRight">
+            GUIAS USADAS
+        </button>
+        <button class="btn app-btn-primary" data-bs-toggle="offcanvas" data-bs-target="#guiasanuladas" aria-controls="offcanvasRight">
+            GUIAS ANULADAS
+        </button>
+    </div>
+</Alert>
 
-    </div><!--//inner-->
-</div><!--//app-card-->
 <br />
-<div class="app-card-body p-3 p-lg-4" style="height:400px;width:100%;background-color:#BFC9CA;border-radius:7px;overflow:auto ">
-    <h3>Guias Disponibles</h3>
-  <ul>
-        @foreach (var i in Guias)
-        {
-                <li>@i.NumeroGuia
+<Alert Color="AlertColor.Dark">
+    <div class="app-card-body p-3 p-lg-4" style="height:400px;overflow:auto ">
+        
+        <ul>
+            @foreach (var i in Guias)
+            {
+                <li>
+                    @i.NumeroGuia
 
 
-                <button type="button" class="btn btn-outline-warning" @onclick="(()=> DeleteGuia(i))"><i class="bi bi-trash3-fill"></i></button>
+                    <button type="button" class="btn btn-outline-warning" @onclick="(()=> DeleteGuia(i))"><i class="bi bi-trash3-fill"></i></button>
 
 
-                <button type="button" class="btn btn-outline-secondary" @onclick="(()=> AnularGuia(i))"><i class="bi bi-x-diamond-fill"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" @onclick="(()=> AnularGuia(i))"><i class="bi bi-x-diamond-fill"></i></button>
 
-                <button type="button" class="btn btn-outline-success" @onclick="(()=> MarcarUsado(i))"><i class="bi bi-clipboard2-check-fill"></i></button>
+                    <button type="button" class="btn btn-outline-success" @onclick="(()=> MarcarUsado(i))"><i class="bi bi-clipboard2-check-fill"></i></button>
                 </li>
-        }
-  </ul>
+            }
+        </ul>
 
-</div>
+    </div>
+</Alert>
 <br />
 <div class="app-card-body p-3 p-lg-4" style="height:100px;width:100%;background-color:#BFC9CA;border-radius:7px ">
     <p>Cantidad de guias disponibles </p> <b>@NumeroDeGuias</b>
@@ -139,12 +131,12 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         if (resultado != null)
             Guias = resultado;
 
-        var resultadoAnul = await Http.GetFromJsonAsync<List<Guia>>("api/Guia/guasanuladas");
+        var resultadoAnul = await Http.GetFromJsonAsync<List<Guia>>("api/Guia/guiasanuladas");
         if (resultadoAnul != null)
             GuiasAnuladas = resultadoAnul;
 
 
-        var resultadoUsad = await Http.GetFromJsonAsync<List<Guia>>("api/Guia/guasusadas");
+        var resultadoUsad = await Http.GetFromJsonAsync<List<Guia>>("api/Guia/guiasusadas");
         if (resultadoUsad != null)
             GuiasUsadas = resultadoUsad;
         GuiasACrear.Clear();
@@ -214,7 +206,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
         if (confirmado)
         {
-            await Http.DeleteAsync($"api/Guia{guia.Id}");
+            await Http.DeleteAsync($"api/Guia/{guia.Id}");
             await FormatearValores();
         }
         
@@ -242,7 +234,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         {
             guia.Estado = -1;
             guia.Fecha = DateTime.Now;
-            await Http.PostAsJsonAsync("api/Guia",guia);
+            await Http.PutAsJsonAsync($"api/Guia/{guia.Id}", guia);
             await FormatearValores();
         }
     }
@@ -270,7 +262,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         {
             guia.Estado = 0;
             guia.Fecha = DateTime.Now;
-            await Http.PutAsJsonAsync($"api/Guia{guia.Id}",guia);
+            await Http.PutAsJsonAsync($"api/Guia/{guia.Id}",guia);
             await FormatearValores();
         }
     }

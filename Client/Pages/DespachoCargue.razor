@@ -14,7 +14,7 @@
         <EditForm Model="tanque2">
             <label>Tanque</label>
             <InputSelect @bind-Value="tanque2.Id" class="form-control" placeholder="Capacidad">
-                <option value="-1">Elegir Tanque</option>
+                <option value="-1" selected>Elegir Tanque</option>
                 @foreach (var i in UltimosMovimientos)
                 {
                     <option value="@i.Tanque.Id.">@i.Tanque.NombreTanque</option>
@@ -295,7 +295,10 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                             <option selected>Elegir Oferta</option>
                                             @foreach (var i in Ofertas)
                                             {
-                                                <option value="@i.Id">@i.DocDeTransporte @i.Ruta.Nombre @i.Empresa.Nombre </option>
+                                                if (i.Disponible == 1)
+                                                {
+                                                    <option value="@i.Id">@i.DocDeTransporte @i.Ruta.Nombre @i.Empresa.Nombre </option>
+                                                }
                                             }
                                         </select>
                                     </div>
@@ -510,12 +513,15 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 NuevoDespacho.BSWCarga += (double)t.CSW() * ((double)t.DeltaTov / SumaTov);
                 NuevoDespacho.TempCarga += (double)t.TemTanque * ((double)t.DeltaTov / SumaTov);
                 NuevoDespacho.APICarga += (double)t.Api60F() * ((double)t.DeltaTov / SumaTov);
-                var respue = await Http.PostAsJsonAsync("api/Balance", t);
+                var respue = await Http.PostAsJsonAsync("api/Balance/Confirmar", t);
             }
             NuevoDespacho.GovCarga = (-1) * Math.Round(NuevoDespacho.GovCarga, 2);
             NuevoDespacho.GsvCarga = (-1) * Math.Round(NuevoDespacho.GsvCarga, 2);
             NuevoDespacho.NsvCarga = (-1) * Math.Round(NuevoDespacho.NsvCarga, 2);
             var respueFor = await Http.PostAsJsonAsync("api/FormatoCarga", NuevoDespacho);
+            var miofertaDiaria = Ofertas.Where(x => x.Id == NuevoDespacho.OfertaDiariaId).FirstOrDefault();
+            miofertaDiaria.Disponible = 0;
+            var resOferta = await Http.PutAsJsonAsync($"api/OfertaDiaria/{miofertaDiaria.Id}", miofertaDiaria);
             var exito = await Swal.FireAsync(new SweetAlertOptions
                 {
                     Position = "center",

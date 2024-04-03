@@ -71,19 +71,19 @@ namespace ControWell.Server.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<List<FormatoCarga>>> DeleteFormatoCarga(int id)
+        public async Task<ActionResult<string>> DeleteMovimiento(int id)
         {
-            var DbObjeto = await _context.FormatoCargas.FirstOrDefaultAsync(Ob => Ob.Id == id);
+            var DbObjeto = await _context.FormatoCargas.Where(m => m.Id == id).FirstOrDefaultAsync();
             if (DbObjeto == null)
             {
                 return NotFound("no existe :/");
             }
-
             _context.FormatoCargas.Remove(DbObjeto);
             await _context.SaveChangesAsync();
 
-            return Ok(await GetDbFormatoCarga());
+            return "Eliminado";
         }
+
 
 
         private async Task<List<FormatoCarga>> GetDbFormatoCarga()

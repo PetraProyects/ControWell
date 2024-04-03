@@ -190,7 +190,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         }
         else
         {
-            await Http.DeleteAsync($"api/Vehiculo{_id}");
+            await Http.DeleteAsync($"api/Vehiculo/{_id}");
             await Actualizar();
         }
 

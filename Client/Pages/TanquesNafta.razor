@@ -5,7 +5,13 @@
 {
     <Espiner />
 }
-
+<Alert Color="AlertColor.Secondary">
+    <div style="display:flex;justify-content:center">
+        <h4 class="alert-heading">NUEVA ESPERANZA</h4>
+    </div>
+    <hr>
+    <p class="mb-0">@DateTime.Now <b>NAFTA TOV: @NaftaTov BLS NSV: @NaftaNsv BLS</b></p>
+</Alert>
 @*ESTOS SON LOS TANQUES QUE NO TIENEN MOVIMIENTOS*@
 <div class="container-fluid" style="display:flex;flex-wrap:wrap;justify-content:space-around" data-bs-toggle="modal" data-bs-target="#exampleModalNaf">
 
@@ -39,31 +45,31 @@
 <div class="modal fade" id="exampleModalNaf" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabelNaf" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabelNaf">@TanqueModal.NombreTanque</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick=Actualizar></button>
-            </div>
-            <div class="modal-body">
-                @if (vertanque)
-                {
-                    <TanGeneral BalanceModal="BalanceModal" />
-                }
-                @if (vernuevomov)
-                {
-                    <FormularioMovimiento tanque="TanqueModal" Refrescar="vermitanque" />
-                }
-                @if (verdetalleTanq)
-                {
-                    <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
-                <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>
-                <button type="button" class="btn btn-success">Transferencia</button>
-                <button type="button" class="btn btn-success">Recibo Nafta</button>
-                <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick=ForzarActualizado></button>
+
+            <Alert Color="AlertColor.Secondary">
+                <div class="modal-body">
+                    @if (vertanque)
+                    {
+                        <TanGeneral BalanceModal="BalanceModal" />
+                    }
+                    @if (vernuevomov)
+                    {
+                        <FormularioMovimiento tanque="TanqueModal" Refrescar="vermitanque" />
+                    }
+                    @if (verdetalleTanq)
+                    {
+                        <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
+                    <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>
+                    <button type="button" class="btn btn-success">Transferencia</button>
+                    <button type="button" class="btn btn-success">Recibo Nafta</button>
+                    <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </Alert>           
         </div>
     </div>
 </div>
@@ -81,7 +87,8 @@
     bool vertanque = true;
     bool verdetalleTanq = false;
     //FINAL DATOS BOOLEAN PARA VER COMPONENTES
-
+    double NaftaTov = 0;
+    double NaftaNsv = 0;
     protected override async Task OnInitializedAsync()
     {
         await Actualizar();
@@ -98,6 +105,18 @@
             TanquesSinMov = resultadoTanSinMov;
         var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
         UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        foreach (var i in UltimosMovimientos)
+        {
+            
+            if (i.Tanque.TipoFluido == "Refinado")
+            {
+                NaftaTov += i.Tov;
+                NaftaNsv += i.NSV();
+            }
+
+        }
+        NaftaNsv = Math.Round(NaftaNsv, 2);
+        NaftaTov = Math.Round(NaftaTov, 2);
         verSpiner = false;
     }
 

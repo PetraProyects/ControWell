@@ -34,36 +34,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcR3JhZmljYXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/HistoriaMov.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcSGlzdG9yaWFNb3YucmF6b3I=
+[C:/ControWell/Client/Pages/Analisis/LinealGeneralNSV.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsR2VuZXJhbE5TVi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Analisis/LinealGeneralTOV.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsR2VuZXJhbFRPVi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ControWell/Client/Pages/Analisis/LinealProduccion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcTGluZWFsUHJvZHVjY2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/Pastel.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcUGFzdGVsLnJhem9y
+[C:/ControWell/Client/Pages/Analisis/ProduccionCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcUHJvZHVjY2lvbkNydWRvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/Tortas.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFzLnJhem9y
+[C:/ControWell/Client/Pages/Analisis/TortasVolumenes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFzVm9sdW1lbmVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/TovNafCrudo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG92TmFmQ3J1ZG8ucmF6b3I=
+[C:/ControWell/Client/Pages/Analisis/TortaVolsCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFWb2xzQ3J1ZG8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/VerticalVol.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVmVydGljYWxWb2wucmF6b3I=
+[C:/ControWell/Client/Pages/Analisis/TortaVolsNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVG9ydGFWb2xzTmFmdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ControWell/Client/Pages/Analisis/VolTanCrudo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVm9sVGFuQ3J1ZG8ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/ControWell/Client/Pages/Analisis/Volumenes.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVm9sdW1lbmVzLnJhem9y
+[C:/ControWell/Client/Pages/Analisis/VerticalVolCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbGlzaXNcVmVydGljYWxWb2xDcnVkby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ControWell/Client/Pages/CargueCrudo.razor]

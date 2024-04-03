@@ -212,7 +212,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         }
         else
         {
-            var respuesta = await Http.DeleteAsync($"api/Empresa{MiEmpresa.Id}");
+            var respuesta = await Http.DeleteAsync($"api/Empresa/{_id}");
             await Actualizar();
         }
 
@@ -220,7 +220,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
     async Task UpdateEmpresa(Empresa Empresa)
     {
-        var respuesta = await Http.PutAsJsonAsync($"api/Empresa{Empresa.Id}", Empresa);
+        var respuesta = await Http.PutAsJsonAsync($"api/Empresa/{Empresa.Id}", Empresa);
         var resultado = await Swal.FireAsync(new SweetAlertOptions
             {
                 Title = "Success",
@@ -229,6 +229,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
             });
 
         await Actualizar();
+        update = false;
     }
 
     void updatedatarow(int _id)

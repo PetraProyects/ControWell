@@ -20,3 +20,4 @@ C:\ControWell\Shared\obj\Debug\net7.0\ControWell.Shared.dll
 C:\ControWell\Shared\obj\Debug\net7.0\refint\ControWell.Shared.dll
 C:\ControWell\Shared\obj\Debug\net7.0\ControWell.Shared.pdb
 C:\ControWell\Shared\obj\Debug\net7.0\ref\ControWell.Shared.dll
+C:\ControWell\Shared\obj\Debug\net7.0\ControWell.Shared.sourcelink.json

@@ -241,9 +241,11 @@ C:\ControWell\Server\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargetin
 C:\ControWell\Server\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ControWell.Server.props
 C:\ControWell\Server\obj\Debug\net7.0\staticwebassets.pack.json
 C:\ControWell\Server\obj\Debug\net7.0\scopedcss\bundle\ControWell.Server.styles.css
-C:\ControWell\Server\obj\Debug\net7.0\ControWell.Server.csproj.CopyComplete
 C:\ControWell\Server\obj\Debug\net7.0\ControWell.Server.dll
 C:\ControWell\Server\obj\Debug\net7.0\refint\ControWell.Server.dll
 C:\ControWell\Server\obj\Debug\net7.0\ControWell.Server.pdb
 C:\ControWell\Server\obj\Debug\net7.0\ControWell.Server.genruntimeconfig.cache
 C:\ControWell\Server\obj\Debug\net7.0\ref\ControWell.Server.dll
+C:\ControWell\Server\bin\Debug\net7.0\Plotly.Blazor.dll
+C:\ControWell\Server\obj\Debug\net7.0\ControWell.Server.sourcelink.json
+C:\ControWell\Server\obj\Debug\net7.0\ControWe.DECD96AD.Up2Date

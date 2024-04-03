@@ -10217,23 +10217,23 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-wnjRFk3nlmWQrCyg3R3Xmbh64yJWqomJmEYs1ysI\/P4=",
+      "hash": "sha256-ETQGDXB\/HtfEyJxF3iV4NRKAcuVyWu+8IwzHuoGVX3k=",
       "url": "_framework\/ControWell.Shared.dll"
     },
     {
-      "hash": "sha256-kOIWL5RduoPCZeGfp7JUjLuyF2j8AtmY+OADdLCFnz8=",
+      "hash": "sha256-+WDkLlNCoOzB+Fr4o\/KCDmDC\/BSJ6AECsvIsY8pr34Q=",
       "url": "_framework\/ControWell.Shared.pdb"
     },
     {
-      "hash": "sha256-rTCIQEvPzyRH7FMktFCDolljIA7AmzaLtUInnx1ijz8=",
+      "hash": "sha256-IlRMGwupGJemfz6c6uCMMbj36bZCXJ7VDrCO2Ykn60I=",
       "url": "_framework\/ControWell.Client.dll"
     },
     {
-      "hash": "sha256-Pdny80Esvde8RA3ZoWv0NWrDUuOLUBFF6ZmyvWzZ0Og=",
+      "hash": "sha256-v65wszVRpxt8rjLYkmTrh5q+dlkd1JkaFKdF8QA4j8A=",
       "url": "_framework\/ControWell.Client.pdb"
     },
     {
-      "hash": "sha256-BjEMNkmjS+LgYMpREhYUpsmN+WpMw81AAjbPQ8KKJXI=",
+      "hash": "sha256-bCSzfQIYKxR\/5nnfC0+eyJzptvg6ag2MH4XMHWOvhDg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -10401,5 +10401,5 @@
       "url": "_content\/Blazor.Bootstrap\/Blazor.Bootstrap.bundle.scp.css"
     }
   ],
-  "version": "dQCBCoDg"
+  "version": "Y4ONtXhx"
 };

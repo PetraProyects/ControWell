@@ -51,19 +51,19 @@ namespace ControWell.Server.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<List<OfertaDiaria>>> DeleteOfertaDiaria(int id)
+        public async Task<ActionResult<string>> DeleteOferta(int id)
         {
-            var dbOfertaDiaria = await _context.OfertaDiarias.FirstOrDefaultAsync(a => a.Id == id);
-            if (dbOfertaDiaria == null)
+            var DbObjeto = await _context.OfertaDiarias.Where(m => m.Id == id).FirstOrDefaultAsync();
+            if (DbObjeto == null)
             {
-                return NotFound("El OfertaDiaria no existe :/");
+                return NotFound("no existe :/");
             }
-
-            _context.OfertaDiarias.Remove(dbOfertaDiaria);
+            _context.OfertaDiarias.Remove(DbObjeto);
             await _context.SaveChangesAsync();
 
-            return Ok(await GetDbOfertaDiaria());
+            return "Eliminado";
         }
+
 
 
         [HttpPost]

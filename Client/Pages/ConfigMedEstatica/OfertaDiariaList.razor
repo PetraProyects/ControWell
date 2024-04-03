@@ -4,6 +4,8 @@
 @inject IJSRuntime JS
 @using CurrieTechnologies.Razor.SweetAlert2
 @inject NavigationManager Navigation
+<br />
+
 <table class="table table-success table-striped">
     <thead>
         <tr>
@@ -79,10 +81,10 @@
 
 <!-- Button trigger modal -->
 <div style="display:flex;justify-content:center">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCrearOferta">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#ModalCrearOferta">
          Crear Oferta
     </button>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal2">
         CARGAR OFERTA EXCEL
     </button>
 </div>
@@ -289,7 +291,8 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         }
         else
         {
-            var respuesta = await Http.DeleteAsync($"api/OfertaDiaria{_id}");
+            Console.WriteLine("Eliminacion ejecutada");
+            var respuesta = await Http.DeleteAsync($"api/OfertaDiaria/{_id}");
             await Atualizar();
         }
 

@@ -1,7 +1,7 @@
 {
   "entryAssembly": "ControWell.Client",
   "resources": {
-    "hash": "sha256-d+ANtR4g+5EBWOG0MKZ1CfJkpYYoqoTr6ZG2kixXxcE=",
+    "hash": "sha256-6YiwUT7xOpyzT6KrhvZCHQcbCPJvCYsHfVdEdATqe+E=",
     "runtime": {
       "dotnet.7.0.17.3wxdn6kfj0.js": "sha256-E0n6hbqoR0T+sf5KQWRykPOVHyupoVmuMAlrNdZv/58=",
       "dotnet.timezones.blat": "sha256-GzDmKQksbAkzNe1GNrGcVtpc0naGXOFCpUzq3c/pV+c=",
@@ -226,12 +226,12 @@
       "mscorlib.dll": "sha256-badKdPe6iRs84RQLXBloHSqFKpRH9OadGJi0KTXhRFQ=",
       "netstandard.dll": "sha256-iBSnBFLxBMQ/rJFfJ8Hx43m9PgD1lkZjNx6fDse3/hA=",
       "System.Private.CoreLib.dll": "sha256-6enLVpQNF0y8yVpyDFGLqpY5QEQxGkE3u+QL6M6YcIc=",
-      "ControWell.Shared.dll": "sha256-wnjRFk3nlmWQrCyg3R3Xmbh64yJWqomJmEYs1ysI/P4=",
-      "ControWell.Client.dll": "sha256-lh51bwGzvr7zH8ELturXNXdtKkKSGxJMCcvwc/8bUP0="
+      "ControWell.Shared.dll": "sha256-ETQGDXB/HtfEyJxF3iV4NRKAcuVyWu+8IwzHuoGVX3k=",
+      "ControWell.Client.dll": "sha256-zEGC52lbowoHPZxKJZffM7dcS8cFh40dzldguwuQ4p4="
     },
     "pdb": {
-      "ControWell.Shared.pdb": "sha256-kOIWL5RduoPCZeGfp7JUjLuyF2j8AtmY+OADdLCFnz8=",
-      "ControWell.Client.pdb": "sha256-esfgdRMKY80bt8LfLO0v1hssIus/P13GfIaVMhTBOiE="
+      "ControWell.Shared.pdb": "sha256-+WDkLlNCoOzB+Fr4o/KCDmDC/BSJ6AECsvIsY8pr34Q=",
+      "ControWell.Client.pdb": "sha256-RyGVTgJ42YEPc23nttzZdXRx0EMAYYzX+PQWz3Z0A+E="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

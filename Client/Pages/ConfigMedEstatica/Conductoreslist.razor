@@ -194,7 +194,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         }
         else
         {
-            await Http.DeleteAsync($"api/Conductor{_id}");
+            await Http.DeleteAsync($"api/Conductor/{_id}");
             await Actualizar();
         }
 
@@ -202,7 +202,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
     async Task UpdateConductor(Conductor Conductor)
     {
-        await Http.PostAsJsonAsync($"api/Conductor{Conductor.Id}", Conductor);
+        await Http.PostAsJsonAsync($"api/Conductor/{Conductor.Id}", Conductor);
         var resultado = await Swal.FireAsync(new SweetAlertOptions
             {
                 Title = "Success",
@@ -210,6 +210,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 Icon = SweetAlertIcon.Success,
             });
         await Actualizar();
+        update = false;
     }
 
     void updatedatarow(int _id)

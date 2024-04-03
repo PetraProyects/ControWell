@@ -139,14 +139,35 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
     async Task DeleteOperario(int _id)
     {
-        await Http.DeleteAsync($"api/Operario{Operario.Id}");       
-        await Actualizar();
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Eliminar",
+                Text = "¿ Estas seguro que deseas eliminar ?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Eliminar",
+                CancelButtonText = "Cancelar"
+            });
+
+        var confirmado = !string.IsNullOrEmpty(resultado.Value);
+
+        if (!confirmado)
+        {
+            //context.PreventNavigation();
+        }
+        else
+        {
+            await Http.DeleteAsync($"api/Operario/{_id}");
+            await Actualizar();
+        }
+
+        
 
     }
 
     async Task UpdateOperario(Operario Operario)
     {
-        await Http.PutAsJsonAsync($"api/Operario{Operario.Id}", Operario);
+        await Http.PutAsJsonAsync($"api/Operario/{Operario.Id}", Operario);
 
         var resultado = await Swal.FireAsync(new SweetAlertOptions
             {

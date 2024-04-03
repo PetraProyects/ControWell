@@ -222,7 +222,7 @@ catch (Exception e)
     async Task ValidarBalance()
     {
         FormularioBalance.Id = 0;
-        var RespuestaBalance = await Http.PostAsJsonAsync($"api/Balance/Validar", FormularioBalance);
+        var RespuestaBalance = await Http.PostAsJsonAsync("api/Balance/Validar", FormularioBalance);
         BalanceFacePlate = await RespuestaBalance.Content.ReadFromJsonAsync<Balance>();
         await ObtenerUser();
         BalanceFacePlate.NombreUsuario = NombreUsuario;
@@ -272,7 +272,7 @@ catch (Exception e)
         if (confirmado)
         {
             FormularioBalance.Id = 0;
-            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance/Confirmar", FormularioBalance);
+            var RespuestaBal = await Http.PostAsJsonAsync("api/Balance/Confirmar", FormularioBalance);
             FormularioBalance = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
             var exito = await Swal.FireAsync(new SweetAlertOptions
                 {

@@ -1,24 +1,20 @@
 ﻿@using ControWell.Client
 @using ControWell.Shared
 @inject HttpClient Http
+<Alert Color="AlertColor.Secondary">
+    <h4 class="alert-heading">RECIBO NAFTA</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <div style="display:flex">
+        <div>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#FpDescargar" aria-controls="offcanvasScrolling">Recibir</button>
+        </div>
+        <div>
+            <h3>Recibos (Hoy):  <Badge Color="BadgeColor.Primary">@CantidadDesp</Badge> Recibos NSV Hoy: <Badge Color="BadgeColor.Primary">@BlsDesHoy Bls</Badge> Recibos NSV Ayer: <Badge Color="BadgeColor.Primary">@BlsDesAyer Bls</Badge></h3>
+        </div>
 
-<div style="width:100%;margin:5px;padding:5px;border-radius:10px;border:solid 2px gray;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap ">
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#FpDescargar" aria-controls="offcanvasScrolling">Recibir</button>
     </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Recibos (Hoy): </h6>
-        <h6 style="color:burlywood">@CantidadDesp </h6>
-    </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Recibos NSV Hoy: </h6>
-        <h6 style="color:burlywood">@BlsDesHoy Bls</h6>
-    </div>
-    <div style="width:200px;height:80px;background-color:cadetblue;border:solid 2px blue;border-radius:5px;display:flex;justify-content:center;align-items:center;margin:5px">
-        <h6>Recibos NSV Ayer: </h6>
-        <h6 style="color:burlywood">@BlsDesAyer Bls</h6>
-    </div>
-</div>
+</Alert>
 <div style="overflow:auto">
     <table class="table table-striped table-hover">
         <thead>

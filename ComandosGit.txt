@@ -1,0 +1,4 @@
+Enviar a la rama master
+git add .
+git commit -m "Descripción de tus cambios"
+git push origin master

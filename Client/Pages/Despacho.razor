@@ -579,7 +579,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 NuevoDespacho.BSWCarga += (double)t.CSW() * ((double)t.DeltaTov / SumaTov);
                 NuevoDespacho.TempCarga += (double)t.TemTanque * ((double)t.DeltaTov / SumaTov);
                 NuevoDespacho.APICarga += (double)t.Api60F() * ((double)t.DeltaTov / SumaTov); 
-                var respue = await Http.PostAsJsonAsync("api/Balance", t);
+                var respue = await Http.PostAsJsonAsync("api/Balance/Confirmar", t);
             }
             NuevoDespacho.GovCarga = (-1) * Math.Round(NuevoDespacho.GovCarga,2);
             NuevoDespacho.GsvCarga = (-1) * Math.Round(NuevoDespacho.GsvCarga,2);

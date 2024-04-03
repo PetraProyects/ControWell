@@ -2779,3 +2779,4 @@ C:\ControWell\Client\obj\Release\net7.0\compressed\qd2tsdz8s3.gz
 C:\ControWell\Client\obj\Release\net7.0\compressed\z2d4fqzyrc.gz
 C:\ControWell\Client\obj\Release\net7.0\compressed\713iis7mje.gz
 C:\ControWell\Client\obj\Release\net7.0\compressed\duzevs3v3h.gz
+C:\ControWell\Client\obj\Release\net7.0\ControWell.Client.sourcelink.json

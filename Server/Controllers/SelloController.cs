@@ -70,6 +70,7 @@ namespace ControWell.Server.Controllers
             DbSello.Estado = sello.Estado;
             DbSello.CreatedAt = sello.CreatedAt;
             DbSello.EnUso = sello.EnUso;
+            
             DbSello.Seleccionado = sello.Seleccionado;
 
             await _context.SaveChangesAsync();
