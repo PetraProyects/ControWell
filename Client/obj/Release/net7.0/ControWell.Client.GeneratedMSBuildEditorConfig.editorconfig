@@ -202,6 +202,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnTWVkRXN0YXRpY2FcVmVoaWN1bG9MaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ControWell/Client/Pages/Dashboard/HomeDash.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXEhvbWVEYXNoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Dashboard/LinealTOVCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXExpbmVhbFRPVkNydWRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Dashboard/LinealTOVNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXExpbmVhbFRPVk5hZnRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Dashboard/TortaTovCrudo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXFRvcnRhVG92Q3J1ZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ControWell/Client/Pages/Dashboard/TortaTOVNafta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXFRvcnRhVE9WTmFmdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ControWell/Client/Pages/DescargueForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzY2FyZ3VlRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

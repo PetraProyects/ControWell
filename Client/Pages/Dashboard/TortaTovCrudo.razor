@@ -1,0 +1,81 @@
+﻿@using Plotly.Blazor
+@using Plotly.Blazor.Traces
+ @inject HttpClient Http
+<PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+@code {
+    PlotlyChart chart;
+    Config config = new Config();
+    Layout layout = new Layout();
+
+    // Datos para el gráfico de barras
+
+    public static List<Tanque> Tanques = new List<Tanque>();
+    public static List<Balance> UltimosMovimientos = new List<Balance>();
+    IList<ITrace> data = new List<ITrace>
+    {
+        new Pie
+        {
+
+            Labels = new List<object> { "LIBRE", "TOV"}, // Etiquetas en el eje X
+            Values = VolNSV, // Valores en el eje Y
+
+            Name = "Consumo de Frutas" // Nombre de la serie de datos
+        }
+    };
+
+
+    //pido datos
+    Consulta consulta = new Consulta();
+    public static List<Balance> Listado = new List<Balance>();
+    public static List<object> Fechas = new List<object>();
+    public static List<object> VolNSV = new List<object>();
+    double CapacidadTanCrudo = 0;
+    double Libre = 0;
+    double TOV = 0;
+
+
+    async Task ActualizarDatos()
+    {
+        var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
+        if (resultadoTan != null)
+            Tanques = resultadoTan;
+
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        foreach (var i in UltimosMovimientos)
+        {
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                TOV += i.Tov;
+            }
+        }
+
+        foreach (var j in Tanques)
+        {
+            if (j.TipoFluido == "Crudo")
+            {
+                CapacidadTanCrudo += (double)j.Capacidad;
+            }
+        }
+
+        Libre = CapacidadTanCrudo - TOV;
+        VolNSV.Add(Libre);
+        VolNSV.Add(TOV);
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+
+            await ActualizarDatos();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error dutante la actualizacion de datos");
+        }
+
+    }
+}
+

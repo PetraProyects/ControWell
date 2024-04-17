@@ -10225,15 +10225,15 @@
       "url": "_framework\/ControWell.Shared.pdb"
     },
     {
-      "hash": "sha256-IlRMGwupGJemfz6c6uCMMbj36bZCXJ7VDrCO2Ykn60I=",
+      "hash": "sha256-9a1vPBB4uPj\/CtDZwShdGvcb+e6MYwlpzSR1oFWJ4Ro=",
       "url": "_framework\/ControWell.Client.dll"
     },
     {
-      "hash": "sha256-v65wszVRpxt8rjLYkmTrh5q+dlkd1JkaFKdF8QA4j8A=",
+      "hash": "sha256-MLG\/9R7xI1oA5tFsIM5XKo1\/\/sDaZubdp98GDD2TSTA=",
       "url": "_framework\/ControWell.Client.pdb"
     },
     {
-      "hash": "sha256-bCSzfQIYKxR\/5nnfC0+eyJzptvg6ag2MH4XMHWOvhDg=",
+      "hash": "sha256-CPzTXGGd2igaDXyRI\/dUeTnyRfyVUCHQqyJKH4phWU4=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -10401,5 +10401,5 @@
       "url": "_content\/Blazor.Bootstrap\/Blazor.Bootstrap.bundle.scp.css"
     }
   ],
-  "version": "Y4ONtXhx"
+  "version": "KecobvQs"
 };

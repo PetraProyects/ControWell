@@ -1,0 +1,89 @@
+﻿@using Plotly.Blazor
+@using Plotly.Blazor.Traces
+@using Plotly.Blazor.Traces.IndicatorLib
+ @inject HttpClient Http
+
+<PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+@code {
+    PlotlyChart chart;
+    Config config = new Config();
+    Layout layout = new Layout();
+
+    // Utiliza IList para el evento callback
+    IList<ITrace> data = new List<ITrace>
+    {
+        new Scatter
+        {
+            Name = "ScatterTrace",
+
+
+            X = Fechas,
+            Y = VolTOV
+        }
+
+    };
+
+    //Pido los datos
+
+    Consulta consulta = new Consulta();
+    Consulta consultaAyer = new Consulta();
+    public static List<Balance> UltimosMovimientosAyer = new List<Balance>();
+    public static List<Balance> Listado = new List<Balance>();
+    public static List<object> Fechas = new List<object>();
+    public static List<object> VolTOV = new List<object>();
+    double ProducidoNSV = 0;
+    double TOV = 0;
+    async Task ActualizarDatos()
+    {
+        consultaAyer.FechaInicial = DateTime.Today.AddDays(-1);
+        consultaAyer.FechaFinal = DateTime.Today;
+        var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consultaAyer);
+        UltimosMovimientosAyer = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
+        foreach (var i in UltimosMovimientosAyer)
+        {
+            if (i.Tanque.TipoFluido == "Refinado")
+            {
+                TOV += i.Tov;
+            }
+
+        }
+
+        var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
+        if (resultado != null)
+            Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+
+        Fechas.Add(DateTime.Today);
+        foreach (var i in Listado)
+        {
+            if (i.Tanque.TipoFluido == "Refinado")
+            {
+                Fechas.Add(i.Fecha);
+            }
+
+
+        }
+        VolTOV.Add(TOV);
+        foreach (var i in Listado)
+        {
+            if (i.Tanque.TipoFluido == "Refinado")
+            {
+                TOV = TOV + Convert.ToDouble(i.DeltaTov);
+                VolTOV.Add(TOV);
+
+            }
+
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ActualizarDatos();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error dutante la actualizacion de datos");
+        }
+
+    }
+}

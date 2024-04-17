@@ -43,7 +43,7 @@
                     }
                     else
                     {
-                        <div style="cursor:pointer;display:flex;justify-content:center;" @onclick="(()=>asignarDatosTanqueTransfer(ElegidoTan,b))">
+                        <div style="cursor:pointer;display:flex;justify-content:center;" @onclick="(()=>asignarDatosTanqueTransfer(ElegidoTan,b))" @onkeyup="(()=>asignarDatosTanqueTransfer(ElegidoTan,b))">
                             <TanGeneral BalanceModal="b" />
                         </div>
                     }
@@ -87,7 +87,7 @@
                     }
                     else
                     {
-                        <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>asignarDatosTanqueRecibo(ElegidoTan,c))">
+                        <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>asignarDatosTanqueRecibo(ElegidoTan,c))" @onkeyup="(()=>asignarDatosTanqueRecibo(ElegidoTan,c))">
                             <TanGeneral BalanceModal="c" />
                         </div>
                     }
@@ -373,7 +373,8 @@ catch (Exception e)
 
         if (confirmado)
         {
-            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance", FormularioBalanceTransfiere);
+            FormularioBalanceTransfiere.Id = 0;
+            var RespuestaBal = await Http.PostAsJsonAsync("api/Balance/Confirmar", FormularioBalanceTransfiere);
             FormularioBalanceTransfiere = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
             var exito = await Swal.FireAsync(new SweetAlertOptions
                 {
@@ -385,7 +386,7 @@ catch (Exception e)
                 });
         }
 
-        await Send();
+       // await Send();
 
     }
     async Task ValidarBalanceRecibo()
@@ -429,7 +430,7 @@ catch (Exception e)
 
         if (confirmado)
         {
-            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance", FormularioBalanceRecibe);
+            var RespuestaBal = await Http.PostAsJsonAsync($"api/Balance/Confirmar", FormularioBalanceRecibe);
             FormularioBalanceRecibe = await RespuestaBal.Content.ReadFromJsonAsync<Balance>();
             var exito = await Swal.FireAsync(new SweetAlertOptions
                 {

@@ -41,7 +41,11 @@
         UltimosMovimientosAyer = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
         foreach (var i in UltimosMovimientosAyer)
         {
-            TOV += i.Tov;
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                TOV += i.Tov;
+            }
+
         }
 
         var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
@@ -51,14 +55,23 @@
         Fechas.Add(DateTime.Today);
         foreach (var i in Listado)
         {
-            Fechas.Add(i.Fecha);
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                Fechas.Add(i.Fecha);
+            }
+
 
         }
         VolTOV.Add(TOV);
         foreach (var i in Listado)
         {
-            TOV = TOV + Convert.ToDouble(i.DeltaTov);
-            VolTOV.Add(TOV);
+            if (i.Tanque.TipoFluido == "Crudo")
+            {
+                TOV = TOV + Convert.ToDouble(i.DeltaTov);
+                VolTOV.Add(TOV);
+
+            }
+            
         }
     }
     protected override async Task OnInitializedAsync()
