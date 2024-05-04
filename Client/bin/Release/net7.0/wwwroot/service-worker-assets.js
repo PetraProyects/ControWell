@@ -9141,7 +9141,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-xKm2NCWaGwH3OPZatVx2JUgjklKMBBe\/yKcR7ABrC3U=",
+      "hash": "sha256-WspVnXgQDwUj9Lc8SmXT5KRGH5uajEg9juq2FBloN\/Q=",
       "url": "index.html"
     },
     {
@@ -10193,10 +10193,6 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-E0n6hbqoR0T+sf5KQWRykPOVHyupoVmuMAlrNdZv\/58=",
-      "url": "_framework\/dotnet.7.0.17.3wxdn6kfj0.js"
-    },
-    {
       "hash": "sha256-GzDmKQksbAkzNe1GNrGcVtpc0naGXOFCpUzq3c\/pV+c=",
       "url": "_framework\/dotnet.timezones.blat"
     },
@@ -10217,24 +10213,28 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-ETQGDXB\/HtfEyJxF3iV4NRKAcuVyWu+8IwzHuoGVX3k=",
+      "hash": "sha256-udD4r66UIt8B2NgVRFoBJkOD2VxjArfilk0nIzTSzGA=",
       "url": "_framework\/ControWell.Shared.dll"
     },
     {
-      "hash": "sha256-+WDkLlNCoOzB+Fr4o\/KCDmDC\/BSJ6AECsvIsY8pr34Q=",
+      "hash": "sha256-fXrUCnVPeJOZ13j5M5+P65QmBB485lg899XZeOZdA\/4=",
       "url": "_framework\/ControWell.Shared.pdb"
     },
     {
-      "hash": "sha256-9a1vPBB4uPj\/CtDZwShdGvcb+e6MYwlpzSR1oFWJ4Ro=",
+      "hash": "sha256-K\/PoNkxQc9IVuiv4qkjEBeTh9BvoAt4apK1ZWxkNrxM=",
       "url": "_framework\/ControWell.Client.dll"
     },
     {
-      "hash": "sha256-MLG\/9R7xI1oA5tFsIM5XKo1\/\/sDaZubdp98GDD2TSTA=",
+      "hash": "sha256-JSrVt78UAK9aM7muMgTMplW6oDoTRd6thxWh1ANtyn4=",
       "url": "_framework\/ControWell.Client.pdb"
     },
     {
-      "hash": "sha256-CPzTXGGd2igaDXyRI\/dUeTnyRfyVUCHQqyJKH4phWU4=",
+      "hash": "sha256-tyzK2mbOLe7val4aMhIYkjxhWWTPxLc1jPwryzFcsFY=",
       "url": "_framework\/blazor.boot.json"
+    },
+    {
+      "hash": "sha256-lsqy0PQ8nf1\/0sSlLGe3Kfwi8V0Q1QzVy5+AqtJ3cfU=",
+      "url": "_framework\/dotnet.7.0.18.4dg8zb0qan.js"
     },
     {
       "hash": "sha256-o5Abw2KYyntckeLbJrmnMKUKBlM22h9iJY\/rvLjTrbo=",
@@ -10401,5 +10401,5 @@
       "url": "_content\/Blazor.Bootstrap\/Blazor.Bootstrap.bundle.scp.css"
     }
   ],
-  "version": "KecobvQs"
+  "version": "sY9pp+q3"
 };

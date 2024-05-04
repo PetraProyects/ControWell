@@ -9,7 +9,7 @@ namespace ControWell.Shared
     public class Consulta
     {
        public DateTime FechaInicial { get; set; }= DateTime.Today;
-        public DateTime FechaFinal { get; set; } = DateTime.Now;
+        public DateTime FechaFinal { get; set; } = DateTime.Today.AddDays(1);
 
     }
 }

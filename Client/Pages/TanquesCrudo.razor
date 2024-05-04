@@ -85,9 +85,11 @@
 
 
 @code {
+
     public static List<Tanque> Tanques = new List<Tanque>();
     public static List<Tanque> TanquesSinMov = new List<Tanque>();
     public static List<Balance> UltimosMovimientos = new List<Balance>();
+
     Consulta consulta = new Consulta();
     bool verSpiner = true;
     Balance BalanceModal = new Balance();
@@ -117,7 +119,7 @@
         if (resultadoTanSinMov != null)
             TanquesSinMov = resultadoTanSinMov;
         var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
-         UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();       
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();       
         foreach (var i in UltimosMovimientos)
         {
             if (i.Tanque.TipoFluido == "Crudo")
@@ -129,10 +131,10 @@
         CrudoTov = Math.Round(CrudoTov, 2);
         CrudoNsv = Math.Round(CrudoNsv, 2);
         verSpiner = false;
-        
+
     }
 
-    
+
 
     async Task InfoTanque(Balance bal)
     {
@@ -166,6 +168,7 @@
         vernuevomov = false;
         vertransferir = false;
         verdetalleTanq = false;
+        verdespacho = false;
     }
     void verDespachar(){
         vertanque = false;
@@ -195,7 +198,6 @@
     async Task ForzarActualizado()
     {
         CerrarTodo();
-        Navigation.NavigateTo("/fetchdata");
-        Navigation.NavigateTo("/");
+        await Actualizar();
     }
 }

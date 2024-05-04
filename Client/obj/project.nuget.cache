@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FCo26J8ivHr1eiAYaVyGI9DzT9PiVDHOEWbKOewPtQe5J+/A22vz/JdXcCe9eWEBEGxLbMv6+KhsXNPa/k6HfQ==",
+  "dgSpecHash": "O/vqm7D/pNRV1xfJauOrDo7CNolvI/6EwH2LUtfAqHNDPLWDCHIpUd12LVKFEAhltDwfRcd0ustD7UOrZUbFSQ==",
   "success": true,
   "projectFilePath": "C:\\ControWell\\Client\\ControWell.Client.csproj",
   "expectedPackageFiles": [
@@ -38,7 +38,7 @@
     "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.13\\microsoft.jsinterop.webassembly.7.0.13.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.net.illink.analyzers\\7.0.100-1.23211.1\\microsoft.net.illink.analyzers.7.0.100-1.23211.1.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.net.illink.tasks\\7.0.100-1.23211.1\\microsoft.net.illink.tasks.7.0.100-1.23211.1.nupkg.sha512",
-    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.3\\microsoft.net.sdk.webassembly.pack.8.0.3.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.4\\microsoft.net.sdk.webassembly.pack.8.0.4.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
@@ -61,7 +61,10 @@
     "C:\\Users\\Dagoberto\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.17\\microsoft.netcore.app.runtime.mono.browser-wasm.7.0.17.nupkg.sha512"
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.18\\microsoft.netcore.app.runtime.mono.browser-wasm.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }

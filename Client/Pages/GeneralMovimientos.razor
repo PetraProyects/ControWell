@@ -21,183 +21,193 @@
     </div>
 </div>
 <br />
-<Tabs EnableFadeEffect="true" NavStyle="NavStyle.Pills">
-    <Tab Title="Volumenes" IsActive="true">
-        <Content>
-            <div @onmousemove=ActualizarDatos>
-                <table class="table table-success table-striped">
-                    <thead>
-                        <tr>
-
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Tanque</th>
-                            <th scope="col">Tipo mov</th>
-                            <th scope="col">Medida</th>
-                            <th scope="col">Corrección</th>
-                            <th scope="col">Interfase</th>
-                            <th scope="col">Corrección</th>
-                            <th scope="col">TOV</th>
-                            <th scope="col">FW</th>
-                            <th scope="col">NSV</th>
-                            <th scope="col">AGUA</th>
-                            <th scope="col">DELTA</th>
-                            <th scope="col">Eliminar</th>
-                            <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var i in Listado)
-                        {
+<div style="height:400px;overflow:auto">
+    <Tabs EnableFadeEffect="true" NavStyle="NavStyle.Tabs">
+        <Tab Title="Volumenes" IsActive="true">
+            <Content>
+                <div>
+                    <table class="table table-success table-striped">
+                        <thead>
                             <tr>
-                                <td>@i.Fecha</td>
-                                <td>@i.Tanque.NombreTanque</td>
-                                <td>@i.TipoMovimiento</td>
-                                <td>@i.Nivel</td>
-                                <td>@i.NivelCorregido()</td>
-                                <td>@i.Interfase</td>
-                                <td>@i.InterfaseCorregida()</td>
-                                <td>@i.Tov</td>
-                                <td>@i.Fw</td>
-                                <td>@i.NSV()</td>
-                                <td>@i.AGUANETA()</td>
-                                <td>@i.DeltaNsv</td>
-                                @*INICIO BOTONES*@
-                                <td>
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                                </td>
-                                @*FINAL BOTONES*@
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </Content>
-    </Tab>
-    <Tab Title="Factores">
-        <Content>
-            <div @onmousemove=ActualizarDatos>
-                <table class="table table-success table-striped">
-                    <thead>
-                        <tr>
 
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Tanque</th>
-                            <th scope="col">Tipo mov</th>
-                            <th scope="col">CTL</th>
-                            <th scope="col">CTCH</th>
-                            <th scope="col">S&W</th>
-                            <th scope="col">CSW</th>
-                            <th scope="col">Factor Cinta Nivel</th>
-                            <th scope="col">Factor Interfase</th>
-                            <th scope="col">Factor Tem TP7</th>
-                            <th scope="col">Eliminar</th>
-                            <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var i in Listado)
-                        {
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Tanque</th>
+                                <th scope="col">Tipo mov</th>
+                                <th scope="col">Medida</th>
+                                <th scope="col">Corrección</th>
+                                <th scope="col">Interfase</th>
+                                <th scope="col">Corrección</th>
+                                <th scope="col">TOV</th>
+                                <th scope="col">FW</th>
+                                <th scope="col">NSV</th>
+                                <th scope="col">AGUA</th>
+                                <th scope="col">DELTA</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Listado)
+                            {
+                                <tr>
+                                    <td>@i.Fecha</td>
+                                    <td>@i.Tanque.NombreTanque</td>
+                                    <td>@i.TipoMovimiento</td>
+                                    <td>@i.Nivel</td>
+                                    <td>@i.NivelCorregido()</td>
+                                    <td>@i.Interfase</td>
+                                    <td>@i.InterfaseCorregida()</td>
+                                    <td>@i.Tov</td>
+                                    <td>@i.Fw</td>
+                                    <td>
+                                        <Tooltip Class="me-4" Title="Bls Netos">@i.NSV()</Tooltip>
+                                    </td>
+                                    <td>@i.AGUANETA()</td>
+                                    <td>@i.DeltaNsv</td>
+                                    @*INICIO BOTONES*@
+                                    <td>
+                                        <button type="button" style="font-size: 0.7em;" class="btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button style="font-size: 0.7em;" type="button" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
+                                    </td>
+                                    @*FINAL BOTONES*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </Content>
+        </Tab>
+        <Tab Title="Factores">
+            <Content>
+                <div @onmousemove=ActualizarDatos>
+                    <table class="table table-success table-striped">
+                        <thead>
                             <tr>
-                                <td>@i.Fecha</td>
-                                <td>@i.Tanque.NombreTanque</td>
-                                <td>@i.TipoMovimiento</td>
-                                <td>@i.CTL()</td>
-                                <td>@i.Ctsh()</td>
-                                <td>@Math.Round((1-i.CSW())*100,2)</td>
-                                <td>@i.CSW()</td>
-                                <td>@i.FactorCinta</td>
-                                <td>@Math.Round((double)i.FactorInterface,5)</td>
-                                <td>@Math.Round((double)i.FactorTemTanque,5)</td>
 
-                                @*INICIO BOTONES*@
-                                <td>
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                                </td>
-                                @*FINAL BOTONES*@
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Tanque</th>
+                                <th scope="col">Tipo mov</th>
+                                <th scope="col">CTL</th>
+                                <th scope="col">CTCH</th>
+                                <th scope="col">S&W</th>
+                                <th scope="col">CSW</th>
+                                <th scope="col">Factor Cinta Nivel</th>
+                                <th scope="col">Factor Interfase</th>
+                                <th scope="col">Factor Tem TP7</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Listado)
+                            {
+                                <tr>
+                                    <td>@i.Fecha</td>
+                                    <td>@i.Tanque.NombreTanque</td>
+                                    <td>@i.TipoMovimiento</td>
+                                    <td>@i.CTL()</td>
+                                    <td>@i.Ctsh()</td>
+                                    <td>@Math.Round((1 - i.CSW()) * 100, 2)</td>
+                                    <td>@i.CSW()</td>
+                                    <td>@i.FactorCinta</td>
+                                    <td>@Math.Round((double)i.FactorInterface, 5)</td>
+                                    <td>@Math.Round((double)i.FactorTemTanque, 5)</td>
+
+                                    @*INICIO BOTONES*@
+                                    <td>
+                                        <button style="font-size: 0.7em;" class="btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button style="font-size: 0.7em;" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
+                                    </td>
+                                    @*FINAL BOTONES*@
+                                </tr>
+                            }
 
 
-                    </tbody>
-                </table>
-            </div>
-        </Content>
-    </Tab>
-    <Tab Title="Calculos">
-        <Content>
-            <div @onmousemove=ActualizarDatos>
-                <table class="table table-success table-striped">
-                    <thead>
-                        <tr>
-
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Tanque</th>
-                            <th scope="col">Tipo mov</th>
-                            <th scope="col">API</th>
-                            <th scope="col">TEMP</th>
-                            <th scope="col">API 60</th>
-                            <th scope="col">Temp Tanque</th>
-                            <th scope="col">Temp Tan Corregida</th>
-                            <th scope="col">S&W</th>
-                            <th scope="col">Karl Ficher</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Eliminar</th>
-                            <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var i in Listado)
-                        {
+                        </tbody>
+                    </table>
+                </div>
+            </Content>
+        </Tab>
+        <Tab Title="Calculos">
+            <Content>
+                <div @onmousemove=ActualizarDatos>
+                    <table class="table table-success table-striped">
+                        <thead>
                             <tr>
-                                <td>@i.Fecha</td>
-                                <td>@i.Tanque.NombreTanque</td>
-                                <td>@i.TipoMovimiento</td>
-                                <td>@i.Api</td>
-                                <td>@i.TemFluidoApi</td>
-                                <td>@i.Api60F()</td>
-                                <td>@i.TemTanque</td>
-                                <td>@Math.Round((double)i.TemTanqueCorregido(),2)</td>
-                                <td>@Math.Round((1 - i.CSW()) * 100, 2)</td>
-                                <td>@i.KarlFisher</td>
-                                <td>@i.NombreUsuario</td>
 
-                                @*INICIO BOTONES*@
-                                <td>
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                                </td>
-                                @*FINAL BOTONES*@
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Tanque</th>
+                                <th scope="col">Tipo mov</th>
+                                <th scope="col">API</th>
+                                <th scope="col">TEMP</th>
+                                <th scope="col">API 60</th>
+                                <th scope="col">Temp Tanque</th>
+                                <th scope="col">Temp Tan Corregida</th>
+                                <th scope="col">S&W</th>
+                                <th scope="col">Karl Ficher</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Listado)
+                            {
+                                <tr>
+                                    <td>@i.Fecha</td>
+                                    <td>@i.Tanque.NombreTanque</td>
+                                    <td>@i.TipoMovimiento</td>
+                                    <td>@i.Api</td>
+                                    <td>@i.TemFluidoApi</td>
+                                    <td>@i.Api60F()</td>
+                                    <td>@i.TemTanque</td>
+                                    <td>@Math.Round((double)i.TemTanqueCorregido(), 2)</td>
+                                    <td>@Math.Round((1 - i.CSW()) * 100, 2)</td>
+                                    <td>@i.KarlFisher</td>
+                                    <td>@i.NombreUsuario</td>
+
+                                    @*INICIO BOTONES*@
+                                    <td>
+                                        <button style="font-size: 0.7em;" class="btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button style="font-size: 0.7em;" @onclick="(()=>Eliminar(i))" class="btn btn-warning">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
+                                    </td>
+                                    @*FINAL BOTONES*@
+                                </tr>
+                            }
 
 
-                    </tbody>
-                </table>
-            </div>
-        </Content>
-    </Tab>
-</Tabs>
+                        </tbody>
+                    </table>
+                </div>
+            </Content>
+        </Tab>
+    </Tabs>
 
+
+</div>
+   <br />
+<div style="display:flex;justify-content:center">
+    <button @onclick=Atras class="btn btn-outline-success"><i class="bi bi-arrow-left-circle-fill"></i></button>
+    <button @onclick=Adelante class="btn btn-outline-success"><i class="bi bi-arrow-right-circle-fill"></i></button>
+</div>
 @code {
     public static List<Balance> Listado = new List<Balance>();
     Consulta consulta = new Consulta();
@@ -239,5 +249,18 @@
                     Timer = 1500
                 });
         }
+    }
+
+    async Task Atras()
+    {
+        consulta.FechaInicial = consulta.FechaInicial.AddDays(-1);
+        consulta.FechaFinal = consulta.FechaFinal.AddDays(-1);
+        await ActualizarDatos();
+    }
+    async Task Adelante()
+    {
+        consulta.FechaInicial = consulta.FechaInicial.AddDays(1);
+        consulta.FechaFinal = consulta.FechaFinal.AddDays(1);
+        await ActualizarDatos();
     }
 }

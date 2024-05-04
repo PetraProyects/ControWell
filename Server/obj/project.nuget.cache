@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nG8B2aWhSWX3Lx+YEcVe18hdQA7z/BJh3fXEyGBTGAAbObXcxOkaWDsN4CPjdN/Obi45J2I3/1LwM9zYrHHo8Q==",
+  "dgSpecHash": "2OEmT4Riq11jpOPL03xpsp6UaXQiJRi+hprepXCeLCPFVhlfzgCHQGb/8fc1xKAuoc1PNrYcyYQT3HTtQd/8+A==",
   "success": true,
   "projectFilePath": "C:\\ControWell\\Server\\ControWell.Server.csproj",
   "expectedPackageFiles": [
@@ -174,7 +174,11 @@
     "C:\\Users\\Dagoberto\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Dagoberto\\.nuget\\packages\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512",
-    "C:\\Users\\Dagoberto\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.18\\microsoft.netcore.app.host.win-x64.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }

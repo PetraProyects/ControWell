@@ -107,7 +107,7 @@
         UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
         foreach (var i in UltimosMovimientos)
         {
-            
+
             if (i.Tanque.TipoFluido == "Refinado")
             {
                 NaftaTov += i.Tov;
@@ -157,7 +157,6 @@
     async Task ForzarActualizado()
     {
         CerrarTodo();
-        Navigation.NavigateTo("/fetchdata");
-        Navigation.NavigateTo("/");
+        await Actualizar();
     }
 }

@@ -1,7 +1,7 @@
 {
   "entryAssembly": "ControWell.Client",
   "resources": {
-    "hash": "sha256-yFa1xXw5meR3b2tBr2Lm73IZmRKxR3vgdQ7EChJIyJs=",
+    "hash": "sha256-yziRldUHV8PndomrlOjmnz38fUiKpnD0i5d8UCz8dw8=",
     "runtime": {
       "dotnet.7.0.17.3wxdn6kfj0.js": "sha256-E0n6hbqoR0T+sf5KQWRykPOVHyupoVmuMAlrNdZv/58=",
       "dotnet.timezones.blat": "sha256-GzDmKQksbAkzNe1GNrGcVtpc0naGXOFCpUzq3c/pV+c=",
@@ -14,7 +14,7 @@
       "BlazorBootstrap.dll": "sha256-8O9s7pfpcP+Pf0+Q3mcwiAmMPWfJLLR+LoxJE/yRiL8=",
       "BouncyCastle.Cryptography.dll": "sha256-ghU8DmiDSg9A4gA4QlQpo+P5z02rvJGRtHbP5WGKFB0=",
       "ChartJs.Blazor.dll": "sha256-0ciRJps8EWsbo3zIh4fYA2+QBnZIl1lSu4aydLaQDEo=",
-      "ControWell.Client.dll": "sha256-jk325V7YUSA1aqa5CQ6Md6ZS1wYbtzCMv1t+HEx2fBU=",
+      "ControWell.Client.dll": "sha256-MvXYPDVBTCdm+7tPSXj+9sKlRvQksDun144DINxWmzU=",
       "ControWell.Shared.dll": "sha256-ETQGDXB/HtfEyJxF3iV4NRKAcuVyWu+8IwzHuoGVX3k=",
       "CurrieTechnologies.Razor.SweetAlert2.dll": "sha256-jaHzMzp157atLBDyTfDX4LuHLGBZ1q/5g/2s83upTCk=",
       "Enums.NET.dll": "sha256-JvYElQXRGkZIu7Z1+NCKL9wGo7lrfM+mxf4l813WwM0=",

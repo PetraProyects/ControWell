@@ -3,52 +3,32 @@
   "WorkspaceRootPath": "C:\\ControWell\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B0CFDDD-1C53-499B-AFB0-F3E266273AC6}|Shared\\ControWell.Shared.csproj|c:\\controwell\\shared\\guia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B0CFDDD-1C53-499B-AFB0-F3E266273AC6}|Shared\\ControWell.Shared.csproj|solutionrelative:shared\\guia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\indicadores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\indicadores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B0CFDDD-1C53-499B-AFB0-F3E266273AC6}|Shared\\ControWell.Shared.csproj|c:\\controwell\\shared\\conductor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B0CFDDD-1C53-499B-AFB0-F3E266273AC6}|Shared\\ControWell.Shared.csproj|solutionrelative:shared\\conductor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\todoslostanques.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\todoslostanques.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\dashboard\\homedash.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\dashboard\\homedash.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\graficas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\graficas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\carguecrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\carguecrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\dashboard\\linealtovnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\dashboard\\linealtovnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\datoscampo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\datoscampo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\dashboard\\linealtovcrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\dashboard\\linealtovcrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\generalmovimientos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\generalmovimientos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\dashboard\\tortatovnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\dashboard\\tortatovnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\tortavolsnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\tortavolsnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\linealgeneraltov.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\linealgeneraltov.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\dashboard\\tortatovcrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\dashboard\\tortatovcrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\tortavolscrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\tortavolscrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\tortasvolumenes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\tortasvolumenes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\tanquesnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\tanquesnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,158 +38,92 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Guia.cs",
-              "DocumentMoniker": "C:\\ControWell\\Shared\\Guia.cs",
-              "RelativeDocumentMoniker": "Shared\\Guia.cs",
-              "ToolTip": "C:\\ControWell\\Shared\\Guia.cs",
-              "RelativeToolTip": "Shared\\Guia.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T05:11:32.412Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Conductor.cs",
-              "DocumentMoniker": "C:\\ControWell\\Shared\\Conductor.cs",
-              "RelativeDocumentMoniker": "Shared\\Conductor.cs",
-              "ToolTip": "C:\\ControWell\\Shared\\Conductor.cs",
-              "RelativeToolTip": "Shared\\Conductor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T05:08:12.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "LinealTOVNafta.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Dashboard\\LinealTOVNafta.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Dashboard\\LinealTOVNafta.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Dashboard\\LinealTOVNafta.razor",
-              "RelativeToolTip": "Client\\Pages\\Dashboard\\LinealTOVNafta.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
+              "Title": "DatosCampo.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\DatosCampo.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\DatosCampo.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\DatosCampo.razor",
+              "RelativeToolTip": "Client\\Pages\\Analisis\\DatosCampo.razor",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAAAEYAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:46:24.972Z"
+              "WhenOpened": "2024-04-22T02:48:34.973Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TortaTOVNafta.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Dashboard\\TortaTOVNafta.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Dashboard\\TortaTOVNafta.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Dashboard\\TortaTOVNafta.razor",
-              "RelativeToolTip": "Client\\Pages\\Dashboard\\TortaTOVNafta.razor",
-              "ViewState": "AQIAADMAAAAAAAAAAAAowDoAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "Indicadores.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Indicadores.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Indicadores.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\Indicadores.razor",
+              "RelativeToolTip": "Client\\Pages\\Indicadores.razor",
+              "ViewState": "AQIAAGYBAAAAAAAAAAAAACEBAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:46:09.335Z"
+              "WhenOpened": "2024-04-22T00:30:24.966Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Graficas.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\Graficas.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\Graficas.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\Graficas.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\Graficas.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CargueCrudo.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\CargueCrudo.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\CargueCrudo.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\CargueCrudo.razor",
+              "RelativeToolTip": "Client\\Pages\\CargueCrudo.razor",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAAAPAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:39:28.951Z"
+              "WhenOpened": "2024-04-21T05:37:19.811Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "TortasVolumenes.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\TortasVolumenes.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\TortasVolumenes.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\TortasVolumenes.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\TortasVolumenes.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "TanquesNafta.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\TanquesNafta.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\TanquesNafta.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\TanquesNafta.razor",
+              "RelativeToolTip": "Client\\Pages\\TanquesNafta.razor",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJ4AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:37:00.475Z"
+              "WhenOpened": "2024-04-21T04:48:44.717Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LinealTOVCrudo.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Dashboard\\LinealTOVCrudo.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Dashboard\\LinealTOVCrudo.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Dashboard\\LinealTOVCrudo.razor",
-              "RelativeToolTip": "Client\\Pages\\Dashboard\\LinealTOVCrudo.razor",
-              "ViewState": "AQIAADwAAAAAAAAAAAAswFgAAAABAAAA",
+              "Title": "GeneralMovimientos.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\GeneralMovimientos.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\GeneralMovimientos.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\GeneralMovimientos.razor",
+              "RelativeToolTip": "Client\\Pages\\GeneralMovimientos.razor",
+              "ViewState": "AQIAAMkAAAAAAAAAAAAAANgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:34:14.932Z"
+              "WhenOpened": "2024-04-20T20:21:33.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TodosLosTanques.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\TodosLosTanques.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\TodosLosTanques.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\TodosLosTanques.razor",
+              "RelativeToolTip": "Client\\Pages\\TodosLosTanques.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-20T20:00:29.062Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HomeDash.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Dashboard\\HomeDash.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Dashboard\\HomeDash.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Dashboard\\HomeDash.razor",
-              "RelativeToolTip": "Client\\Pages\\Dashboard\\HomeDash.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAARAAAA",
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Index.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Pages\\Index.razor",
+              "RelativeToolTip": "Client\\Pages\\Index.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:31:47.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TortaVolsCrudo.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\TortaVolsCrudo.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\TortaVolsCrudo.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\TortaVolsCrudo.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\TortaVolsCrudo.razor",
-              "ViewState": "AQIAADUAAAAAAAAAAAAswFEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:37:11.436Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TortaVolsNafta.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\TortaVolsNafta.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\TortaVolsNafta.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\TortaVolsNafta.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\TortaVolsNafta.razor",
-              "ViewState": "AQIAADMAAAAAAAAAAAAswE8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:46:38.96Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LinealGeneralTOV.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\LinealGeneralTOV.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\LinealGeneralTOV.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\LinealGeneralTOV.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\LinealGeneralTOV.razor",
-              "ViewState": "AQIAADwAAAAAAAAAAAAswFgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:37:45.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TortaTovCrudo.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Dashboard\\TortaTovCrudo.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Dashboard\\TortaTovCrudo.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Dashboard\\TortaTovCrudo.razor",
-              "RelativeToolTip": "Client\\Pages\\Dashboard\\TortaTovCrudo.razor",
-              "ViewState": "AQIAADUAAAAAAAAAAAAowD0AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T21:33:57.809Z"
+              "WhenOpened": "2024-04-20T20:00:16.46Z"
             }
           ]
         }

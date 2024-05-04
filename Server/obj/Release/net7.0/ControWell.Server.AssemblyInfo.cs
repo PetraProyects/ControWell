@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControWell.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1441e2f5611070ff99ee948d8de13c74558b6bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc4b7247f618cc0457631ee79128717820b336d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControWell.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControWell.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

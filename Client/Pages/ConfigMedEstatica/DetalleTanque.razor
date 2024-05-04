@@ -1,12 +1,11 @@
-﻿<div style="background-color:rgba(aqua,0.2);">
+﻿ @inject HttpClient Http
+<div style="background-color:rgba(aqua,0.2);">
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 text-center">
             <TanGeneral BalanceModal="balance" />
             <label>Capacidad @balance.Tanque.Capacidad Bls</label>
-            <h6>Lleno @Math.Round(((double)balance.Tov / (double)balance.Tanque.Capacidad)*100, 2) %</h6>
+            <h6>Lleno @Math.Round(((double)balance.Tov / (double)balance.Tanque.Capacidad) * 100, 2) %</h6>
             <label>Libre @Math.Round(((double)balance.Tanque.Capacidad - balance.Tov), 2) Bls</label>
-        </div>
-        <div class="col-8" >
             <label>Nivel: @balance.Nivel cm</label>
             <label>Interfase: @balance.Interfase cm</label>
             <label>Tov: @balance.Tov Bls</label>
@@ -14,11 +13,88 @@
             <label>NSV: @balance.NSV() Bls</label>
             <label>Agua Neta: @balance.AGUANETA() Bls</label>
         </div>
+        <div class="col-8" style="display:flex;justify-content:center;overflow:auto">
+            <div>
+                <div style="display:flex;justify-content:center;height:200px;overflow:auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Mov</th>
+                                <th>Nivel</th>
+                                <th>Interfase</th>
+                                <th>TOV</th>
+                                <th>NSV</th>
+                                <th>FW</th>
+                                <th>AGUA</th>
+                                <th>API 60°</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var i in Listado.Where(x => x.Tanque.Id == balance.TanqueId))
+                            {
+                                <tr>
+                                    <td>@i.Fecha</td>
+                                    <td>@i.TipoMovimiento</td>
+                                    <td>@i.Nivel</td>
+                                    <td>@i.Interfase</td>
+                                    <td>@i.Tov</td>
+                                    <td>@i.NSV()</td>
+                                    <td>@i.Fw</td>
+                                    <td>@i.AGUANETA()</td>
+                                    <td>@i.Api60F()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table><br />
+
+                </div>
+                <div style="display:flex;justify-content:center">
+                    <button @onclick=Atras class="btn btn-outline-success"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                    <button @onclick=Adelante class="btn btn-outline-success"><i class="bi bi-arrow-right-circle-fill"></i></button>
+                </div>
+            </div>          
+            
+        </div>
     </div>
-    
+
 </div>
 
 @code {
     [Parameter]
     public Balance balance { get; set; }
+
+    public static List<Balance> Listado = new List<Balance>();
+    Consulta consulta = new Consulta();
+
+    async Task ActualizarDatos()
+    {
+        Console.WriteLine("Hola jefe");
+        
+        
+        var resultado = await Http.PostAsJsonAsync("api/Balance/Rango", consulta);
+        if (resultado != null)
+            Listado = await resultado.Content.ReadFromJsonAsync<List<Balance>>();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        consulta.FechaInicial = DateTime.Today;
+        consulta.FechaFinal = DateTime.Today.AddDays(1);
+        await ActualizarDatos();
+    }
+
+    async Task Atras()
+    {
+        consulta.FechaInicial=consulta.FechaInicial.AddDays(-1);
+        consulta.FechaFinal=consulta.FechaFinal.AddDays(-1);
+        await ActualizarDatos();
+    }
+    async Task Adelante()
+    {
+        consulta.FechaInicial = consulta.FechaInicial.AddDays(1);
+        consulta.FechaFinal = consulta.FechaFinal.AddDays(1);
+        await ActualizarDatos();
+    }
 }

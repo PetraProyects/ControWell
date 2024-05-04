@@ -29,7 +29,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-5d7gZMD06jc2aEc3YOUrmEo+XT2h4ABYFfSZbAq2MYg=",
+      "hash": "sha256-fX+gNL\/AOtRlWl9JLJvvBeuOwDtLaIcGu\/xiVKi1C0w=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -45,7 +45,7 @@
       "url": "_framework\/ChartJs.Blazor.dll"
     },
     {
-      "hash": "sha256-jk325V7YUSA1aqa5CQ6Md6ZS1wYbtzCMv1t+HEx2fBU=",
+      "hash": "sha256-MvXYPDVBTCdm+7tPSXj+9sKlRvQksDun144DINxWmzU=",
       "url": "_framework\/ControWell.Client.dll"
     },
     {
@@ -9597,7 +9597,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-xKm2NCWaGwH3OPZatVx2JUgjklKMBBe\/yKcR7ABrC3U=",
+      "hash": "sha256-WspVnXgQDwUj9Lc8SmXT5KRGH5uajEg9juq2FBloN\/Q=",
       "url": "index.html"
     },
     {
@@ -9949,5 +9949,5 @@
       "url": "_content\/Plotly.Blazor\/plotly-latest.min.js"
     }
   ],
-  "version": "A3\/ffyQd"
+  "version": "lYsA6\/1c"
 };
