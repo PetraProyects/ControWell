@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\ControWell\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\indicadores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\indicadores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\todoslostanques.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\todoslostanques.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -15,20 +11,32 @@
       "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\carguecrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\carguecrudo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\analisis\\datoscampo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\analisis\\datoscampo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\generalmovimientos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\generalmovimientos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\shared\\surveyprompt.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\shared\\surveyprompt.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\pages\\tanquesnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\pages\\tanquesnafta.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\shared\\menulateral.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\shared\\menulateral.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|c:\\controwell\\client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B630815-616E-4F6E-AEBA-2746BA597FBB}|Client\\ControWell.Client.csproj|solutionrelative:client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,90 +46,114 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DatosCampo.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Analisis\\DatosCampo.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Analisis\\DatosCampo.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Analisis\\DatosCampo.razor",
-              "RelativeToolTip": "Client\\Pages\\Analisis\\DatosCampo.razor",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAAAEYAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-22T02:48:34.973Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Indicadores.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Indicadores.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Indicadores.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\Indicadores.razor",
-              "RelativeToolTip": "Client\\Pages\\Indicadores.razor",
-              "ViewState": "AQIAAGYBAAAAAAAAAAAAACEBAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-22T00:30:24.966Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CargueCrudo.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\CargueCrudo.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\CargueCrudo.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\CargueCrudo.razor",
-              "RelativeToolTip": "Client\\Pages\\CargueCrudo.razor",
-              "ViewState": "AQIAAHgAAAAAAAAAAAAAAPAAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-21T05:37:19.811Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TanquesNafta.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\TanquesNafta.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\TanquesNafta.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\TanquesNafta.razor",
-              "RelativeToolTip": "Client\\Pages\\TanquesNafta.razor",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJ4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-21T04:48:44.717Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GeneralMovimientos.razor",
-              "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\GeneralMovimientos.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\GeneralMovimientos.razor",
-              "ToolTip": "C:\\ControWell\\Client\\Pages\\GeneralMovimientos.razor",
-              "RelativeToolTip": "Client\\Pages\\GeneralMovimientos.razor",
-              "ViewState": "AQIAAMkAAAAAAAAAAAAAANgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-20T20:21:33.45Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "TodosLosTanques.razor",
               "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\TodosLosTanques.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\TodosLosTanques.razor",
               "ToolTip": "C:\\ControWell\\Client\\Pages\\TodosLosTanques.razor",
               "RelativeToolTip": "Client\\Pages\\TodosLosTanques.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-20T20:00:29.062Z"
+              "WhenOpened": "2024-05-07T06:11:42.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\App.razor",
+              "RelativeDocumentMoniker": "Client\\App.razor",
+              "ToolTip": "C:\\ControWell\\Client\\App.razor",
+              "RelativeToolTip": "Client\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T06:08:04.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SurveyPrompt.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Shared\\SurveyPrompt.razor",
+              "RelativeDocumentMoniker": "Client\\Shared\\SurveyPrompt.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Shared\\SurveyPrompt.razor",
+              "RelativeToolTip": "Client\\Shared\\SurveyPrompt.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T06:07:54.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Shared\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Client\\Shared\\MainLayout.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Shared\\MainLayout.razor",
+              "RelativeToolTip": "Client\\Shared\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T05:46:28.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuLateral.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Shared\\MenuLateral.razor",
+              "RelativeDocumentMoniker": "Client\\Shared\\MenuLateral.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Shared\\MenuLateral.razor",
+              "RelativeToolTip": "Client\\Shared\\MenuLateral.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T05:46:22.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Shared\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Client\\Shared\\NavMenu.razor",
+              "ToolTip": "C:\\ControWell\\Client\\Shared\\NavMenu.razor",
+              "RelativeToolTip": "Client\\Shared\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T05:46:14.523Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\ControWell\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "C:\\ControWell\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T05:26:40.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\ControWell\\Client\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "Client\\wwwroot\\index.html",
+              "ToolTip": "C:\\ControWell\\Client\\wwwroot\\index.html",
+              "RelativeToolTip": "Client\\wwwroot\\index.html",
+              "ViewState": "AQIAABAAAAAAAAAAAABhwCsAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-04T22:01:46.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Index.razor",
               "DocumentMoniker": "C:\\ControWell\\Client\\Pages\\Index.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Index.razor",
               "ToolTip": "C:\\ControWell\\Client\\Pages\\Index.razor",
               "RelativeToolTip": "Client\\Pages\\Index.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAA8AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-20T20:00:16.46Z"
             }

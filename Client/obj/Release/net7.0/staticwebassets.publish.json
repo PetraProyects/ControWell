@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JeVzKLxvu1VZqGOUhxToQelu+HjzBd3lUVZ27nXPCGM=",
+  "Hash": "frl23qEeRu1t/+sdPTKcYn01GlPUb8OKcKc5XIFHroQ=",
   "Source": "ControWell.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -36,12 +36,12 @@
       "OriginalItemSpec": "C:\\Users\\Dagoberto\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.13\\build\\net7.0\\blazor.webassembly.js"
     },
     {
-      "Identity": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.17.3wxdn6kfj0.js",
+      "Identity": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.18.4dg8zb0qan.js",
       "SourceId": "ControWell.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.7.0.17.3wxdn6kfj0.js",
+      "RelativePath": "_framework/dotnet.7.0.18.4dg8zb0qan.js",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,7 +52,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.17.3wxdn6kfj0.js"
+      "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.18.4dg8zb0qan.js"
     },
     {
       "Identity": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.timezones.blat",
@@ -169,23 +169,42 @@
       "OriginalItemSpec": "obj\\Release\\net7.0\\blazor.publish.boot.json"
     },
     {
-      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\3wxdn6kfj0.gz",
+      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\19tp1tdbm2.gz",
       "SourceId": "ControWell.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.7.0.17.3wxdn6kfj0.js.gz",
+      "RelativePath": "_framework/dotnet.wasm.gz",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.17.3wxdn6kfj0.js",
+      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\3wxdn6kfj0.gz"
+      "OriginalItemSpec": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\19tp1tdbm2.gz"
+    },
+    {
+      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\4dg8zb0qan.gz",
+      "SourceId": "ControWell.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.7.0.18.4dg8zb0qan.js.gz",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.18.4dg8zb0qan.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\4dg8zb0qan.gz"
     },
     {
       "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\7ogmtjgn4r.gz",
@@ -1423,25 +1442,6 @@
       "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
-      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\publish\\9grrsszwej.br",
-      "SourceId": "ControWell.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.7.0.17.3wxdn6kfj0.js.br",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.17.3wxdn6kfj0.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "br",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.17.3wxdn6kfj0.js"
-    },
-    {
       "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\publish\\a47uos0qjr.br",
       "SourceId": "ControWell.Client",
       "SourceType": "Computed",
@@ -2504,6 +2504,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\linked\\System.Linq.dll"
+    },
+    {
+      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\publish\\i0cq7ow3oe.br",
+      "SourceId": "ControWell.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.7.0.18.4dg8zb0qan.js.br",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.18.4dg8zb0qan.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "br",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.7.0.18.4dg8zb0qan.js"
     },
     {
       "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\publish\\i2kmhqrtn9.br",
@@ -4499,25 +4518,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js"
-    },
-    {
-      "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\tivperptvp.gz",
-      "SourceId": "ControWell.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\publish\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.wasm.gz",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\ControWell\\Client\\bin\\Release\\net7.0\\wwwroot\\_framework\\dotnet.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\tivperptvp.gz"
     },
     {
       "Identity": "C:\\ControWell\\Client\\obj\\Release\\net7.0\\compressed\\w2knqldsyg.gz",
