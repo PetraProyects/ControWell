@@ -8,7 +8,7 @@
 <Alert Color="AlertColor.Success">
     <div style="display:flex;justify-content:center">
         <h4 class="alert-heading">NUEVA ESPERANZA</h4>
-    </div>    
+    </div>
     <hr>
     <p class="mb-0">@DateTime.Now <b>CRUDO TOV: @CrudoTov BLS NSV: @CrudoNsv BLS</b></p>
 </Alert>
@@ -71,14 +71,14 @@
                         <ControWell.Client.Pages.ConfigMedEstatica.DetalleTanque balance="BalanceModal" />
                     }
                 </div>
-                <div class="modal-footer">                    
+                <div class="modal-footer">
                     <button type="button" class="btn btn-success" @onclick=verDetalle>Detalle</button>
-                    <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>                   
+                    <button type="button" class="btn btn-success" @onclick=vernuevoMov>Movimiento</button>
                     <button type="button" class="btn btn-success" @onclick=verDespachar>Despacho</button>
                     <button type="button" class="btn btn-secondary" @onclick=ForzarActualizado data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </Alert>
-           
+
         </div>
     </div>
 </div>
@@ -110,8 +110,8 @@
 
     async Task Actualizar()
     {
-        verSpiner = true;        
-        UltimosMovimientos.Clear();        
+        verSpiner = true;
+        UltimosMovimientos.Clear();
         var resultadoTan = await Http.GetFromJsonAsync<List<Tanque>>("api/Tanque");
         if (resultadoTan != null)
             Tanques = resultadoTan;
@@ -119,14 +119,14 @@
         if (resultadoTanSinMov != null)
             TanquesSinMov = resultadoTanSinMov;
         var ultimos = await Http.PostAsJsonAsync($"api/Balance/Aforos", consulta);
-        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();       
+        UltimosMovimientos = await ultimos.Content.ReadFromJsonAsync<List<Balance>>();
         foreach (var i in UltimosMovimientos)
         {
             if (i.Tanque.TipoFluido == "Crudo")
             {
                 CrudoTov += i.Tov;
                 CrudoNsv += i.NSV();
-            } 
+            }
         }
         CrudoTov = Math.Round(CrudoTov, 2);
         CrudoNsv = Math.Round(CrudoNsv, 2);
@@ -158,19 +158,20 @@
     {
         BalanceModal = bal;
         vertanque = true;
-        vernuevomov = false; 
+        vernuevomov = false;
         vertransferir = false;
         verdetalleTanq = false;
     }
     void CerrarTodo()
-    {             
+    {
         vertanque = false;
         vernuevomov = false;
         vertransferir = false;
         verdetalleTanq = false;
         verdespacho = false;
     }
-    void verDespachar(){
+    void verDespachar()
+    {
         vertanque = false;
         vernuevomov = false;
         verdespacho = true;

@@ -327,7 +327,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                                 <option value="@i.Id">@i.Descripcion</option>
                                             }
                                         </InputSelect>
-                                    </div>                                   
+                                    </div>
                                     <div class="form-group mt-3">
                                         <label style="color:burlywood">Conductor</label>
                                         <InputSelect @bind-Value="asigConductor.Id" class="form-control" placeholder="Conductor">
@@ -369,7 +369,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                         <input type="text" class="form-control" @bind-value=NuevoDescargue.Observaciones placeholder="Observaciones" required>
                                     </div>
                                 </div>
-                               <br />
+                                <br />
                             </EditForm>
                         </div>
                     </div>
@@ -402,7 +402,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
     public static List<Ruta> Rutas = new List<Ruta>();
     public static List<EcopetrolMaterial> EcopetrolMateriales = new List<EcopetrolMaterial>();
     public static List<Conductor> Conductores = new List<Conductor>();
-    public static List<Empresa> Empresas = new List<Empresa>();    
+    public static List<Empresa> Empresas = new List<Empresa>();
     EcopetrolMaterial asigMaterial = new EcopetrolMaterial();
     Conductor asigConductor = new Conductor();
     Empresa asigEmpresa = new Empresa();
@@ -453,7 +453,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
         var confirmado = !string.IsNullOrEmpty(resultado.Value);
 
         if (confirmado)
-        {          
+        {
 
             BalancesDespachar.Add(balance2);
             BalancesDespachar.Add(balance3);
@@ -475,7 +475,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
             SumaNsv = (double)BalancesConfirmar.Sum(t => t.DeltaNsv);
             NuevoDescargue.FactorTempDescarga = Math.Round(SumaGsv / SumaTov, 5);
             foreach (var t in BalancesConfirmar)
-            {                           
+            {
                 NuevoDescargue.GovDescarga += (double)t.DeltaGov;
                 NuevoDescargue.GsvDescarga += (double)t.DeltaGsv;
                 NuevoDescargue.NsvDescarga += (double)t.DeltaNsv;

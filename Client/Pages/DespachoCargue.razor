@@ -410,7 +410,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
     <button class="btn btn-primary" @onclick=Despachar>Despachar</button>
 </div>
 <!-- Button trigger modal -->
-@code {    
+@code {
     Balance balance2 = new Balance();
     Balance balance3 = new Balance();
     Balance balance4 = new Balance();
@@ -486,7 +486,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 var respuesta = await Http.PutAsJsonAsync($"api/Sello/{sello.Id}", sello);
             }
             SellosSelec.Clear();
-            NuevoDespacho.NumGuia = numGuia + "-" + EnteroGuia;           
+            NuevoDespacho.NumGuia = numGuia + "-" + EnteroGuia;
             BalancesDespachar.Add(balance2);
             BalancesDespachar.Add(balance3);
             BalancesDespachar.Add(balance4);

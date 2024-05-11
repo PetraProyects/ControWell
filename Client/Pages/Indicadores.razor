@@ -23,10 +23,10 @@
                             <div class="col-12 col-lg-3">
                                 <Tooltip Class="me-4" Title="Refrescar Datos">
                                     <button class="btn app-btn-primary" @onclick=Actualizar>
-                                    <i class="bi bi-bootstrap-reboot"></i>
-                                </button>
+                                        <i class="bi bi-bootstrap-reboot"></i>
+                                    </button>
                                 </Tooltip>
-                                
+
                             </div><!--//col-->
                         </div><!--//row-->
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -157,7 +157,7 @@
                                 <div class="col-auto">
                                     <h4 class="app-card-title">CAPACIDAD</h4>
                                 </div><!--//col-->
-                               
+
                             </div><!--//row-->
                         </div><!--//app-card-header-->
                         <div class="app-card-body">
@@ -204,14 +204,14 @@
                                     </div><!--//col-->
                                 </div><!--//row-->
                                 <a class="item-link-mask" href="#"></a>
-                            </div><!--//item-->  
+                            </div><!--//item-->
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
                 </div><!--//col-->
                 <div class="col-12 col-lg-6">
                     <canvas id="myChart"></canvas>
                 </div>
-            </div><!--//row-->          
+            </div><!--//row-->
 
         </div><!--//container-fluid-->
     </div><!--//app-content-->
@@ -358,7 +358,7 @@
         aguaAyer = Math.Round(aguaAyer, 2);
         agua = Math.Round(agua, 2);
 
-        foreach(var t in Tanques)
+        foreach (var t in Tanques)
         {
             if (t.TipoFluido == "Crudo")
             {
@@ -370,8 +370,8 @@
             }
         }
 
-        PorcentajeVolumenTanquesCrudo = Convert.ToString(Math.Round((TovCrudo / VolumenTanquesCrudo)*100, 0));
-        PorcentajeVolumenTanquesNafta = Convert.ToString(Math.Round((TovNafta / VolumenTanquesNafta)*100, 0));
+        PorcentajeVolumenTanquesCrudo = Convert.ToString(Math.Round((TovCrudo / VolumenTanquesCrudo) * 100, 0));
+        PorcentajeVolumenTanquesNafta = Convert.ToString(Math.Round((TovNafta / VolumenTanquesNafta) * 100, 0));
         Console.WriteLine(PorcentajeVolumenTanquesCrudo);
         Console.WriteLine(PorcentajeVolumenTanquesNafta);
     }

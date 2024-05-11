@@ -62,7 +62,7 @@
                     <div style="cursor:pointer;display:flex;justify-content:center" @onclick="(()=>Recibir(balance2))">
                         <TanGeneral BalanceModal="b" />
                     </div>
-                    
+
                 }
 
             }
@@ -93,7 +93,7 @@
                 </EditForm>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 <br />
 <div style="display:flex;justify-content:center">
@@ -140,8 +140,8 @@
                 balance2.TipoMovimiento = "Recibo";
                 balance2.DeltaAguaNeta = -balance.DeltaAguaNeta;
                 balance2.DeltaNsv = -balance.DeltaNsv;
-                
-                
+
+
             }
             else
             {
@@ -153,7 +153,7 @@
                         ShowCancelButton = false,
                         Timer = 1500
                     });
-            }            
+            }
         }
     }
 

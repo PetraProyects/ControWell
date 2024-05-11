@@ -7,5 +7,8 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGnabPRzWIkeW0aq16YEQ8wAAAAACAAAAAAAQZgAAAAEAACAAAAAC2i5PpgIlNHCN+Gn1bQKmdp4hqNNjD9CK3xsgiXLdsQAAAAAOgAAAAAIAACAAAADcFmoKy6nnW3YzfHSwdtjp9auNBw4EGTmsQ/c6oRYAZKAAAAAJSCEg/isLYY/MJMaRE+qQPRlxLGPM8HakjtGcZrwfqfK1o7JjIRDa0BADXqA1z/lwE1nMhc9NdXX9LxvN1TIirUjYuRYUzXpQYea/UYt+kaJGzZPUgLXx3146Nqvf8Ve043dif1BgwnDQ4xskqMmaM2sZ83elvG2R14CRyW0J1W1m5z4j9iD2oF42fbtBzEfR4OZ3ML9CqqVvoNhqaXG+QAAAAFimEtOb4Nxcl/cy0g8t6NJfrL2xyYbXs5BMbfUkIxrPQznscQvIlWBloLjFpBjrWfhAODmgycLny9C45LQ7ijg=</EncryptedPassword>
+    <_PublishTargetUrl>ftps://waws-prod-blu-441.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
+    <History>False|2024-05-11T14:21:18.6583009Z;</History>
+    <LastFailureDetails />
   </PropertyGroup>
 </Project>

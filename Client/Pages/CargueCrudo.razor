@@ -8,10 +8,10 @@
 {
     <div style="display:flex;justify-content:center;margin-top:-120px;overflow:auto">
         <div style="width:700px;height:500px;position:fixed" @onmouseleave=CerrarGuia>
-        <PrevGuia Formato="formato" />
+            <PrevGuia Formato="formato" />
+        </div>
     </div>
-    </div>
-    
+
 }
 <Alert Color="AlertColor.Success">
     <h4 class="alert-heading">DESPACHOS CRUDO</h4>
@@ -23,15 +23,15 @@
         </div>
         <div>
             <h3>Despachos Realizados(Hoy):  <Badge Color="BadgeColor.Primary">@CantidadDesp</Badge> Crudo Despachado Hoy(NSV): <Badge Color="BadgeColor.Primary">@BlsDesHoy Bls</Badge> Crudo Despachado Ayer(NSV): <Badge Color="BadgeColor.Primary">@BlsDesAyer Bls</Badge></h3>
-        </div>       
-               
+        </div>
+
     </div>
 </Alert>
 
 @if (verTabla)
 {
     <div style="overflow:auto">
-        <table  style="background: rgb(232,245,234);
+        <table style="background: rgb(232,245,234);
 background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 56%);">
             <thead>
                 <tr>
@@ -76,7 +76,7 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
                 </tr>
             </thead>
             <tbody>
-                @foreach (var i in Formatos.Where(x=>x.FechaEnturne>FechaConsultaInicio&&x.FechaEnturne<=FechaConsultaFinal))
+                @foreach (var i in Formatos.Where(x => x.FechaEnturne > FechaConsultaInicio && x.FechaEnturne <= FechaConsultaFinal))
                 {
                     <tr>
                         <td scope="col">ACCION</td>
@@ -103,10 +103,10 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
                         <td scope="col">@i.GovCarga</td>
                         <td scope="col">@i.GsvCarga</td>
                         <td scope="col">@i.NsvCarga</td>
-                        <td scope="col">@Math.Round(i.BSWCarga,5)</td>
-                        <td scope="col">@Math.Round(i.TempCarga,2)</td>
-                        <td scope="col">@Math.Round(i.APICarga,2)</td>
-                        <td scope="col">@Math.Round(i.FactorTempCarga,5)</td>
+                        <td scope="col">@Math.Round(i.BSWCarga, 5)</td>
+                        <td scope="col">@Math.Round(i.TempCarga, 2)</td>
+                        <td scope="col">@Math.Round(i.APICarga, 2)</td>
+                        <td scope="col">@Math.Round(i.FactorTempCarga, 5)</td>
                         <td scope="col">@i.Azufre</td>
                         <td scope="col">@i.SalPTB</td>
                         <td scope="col">@i.PresVaporReid</td>
@@ -114,7 +114,7 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
                         <td scope="col">@i.IncertiExpandidoUBls</td>
                         <td scope="col">@i.Observaciones</td>
                         <td scope="col">@i.GUT2</td>
-                       
+
                         <td>
                             <button type="button" class="btn btn-primary" @onclick="(()=>asignarFormato(i))"><i class="bi bi-file-earmark-ruled-fill"></i></button>
                         </td>
@@ -147,26 +147,27 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
 </div>
 
 <style>
-    thead{
+    thead {
         background: rgb(232,245,234);
         background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(149,191,156,1) 56%);
         position: sticky;
         top: 0;
     }
-    th{
-        text-align:center;
-        font-size:10px;
+
+    th {
+        text-align: center;
+        font-size: 10px;
         border-right: 2px solid #95bebf;
-        
     }
-    td{
+
+    td {
         font-size: 10px;
         border-right: 2px solid #95bebf;
         background: rgb(232,245,234);
         background: linear-gradient(180deg, rgba(232,245,234,1) 74%, rgba(149,190,191,1) 97%);
     }
 </style>
-@code{
+@code {
     FormatoCarga formato = new FormatoCarga();
     public static List<FormatoCarga> Formatos = new List<FormatoCarga>();
     bool verPrev = false;
@@ -174,11 +175,13 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
     int CantidadDesp = 0;
     double BlsDesHoy = 0;
     double BlsDesAyer = 0;
-    protected override async Task OnInitializedAsync(){
+    protected override async Task OnInitializedAsync()
+    {
         await Actualizar();
     }
 
-    async Task Actualizar(){
+    async Task Actualizar()
+    {
         var resFor = await Http.GetFromJsonAsync<List<FormatoCarga>>("api/FormatoCarga");
         if (resFor != null)
             Formatos = resFor;
@@ -188,7 +191,7 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
         CantidadDesp = despHoy.Count();
         foreach (var i in despHoy)
         {
-            BlsDesHoy += i.NsvCarga;            
+            BlsDesHoy += i.NsvCarga;
         }
         foreach (var j in despAyer)
         {
@@ -206,7 +209,8 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
         verTabla = false;
     }
 
-    void CerrarGuia(){
+    void CerrarGuia()
+    {
         verPrev = false;
         verTabla = true;
     }
@@ -234,11 +238,13 @@ background: linear-gradient(216deg, rgba(232,245,234,1) 0%, rgba(171,193,175,1) 
 
     DateTime FechaConsultaInicio = DateTime.Today;
     DateTime FechaConsultaFinal = DateTime.Today.AddDays(1);
-    void Adelante(){
+    void Adelante()
+    {
         FechaConsultaInicio = FechaConsultaInicio.AddDays(1);
     }
 
-    void Atras(){
+    void Atras()
+    {
         FechaConsultaInicio = FechaConsultaInicio.AddDays(-1);
     }
 }

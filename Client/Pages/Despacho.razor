@@ -424,7 +424,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                         <label>IND</label>
                                         <input type="number" class="form-control" placeholder="Ind" required="required" @bind-value=EnteroGuia />
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
@@ -436,7 +436,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                         <input name="signin-email" type="datetime" class="form-control signin-email" placeholder="S&W" required="required" @bind=NuevoDespacho.FechaEnturne />
                                     </div>
                                 </div>
-                                <div class="row">                                    
+                                <div class="row">
                                     <div class="col-6">
                                         <label>Fecha Lamado</label>
                                         <input name="signin-password" type="datetime" class="form-control signin-password" placeholder="K F" required="required" @bind=NuevoDespacho.FechaEnturne />
@@ -445,7 +445,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                         <label>Inicio llenado</label>
                                         <input name="signin-password" type="datetime" class="form-control signin-password" placeholder="K F" required="required" @bind=NuevoDespacho.FechaEnturne />
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
@@ -565,7 +565,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                     i.TipoMovimiento = "Despacho";
                     var respue = await Http.PostAsJsonAsync("api/Balance/Validar", i);
                     var balres = await respue.Content.ReadFromJsonAsync<Balance>();
-                    BalancesConfirmar.Add(balres);                   
+                    BalancesConfirmar.Add(balres);
                 }
             }
             SumaTov = (double)BalancesConfirmar.Sum(t => t.DeltaTov);
@@ -578,12 +578,12 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 NuevoDespacho.NsvCarga += (double)t.DeltaNsv;
                 NuevoDespacho.BSWCarga += (double)t.CSW() * ((double)t.DeltaTov / SumaTov);
                 NuevoDespacho.TempCarga += (double)t.TemTanque * ((double)t.DeltaTov / SumaTov);
-                NuevoDespacho.APICarga += (double)t.Api60F() * ((double)t.DeltaTov / SumaTov); 
+                NuevoDespacho.APICarga += (double)t.Api60F() * ((double)t.DeltaTov / SumaTov);
                 var respue = await Http.PostAsJsonAsync("api/Balance/Confirmar", t);
             }
-            NuevoDespacho.GovCarga = (-1) * Math.Round(NuevoDespacho.GovCarga,2);
-            NuevoDespacho.GsvCarga = (-1) * Math.Round(NuevoDespacho.GsvCarga,2);
-            NuevoDespacho.NsvCarga = (-1) * Math.Round(NuevoDespacho.NsvCarga,2);
+            NuevoDespacho.GovCarga = (-1) * Math.Round(NuevoDespacho.GovCarga, 2);
+            NuevoDespacho.GsvCarga = (-1) * Math.Round(NuevoDespacho.GsvCarga, 2);
+            NuevoDespacho.NsvCarga = (-1) * Math.Round(NuevoDespacho.NsvCarga, 2);
             var respueFor = await Http.PostAsJsonAsync("api/FormatoCarga", NuevoDespacho);
             var exito = await Swal.FireAsync(new SweetAlertOptions
                 {

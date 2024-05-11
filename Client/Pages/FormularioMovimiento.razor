@@ -15,7 +15,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                 <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
 
                     <EditForm Model="FormularioBalance">
-                        <div>                            
+                        <div>
                             <div class="form-group mt-3">
                                 <b style="color:bisque">Tipo de movimiento</b>
                                 <InputSelect @bind-Value="FormularioBalance.TipoMovimiento" class="form-select">
@@ -26,7 +26,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                     }
                                 </InputSelect>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <b style="color:bisque">Nivel</b>
@@ -37,7 +37,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                     <InputNumber @bind-Value="FormularioBalance.Interfase" placeholder="Interfase" class="form-control"></InputNumber>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <b style="color:bisque">API</b>
@@ -49,7 +49,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <b style="color:bisque">Temperatura ambiente</b>
@@ -61,7 +61,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <b style="color:bisque">Karl Fisher</b>
@@ -74,7 +74,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                 </div>
                             </div>
 
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <b style="color:bisque">Fecha</b>
@@ -85,7 +85,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
                                     <b class="form-control">@NombreTanque</b>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 form-group" style="overflow:auto">
                                     <b style="color:bisque">Cinta</b>
@@ -256,7 +256,7 @@ catch (Exception e)
     }
     async Task Confirmar()
     {
-        
+
         var resultado = await Swal.FireAsync(new SweetAlertOptions
             {
                 Title = "Guardar",
@@ -325,11 +325,12 @@ catch (Exception e)
                 NombreTanque = FormularioBalance.Tanque.NombreTanque;
                 NombreCinta = FormularioBalance.Cinta.Nombre;
                 NombreTermo = FormularioBalance.Termometro.Nombre;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Error al tratar de buscar la cinta y termometro para tanque de Nafta");
                 Console.WriteLine(e.Message);
-            }           
+            }
 
         }
     }

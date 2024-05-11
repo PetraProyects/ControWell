@@ -119,7 +119,7 @@
 						</div><!--//app-card-body-->
 
 					</div><!--//app-card-->
-				</div><!--//col-->				
+				</div><!--//col-->
 				<div class="col-6 col-md-4 col-xl-3 col-xxl-2">
 					<div class="app-card app-card-doc shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#ModalInformesRangoFecha" @onclick="(()=>Asignar(Titulo,1))">
 						<div class="app-card-thumb-holder p-3">
@@ -145,8 +145,6 @@
 		</div><!--//container-fluid-->
 	</div><!--//app-content-->
 </div><!--//app-wrapper-->
-
-
 <!-- Modal -->
 <div class="modal fade" id="ModalInformesRangoFecha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
@@ -232,12 +230,12 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 
 	}
 	private async Task exportFormato028()
-	{		
+	{
 		string filtro = JsonSerializer.Serialize(consulta);
 		var response = await Http.GetAsync($"api/FormatoCarga/formatoslo028/{filtro}");
 		var fileStream = response.Content.ReadAsStream();
 		using var streamRef = new DotNetStreamReference(stream: fileStream);
-		await JS.InvokeVoidAsync("downloadFileFromStream","Formato-SL0-028.xlsx", streamRef);
+		await JS.InvokeVoidAsync("downloadFileFromStream", "Formato-SL0-028.xlsx", streamRef);
 	}
 	private async Task exportFormato029()
 	{
@@ -273,7 +271,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 		var fileStream = response.Content.ReadAsStream();
 		using var streamRef = new DotNetStreamReference(stream: fileStream);
 		await JS.InvokeVoidAsync("downloadFileFromStream", "ReporteGeneral.xlsx", streamRef);
-		await JS.InvokeVoidAsync("alert", "Template.xlsx");	
+		await JS.InvokeVoidAsync("alert", "Template.xlsx");
 	}
 	private async Task InformePDF()
 	{
@@ -291,7 +289,7 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 				Gsv += i.GSV();
 				Nsv += i.NSV();
 				AguaNeta += i.AGUANETA();
-			}			
+			}
 
 			if (i.Tanque.TipoFluido == "Refinado")
 			{
@@ -317,22 +315,22 @@ background: linear-gradient(225deg, rgba(34,195,158,1) 0%, rgba(87,102,130,1) 10
 				GsvDesp += (-1) * (double)i.DeltaGsv;
 				NsvDesp += (-1) * (double)i.DeltaNsv;
 				AguaDesp += (-1) * (double)i.DeltaAguaNeta;
-				ApiDesp += ((double)i.DeltaTov / (double)TovDesp)*i.Api60F();
+				ApiDesp += ((double)i.DeltaTov / (double)TovDesp) * i.Api60F();
 			}
 		}
 		NombreFechaInicio = consulta.FechaInicial.ToString("dd/MM/yyyy HH:mm:ss");
 		NombreFechaFinal = consulta.FechaFinal.ToString("dd/MM/yyyy HH:mm:ss");
 		await JS.InvokeVoidAsync("GenerarPDF", "PeMMaS", NombreFechaInicio, NombreFechaFinal,
-		Math.Round(Tov, 2), Math.Round(Gsv, 2), Math.Round(Nsv, 2), Math.Round(AguaNeta,2),
-		Math.Round(TovProd, 2), Math.Round(GsvProd, 2), Math.Round(NsvProd, 2), Math.Round(AguaNetaProd,2),
-		Math.Round(GsvDesp, 2), Math.Round(NsvDesp, 2), Math.Round(AguaDesp, 2), Math.Round(ApiDesp,2),
-		CantidadVehiculos, Math.Round(TovNaf, 2), Math.Round(GsvNaf, 2), Math.Round(NsvNaf, 2), Math.Round(AguaNetaNaf,1),
+		Math.Round(Tov, 2), Math.Round(Gsv, 2), Math.Round(Nsv, 2), Math.Round(AguaNeta, 2),
+		Math.Round(TovProd, 2), Math.Round(GsvProd, 2), Math.Round(NsvProd, 2), Math.Round(AguaNetaProd, 2),
+		Math.Round(GsvDesp, 2), Math.Round(NsvDesp, 2), Math.Round(AguaDesp, 2), Math.Round(ApiDesp, 2),
+		CantidadVehiculos, Math.Round(TovNaf, 2), Math.Round(GsvNaf, 2), Math.Round(NsvNaf, 2), Math.Round(AguaNetaNaf, 1),
 
 		"Informe.pdf");
 
 	}
 
-	void Asignar(string titulo,int num)
+	void Asignar(string titulo, int num)
 	{
 		Titulo = titulo;
 		NumeroFun = num;
